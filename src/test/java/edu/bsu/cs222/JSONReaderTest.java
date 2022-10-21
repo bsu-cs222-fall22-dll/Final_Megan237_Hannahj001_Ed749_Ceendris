@@ -33,6 +33,13 @@ public class JSONReaderTest {
     }
 
     @Test
+    public void getName() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONReader JSONFileReader = new JSONReader();
+        String result = JSONFileReader.getName("User1");
+        Assertions.assertEquals("Clare", result);
+    }
+
+    @Test
     public void readEmail() throws FileNotFoundException, ParseException, URISyntaxException {
         JSONParser jsonParser = new JSONParser();
 
@@ -45,6 +52,13 @@ public class JSONReaderTest {
         String result = JSONFileReader.parseEmail(object);
 
 
+        Assertions.assertEquals("ceendris@bsu.edu", result);
+    }
+
+    @Test
+    public void getEmail() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONReader JSONFileReader = new JSONReader();
+        String result = JSONFileReader.getEmail("User1");
         Assertions.assertEquals("ceendris@bsu.edu", result);
     }
 
@@ -65,6 +79,13 @@ public class JSONReaderTest {
     }
 
     @Test
+    public void getPhoneNumber() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONReader JSONFileReader = new JSONReader();
+        String result = JSONFileReader.getPhoneNumber("User1");
+        Assertions.assertEquals("3172585282", result);
+    }
+
+    @Test
     public void readListOfClasses() throws FileNotFoundException, ParseException, URISyntaxException {
         JSONParser jsonParser = new JSONParser();
 
@@ -81,6 +102,17 @@ public class JSONReaderTest {
         testResult.add("Product Management"); testResult.add("Research and Profession Practices");
         testResult.add("Printmaking II");
 
+        Assertions.assertEquals(testResult, result);
+    }
+
+    @Test
+    public void getListOfClasses() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONReader JSONFileReader = new JSONReader();
+        ArrayList<String> result = JSONFileReader.getClasses("User1");
+        ArrayList<String> testResult = new ArrayList<>();
+        testResult.add("Advanced Programming"); testResult.add("Contemporary Art History");
+        testResult.add("Product Management"); testResult.add("Research and Profession Practices");
+        testResult.add("Printmaking II");
         Assertions.assertEquals(testResult, result);
     }
 }
