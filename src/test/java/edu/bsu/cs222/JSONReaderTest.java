@@ -115,4 +115,23 @@ public class JSONReaderTest {
         testResult.add("Printmaking II");
         Assertions.assertEquals(testResult, result);
     }
+
+    @Test
+    public void readListOfDays() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONParser jsonParser = new JSONParser();
+
+
+        URL resource = getClass().getClassLoader().getResource("User1.json");
+        assert resource != null;
+        FileReader reader = new FileReader(new File(resource.toURI()));
+        Object object = jsonParser.parse(reader);
+        JSONReader JSONFileReader = new JSONReader();
+        ArrayList<String> result = JSONFileReader.parseDays(object);
+
+        ArrayList<String> testResult = new ArrayList<>();
+        testResult.add("M"); testResult.add("W"); testResult.add("F"); testResult.add("M"); testResult.add("W"); testResult.add("F");
+        testResult.add("T"); testResult.add("R"); testResult.add("T"); testResult.add("R"); testResult.add("T"); testResult.add("R");
+
+        Assertions.assertEquals(testResult, result);
+    }
 }
