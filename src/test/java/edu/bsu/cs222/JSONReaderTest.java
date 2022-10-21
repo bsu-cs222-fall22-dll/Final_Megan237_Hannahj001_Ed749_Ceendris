@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class JSONReaderTest {
     @Test
     public void readName() throws FileNotFoundException, ParseException, URISyntaxException {
-        JSONParser jsonParser = new JSONParser();
+        JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
 
 
         URL resource = getClass().getClassLoader().getResource("User1.json");
@@ -41,7 +41,7 @@ public class JSONReaderTest {
 
     @Test
     public void readEmail() throws FileNotFoundException, ParseException, URISyntaxException {
-        JSONParser jsonParser = new JSONParser();
+        JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
 
 
         URL resource = getClass().getClassLoader().getResource("User1.json");
@@ -64,7 +64,7 @@ public class JSONReaderTest {
 
     @Test
     public void readPhoneNumber() throws FileNotFoundException, ParseException, URISyntaxException {
-        JSONParser jsonParser = new JSONParser();
+        JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
 
 
         URL resource = getClass().getClassLoader().getResource("User1.json");
@@ -87,7 +87,7 @@ public class JSONReaderTest {
 
     @Test
     public void readListOfClasses() throws FileNotFoundException, ParseException, URISyntaxException {
-        JSONParser jsonParser = new JSONParser();
+        JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
 
 
         URL resource = getClass().getClassLoader().getResource("User1.json");
@@ -118,7 +118,7 @@ public class JSONReaderTest {
 
     @Test
     public void readListOfDays() throws FileNotFoundException, ParseException, URISyntaxException {
-        JSONParser jsonParser = new JSONParser();
+        JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
 
 
         URL resource = getClass().getClassLoader().getResource("User1.json");
