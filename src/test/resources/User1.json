@@ -1,0 +1,98 @@
+{
+  "Avatar": "https://website.com/headshot.jpg",
+  "Email": "ceendris@bsu.edu",
+  "User": "Clare",
+  "PhoneNumber": "3172585282",
+  "Classes": [
+    {
+      "ID:": "CS 222",
+      "Name": "Advanced Programming",
+      "Meetings": [
+        {
+          "Day": "M",
+          "Start": "11:00",
+          "End": "11:50"
+        },
+        {
+          "Day": "W",
+          "Start": "11:00",
+          "End": "11:50"
+        },
+        {
+          "Day": "F",
+          "Start": "11:00",
+          "End": "11:50"
+        }
+      ]
+    },
+    {
+      "ID:": "AHS 210",
+      "Name": "Contemporary Art History",
+      "Meetings": [
+        {
+          "Day": "M",
+          "Start": "15:00",
+          "End": "15:50"
+        },
+        {
+          "Day": "W",
+          "Start": "15:00",
+          "End": "15:50"
+        },
+        {
+          "Day": "F",
+          "Start": "15:00",
+          "End": "15:50"
+        }
+      ]
+    },
+    {
+      "ID:": "MKG 400",
+      "Name": "Product Management",
+      "Meetings": [
+        {
+          "Day": "T",
+          "Start": "11:00",
+          "End": "12:15"
+        },
+        {
+          "Day": "R",
+          "Start": "11:00",
+          "End": "12:15"
+        }
+      ]
+    },
+    {
+      "ID:": "ADS 441",
+      "Name": "Research and Profession Practices",
+      "Meetings": [
+        {
+          "Day": "T",
+          "Start": "12:30",
+          "End": "15:15"
+        },
+        {
+          "Day": "R",
+          "Start": "12:30",
+          "End": "15:15"
+        }
+      ]
+    },
+    {
+      "ID:": "AFA 272",
+      "Name": "Printmaking II",
+      "Meetings": [
+        {
+          "Day": "T",
+          "Start": "15:30",
+          "End": "18:15"
+        },
+        {
+          "Day": "R",
+          "Start": "15:00",
+          "End": "18:15"
+        }
+      ]
+    }
+  ]
+}
