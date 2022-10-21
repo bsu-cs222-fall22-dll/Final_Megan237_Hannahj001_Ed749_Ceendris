@@ -176,4 +176,24 @@ public class JSONReader {
         }
         return thursday;
     }
+
+    public ArrayList<String> fridayArray(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        ArrayList<String> classes = getClasses(email);
+        ArrayList<String> days = getDays(email);
+        ArrayList<String> friday = new ArrayList<>();
+
+        int classesCounter = 0;
+        int day = 0;
+        while(day < days.size()){
+            if (days.get(day).equals("F")){
+                friday.add(classes.get(classesCounter));
+                classesCounter+=1;
+            }
+            if (days.get(day).equals("R")){
+                classesCounter+=1;
+            }
+            day+=1;
+        }
+        return friday;
+    }
 }

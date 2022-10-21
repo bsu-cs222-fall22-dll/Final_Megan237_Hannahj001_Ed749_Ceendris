@@ -180,4 +180,13 @@ public class JSONReaderTest {
         testResult.add("Product Management"); testResult.add("Research and Profession Practices"); testResult.add("Printmaking II");
         Assertions.assertEquals(testResult, result);
     }
+
+    @Test
+    public void getFridayArray() throws FileNotFoundException, URISyntaxException, ParseException {
+        JSONReader JSONFileReader = new JSONReader();
+        ArrayList<String> result = JSONFileReader.fridayArray("User1");
+        ArrayList<String> testResult = new ArrayList<>();
+        testResult.add("Advanced Programming"); testResult.add("Contemporary Art History");
+        Assertions.assertEquals(testResult, result);
+    }
 }
