@@ -134,4 +134,14 @@ public class JSONReaderTest {
 
         Assertions.assertEquals(testResult, result);
     }
+
+    @Test
+    public void getListOfDays() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONReader JSONFileReader = new JSONReader();
+        ArrayList<String> result = JSONFileReader.getDays("User1");
+        ArrayList<String> testResult = new ArrayList<>();
+        testResult.add("M"); testResult.add("W"); testResult.add("F"); testResult.add("M"); testResult.add("W"); testResult.add("F");
+        testResult.add("T"); testResult.add("R"); testResult.add("T"); testResult.add("R"); testResult.add("T"); testResult.add("R");
+        Assertions.assertEquals(testResult, result);
+    }
 }
