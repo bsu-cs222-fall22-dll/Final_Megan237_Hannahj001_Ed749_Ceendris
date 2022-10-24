@@ -1,10 +1,8 @@
 package edu.bsu.cs222;
 
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
-import netscape.javascript.JSObject;
 import com.jayway.jsonpath.JsonPath;
 
 import java.io.File;
