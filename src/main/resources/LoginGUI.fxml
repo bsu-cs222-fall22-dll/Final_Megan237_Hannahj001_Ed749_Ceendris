@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="556.0" prefWidth="328.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.LoginGUI">
+   <children>
+      <Label layoutX="91.0" layoutY="95.0" prefHeight="117.0" prefWidth="214.0" text="Login" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="63.0" />
+         </font>
+      </Label>
+      <TextField fx:id="emailInput" layoutX="84.0" layoutY="230.0" prefHeight="43.0" prefWidth="167.0" />
+      <Button fx:id="enterButton" layoutX="137.0" layoutY="285.0" mnemonicParsing="false" text="Enter">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+      </Button>
+      <Label layoutX="84.0" layoutY="200.0" prefHeight="24.0" prefWidth="127.0" text="Enter Email:" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
