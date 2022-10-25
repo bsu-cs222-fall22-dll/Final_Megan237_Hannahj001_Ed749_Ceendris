@@ -11,9 +11,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import net.minidev.json.parser.ParseException;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.EventObject;
 import java.util.Objects;
 
@@ -25,13 +27,18 @@ public class LoginGUI{
 
 
     @FXML
-    public void loginUser() throws IOException {
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/DisplayUserInfoGUI.fxml"));
-        primaryStage.setTitle("Profile");
-        primaryStage.setScene(new Scene(root, 450, 700));
-        primaryStage.show();
-
+    public void loginUser() throws IOException, URISyntaxException, ParseException {
+        String email = emailInput.getText();
+        email = email + "@bsu.edu";
+        JSONReader reader = new JSONReader();
+        String nameFromJSONDoc = reader.getEmail("ceendris@bsu.edu");
+        if (email.equals(nameFromJSONDoc)) {
+            Stage primaryStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/DisplayUserInfoGUI.fxml"));
+            primaryStage.setTitle("Profile");
+            primaryStage.setScene(new Scene(root, 450, 700));
+            primaryStage.show();
+        }
 //        try{
 //            switchToUserDisplay();
 //            String email = emailInput.getText();
@@ -89,11 +96,14 @@ public class LoginGUI{
  @FXML
     public void switchToUserDisplay(ActionEvent event) throws IOException {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/DisplayUserInfoGUI.fxml")));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            String email = emailInput.getText();
+            if (email == "ceendris") {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/DisplayUserInfoGUI.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
