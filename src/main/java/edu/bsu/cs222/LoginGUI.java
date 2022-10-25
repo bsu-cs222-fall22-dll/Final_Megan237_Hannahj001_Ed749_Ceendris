@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -38,6 +39,13 @@ public class LoginGUI{
             primaryStage.setTitle("Profile");
             primaryStage.setScene(new Scene(root, 450, 700));
             primaryStage.show();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("That user does not exist.");
+            alert.setContentText("Please enter a different username.");
+            alert.showAndWait();
         }
 //        try{
 //            switchToUserDisplay();
