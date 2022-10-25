@@ -12,7 +12,7 @@
          </font>
       </Label>
       <TextField fx:id="emailInput" layoutX="84.0" layoutY="230.0" prefHeight="43.0" prefWidth="167.0" />
-      <Button fx:id="enterButton" layoutX="137.0" layoutY="285.0" mnemonicParsing="false" text="Enter">
+      <Button fx:id="enterButton" layoutX="137.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginUser" text="Enter">
          <font>
             <Font name="Arial" size="17.0" />
          </font>

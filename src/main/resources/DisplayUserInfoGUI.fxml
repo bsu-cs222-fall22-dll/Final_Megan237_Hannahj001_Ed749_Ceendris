@@ -33,6 +33,6 @@
                 <Font name="Arial Black" size="22.0" />
             </font>
         </Label>
-        <VBox layoutX="29.0" layoutY="161.0" prefHeight="324.0" prefWidth="266.0" />
+        <VBox fx:id="displaySchedule" layoutX="29.0" layoutY="161.0" prefHeight="324.0" prefWidth="266.0" />
     </children>
 </AnchorPane>
