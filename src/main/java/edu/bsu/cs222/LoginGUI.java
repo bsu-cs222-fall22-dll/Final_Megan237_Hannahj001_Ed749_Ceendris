@@ -1,5 +1,6 @@
 package edu.bsu.cs222;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -7,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -24,6 +26,12 @@ public class LoginGUI{
 
     @FXML
     public void loginUser() throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/DisplayUserInfoGUI.fxml"));
+        primaryStage.setTitle("Profile");
+        primaryStage.setScene(new Scene(root, 450, 700));
+        primaryStage.show();
+
 //        try{
 //            switchToUserDisplay();
 //            String email = emailInput.getText();
@@ -67,7 +75,6 @@ public class LoginGUI{
 //            }
         }
 
-
  @FXML
  public void loadUserDisplay(String s) throws IOException {
      FXMLLoader createUser = new FXMLLoader(getClass().getClassLoader().getResource(s));
@@ -78,8 +85,6 @@ public class LoginGUI{
      stage.setScene(new Scene(root));
      stage.show();
  }
-
-
 
  @FXML
     public void switchToUserDisplay(ActionEvent event) throws IOException {
