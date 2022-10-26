@@ -34,11 +34,22 @@ public class LoginGUI{
         JSONReader reader = new JSONReader();
         String nameFromJSONDoc = reader.getEmail("ceendris@bsu.edu");
         if (email.equals(nameFromJSONDoc)) {
-            Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/DisplayUserInfoGUI.fxml"));
-            primaryStage.setTitle("Profile");
-            primaryStage.setScene(new Scene(root, 450, 700));
-            primaryStage.show();
+            //Stage primaryStage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
+            Parent root = loader.load();
+            DisplayUserInfoGUI displayUserInfoGUI = loader.getController();
+            displayUserInfoGUI.displayEmail(email);
+            enterButton.getScene().setRoot(root);
+            //Scene scene = new Scene(root);
+            //Stage window = (Stage) enterButton.getScene().getWindow();
+//            DisplayUserInfoGUI displayUserInfoGUI = new DisplayUserInfoGUI();
+//            displayUserInfoGUI.displayEmail(email);
+            //window.setScene(scene);
+            //window.show();
+
+//            primaryStage.setTitle("Profile");
+//            primaryStage.setScene(new Scene(root, 450, 700));
+//            primaryStage.show();
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

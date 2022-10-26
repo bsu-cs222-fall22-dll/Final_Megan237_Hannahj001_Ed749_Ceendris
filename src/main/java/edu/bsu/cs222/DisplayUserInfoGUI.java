@@ -18,20 +18,19 @@ public class DisplayUserInfoGUI {
     public VBox displaySchedule;
     public JSONReader jsonReader = new JSONReader();
 
-
     @FXML
-    public void updateUserInformation(String name, String phoneNumber, String email){
+    public void updateUserInformation(String name, String phoneNumber, String email) throws FileNotFoundException, URISyntaxException, ParseException {
 
         nameBox.setText(name);
         phoneNumberBox.setText(phoneNumber);
-        emailBox.setText(email);
+        emailBox.setText("no");
     }
 
 
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String name = jsonReader.getName(email);
-        nameBox.setText(name);
+        nameBox.setText(email);
     }
 
     @FXML
