@@ -3,6 +3,7 @@ package edu.bsu.cs222;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import net.minidev.json.parser.ParseException;
 
@@ -15,8 +16,8 @@ public class DisplayUserInfoGUI {
     public Label nameBox;
     public Label phoneNumberBox;
     public Label emailBox;
-    public VBox displaySchedule;
     public JSONReader jsonReader = new JSONReader();
+    public Label displaySchedule;
 
     @FXML
     public void updateUserInformation(String name, String phoneNumber, String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -30,7 +31,7 @@ public class DisplayUserInfoGUI {
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String name = jsonReader.getName(email);
-        nameBox.setText(email);
+        nameBox.setText(name);
     }
 
     @FXML
@@ -45,9 +46,30 @@ public class DisplayUserInfoGUI {
         phoneNumberBox.setText(phoneNumber);
     }
 
-//    @FXML
-//    public void setDisplaySchedule(String email){
-//
-//    }
+    @FXML
+    public void setDisplaySchedule(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        String schedule;
+        schedule = "Monday\n";
+        for (String day : jsonReader.mondayArray(email)){
+            schedule += day + "\n";
+        }
+        schedule += "\nTuesday\n";
+        for (String day : jsonReader.tuesdayArray(email)){
+            schedule += day + "\n";
+        }
+        schedule += "\nWednesday\n";
+        for (String day : jsonReader.wednesdayArray(email)){
+            schedule += day + "\n";
+        }
+        schedule += "\nThursday\n";
+        for (String day : jsonReader.thursdayArray(email)){
+            schedule += day + "\n";
+        }
+        schedule += "\nFriday\n";
+        for (String day : jsonReader.fridayArray(email)){
+            schedule += day + "\n";
+        }
+        displaySchedule.setText(schedule);
+    }
 }
 
