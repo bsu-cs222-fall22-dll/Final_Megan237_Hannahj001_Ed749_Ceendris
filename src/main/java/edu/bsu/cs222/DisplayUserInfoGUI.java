@@ -16,14 +16,6 @@ public class DisplayUserInfoGUI {
     public JSONReader jsonReader = new JSONReader();
     public Label displaySchedule;
 
-    @FXML
-    public void updateUserInformation(String name, String phoneNumber, String email) throws FileNotFoundException, URISyntaxException, ParseException {
-
-        nameBox.setText(name);
-        phoneNumberBox.setText(phoneNumber);
-        emailBox.setText("no");
-    }
-
 
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -45,28 +37,28 @@ public class DisplayUserInfoGUI {
 
     @FXML
     public void setDisplaySchedule(String email) throws FileNotFoundException, URISyntaxException, ParseException {
-        String schedule;
-        schedule = "Monday\n";
+        StringBuilder schedule;
+        schedule = new StringBuilder("Monday\n");
         for (String day : jsonReader.mondayArray(email)){
-            schedule += day + "\n";
+            schedule.append(day).append("\n");
         }
-        schedule += "\nTuesday\n";
+        schedule.append("\nTuesday\n");
         for (String day : jsonReader.tuesdayArray(email)){
-            schedule += day + "\n";
+            schedule.append(day).append("\n");
         }
-        schedule += "\nWednesday\n";
+        schedule.append("\nWednesday\n");
         for (String day : jsonReader.wednesdayArray(email)){
-            schedule += day + "\n";
+            schedule.append(day).append("\n");
         }
-        schedule += "\nThursday\n";
+        schedule.append("\nThursday\n");
         for (String day : jsonReader.thursdayArray(email)){
-            schedule += day + "\n";
+            schedule.append(day).append("\n");
         }
-        schedule += "\nFriday\n";
+        schedule.append("\nFriday\n");
         for (String day : jsonReader.fridayArray(email)){
-            schedule += day + "\n";
+            schedule.append(day).append("\n");
         }
-        displaySchedule.setText(schedule);
+        displaySchedule.setText(schedule.toString());
     }
 }
 
