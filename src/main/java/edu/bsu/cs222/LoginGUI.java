@@ -40,6 +40,7 @@ public class LoginGUI{
             displayUserInfoGUI.displayEmail(email);
             displayUserInfoGUI.displayName(email);
             displayUserInfoGUI.displayPhoneNumber(email);
+            displayUserInfoGUI.setDisplaySchedule(email);
             enterButton.getScene().setRoot(root);
 
         }

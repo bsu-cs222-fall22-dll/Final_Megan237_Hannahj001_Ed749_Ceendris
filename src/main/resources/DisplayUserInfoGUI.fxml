@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="556.0" prefWidth="328.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.DisplayUserInfoGUI">
+<AnchorPane prefHeight="556.0" prefWidth="328.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.DisplayUserInfoGUI">
     <children>
         <Circle fill="DODGERBLUE" layoutX="63.0" layoutY="63.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
         <Label fx:id="nameBox" layoutX="114.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
@@ -33,6 +33,10 @@
                 <Font name="Arial Black" size="22.0" />
             </font>
         </Label>
-        <VBox fx:id="displaySchedule" layoutX="29.0" layoutY="161.0" prefHeight="324.0" prefWidth="266.0" />
+      <Label fx:id="displaySchedule" alignment="TOP_LEFT" layoutX="14.0" layoutY="187.0" prefHeight="349.0" prefWidth="440.0" text="Label">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
