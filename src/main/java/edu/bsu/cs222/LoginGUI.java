@@ -34,22 +34,14 @@ public class LoginGUI{
         JSONReader reader = new JSONReader();
         String nameFromJSONDoc = reader.getEmail("ceendris@bsu.edu");
         if (email.equals(nameFromJSONDoc)) {
-            //Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
             Parent root = loader.load();
             DisplayUserInfoGUI displayUserInfoGUI = loader.getController();
             displayUserInfoGUI.displayEmail(email);
+            displayUserInfoGUI.displayName(email);
+            displayUserInfoGUI.displayPhoneNumber(email);
             enterButton.getScene().setRoot(root);
-            //Scene scene = new Scene(root);
-            //Stage window = (Stage) enterButton.getScene().getWindow();
-//            DisplayUserInfoGUI displayUserInfoGUI = new DisplayUserInfoGUI();
-//            displayUserInfoGUI.displayEmail(email);
-            //window.setScene(scene);
-            //window.show();
 
-//            primaryStage.setTitle("Profile");
-//            primaryStage.setScene(new Scene(root, 450, 700));
-//            primaryStage.show();
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -58,47 +50,7 @@ public class LoginGUI{
             alert.setContentText("Please enter a different username.");
             alert.showAndWait();
         }
-//        try{
-//            switchToUserDisplay();
-//            String email = emailInput.getText();
-//            ((Node)event.getSource()).getScene().getWindow().hide();
-//            loadUserDisplay("/DisplayUserInfoGUI.fxml");
 
-//            System.out.println("HELLO");
-//            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/DisplayUserInfoGUI.fxml")));
-//            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//            scene = new Scene(root);
-//            stage.setScene(scene);
-//            stage.show();
-
-//            Parent root;
-//            Stage stage = (Stage) enterButton.getScene().getWindow();
-//            stage.close();
-//            FXMLLoader createUser = new FXMLLoader(getClass().getClassLoader().getResource("/DisplayUserInfoGUI.fxml"));
-//            root = createUser.load();
-//            DisplayUserInfoGUI displayUserInfoGUI = createUser.getController();
-//            Stage secondStage = new Stage();
-//            secondStage.setTitle("Login Page");
-//            secondStage.setScene(new Scene(root));
-//            secondStage.show();
-
-//            FXMLLoader createUser = new FXMLLoader(getClass().getClassLoader().getResource("/DisplayUserInfoGUI.fxml"));
-//            Parent root = (Parent) createUser.load();
-//            Stage stage = new Stage();
-//            stage.initStyle(StageStyle.DECORATED);
-//            stage.setTitle("Login Page");
-//            stage.setScene(new Scene(root));
-//            stage.show();
-
-//            Parent root = FXMLLoader.load(getClass().getResource("/DisplayUserInfoGUI.fxml"));
-//            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//            scene = new Scene(root);
-//            stage.setScene(scene);
-//            stage.show();
-//
-//        }catch (IOException exception) {
-//               exception.printStackTrace();
-//            }
         }
 
  @FXML
