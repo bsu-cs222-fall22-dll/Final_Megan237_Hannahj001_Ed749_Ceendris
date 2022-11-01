@@ -2,11 +2,12 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.DisplayUserInfoGUI">
+<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.DisplayUserInfoGUI">
     <Circle fill="DODGERBLUE" layoutX="63.0" layoutY="63.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
     <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
         <font>
@@ -29,11 +30,22 @@
         </effect>
     </Separator>
    <Separator layoutX="19.0" layoutY="134.0" prefHeight="10.0" prefWidth="298.0" />
-   <Button layoutX="106.0" layoutY="625.0" mnemonicParsing="false" text="Profile" />
-   <Button layoutX="197.0" layoutY="625.0" mnemonicParsing="false" text="Calendar" />
-   <Button layoutX="303.0" layoutY="625.0" mnemonicParsing="false" text="Settings" />
-   <ScrollPane layoutX="21.0" layoutY="172.0" prefHeight="420.0" prefWidth="394.0">
-      <content>
-         <Circle fill="DODGERBLUE" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
-      </content></ScrollPane>
+   <Button layoutX="106.0" layoutY="635.0" mnemonicParsing="false" text="Profile" />
+   <Button layoutX="197.0" layoutY="635.0" mnemonicParsing="false" text="Calendar" />
+   <Button layoutX="303.0" layoutY="635.0" mnemonicParsing="false" text="Settings" />
+   <ScrollPane layoutX="31.0" layoutY="167.0" prefHeight="447.0" prefWidth="406.0">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="561.0" prefWidth="391.0">
+            <children>
+<!--                <Button>-->
+<!--                    <graphic>-->
+<!--                        <ImageView>-->
+<!--                            <Image url="profileImage" />-->
+<!--                        </ImageView>-->
+<!--                    </graphic>-->
+<!--                </Button>-->
+            </children>
+         </AnchorPane>
+     </content>
+   </ScrollPane>
 </AnchorPane>
