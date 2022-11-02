@@ -12,16 +12,19 @@ import java.net.URISyntaxException;
 
 public class LoginGUI{
     public TextField emailInput;
+    public TextField passwordInput;
     public Button enterButton;
 
 
     @FXML
     public void loginUser() throws IOException, URISyntaxException, ParseException {
         String email = emailInput.getText();
+        String password = passwordInput.getText();
         email = email + "@bsu.edu";
         JSONReader reader = new JSONReader();
         String nameFromJSONDoc = reader.getEmail("ceendris@bsu.edu");
-        if (email.equals(nameFromJSONDoc)) {
+        String passwordFromJSONDoc = reader.getPassword("ceendrdis@bsu.edu");
+        if (email.equals(nameFromJSONDoc) & password.equals(passwordFromJSONDoc)) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
             Parent root = loader.load();
             DisplayUserInfoGUI displayUserInfoGUI = loader.getController();

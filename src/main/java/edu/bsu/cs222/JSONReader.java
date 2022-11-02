@@ -35,6 +35,18 @@ public class JSONReader {
         return parseName(object);
     }
 
+    public String parsePassword(Object password){
+        Object result = JsonPath.read(password, "$..Password");
+        String finalResult = result.toString().replace("[", "");
+        String finalR = finalResult.replace("\"", "");
+
+        return finalR.replace("]", "");
+    }
+    public String getPassword(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parsePassword(object);
+    }
+
     public String parseEmail(Object email) {
         Object result = JsonPath.read(email, "$..Email");
         String finalResult = result.toString().replace("[", "");

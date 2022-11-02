@@ -86,6 +86,13 @@ public class JSONReaderTest {
     }
 
     @Test
+    public void getPassword() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONReader JSONFileReader = new JSONReader();
+        String result = JSONFileReader.getPassword("User1");
+        Assertions.assertEquals("1234", result);
+    }
+
+    @Test
     public void readListOfClasses() throws FileNotFoundException, ParseException, URISyntaxException {
         JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
 
