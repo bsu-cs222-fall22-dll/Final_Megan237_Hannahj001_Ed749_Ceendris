@@ -17,7 +17,7 @@
       </font>
    </Button>
    <Label layoutX="67.0" layoutY="200.0" prefHeight="24.0" prefWidth="127.0" text="Enter Email:" textAlignment="CENTER" />
-   <TextField fx:id="passwordInput" layoutX="67.0" layoutY="309.0" prefHeight="43.0" prefWidth="318.0" />
    <Label layoutX="68.0" layoutY="284.0" prefHeight="17.0" prefWidth="96.0" text="Enter Password:" />
    <Button layoutX="131.0" layoutY="660.0" mnemonicParsing="false" onAction="#openSignUpPage" prefHeight="5.0" prefWidth="190.0" text="Dont Have an Account? Signup" />
+   <PasswordField fx:id="passwordInput" layoutX="62.0" layoutY="325.0" prefHeight="43.0" prefWidth="318.0" />
 </AnchorPane>

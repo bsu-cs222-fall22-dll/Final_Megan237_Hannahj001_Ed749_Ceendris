@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import net.minidev.json.parser.ParseException;
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.net.URISyntaxException;
 
 public class LoginGUI{
     public TextField emailInput;
-    public TextField passwordInput;
+    public PasswordField passwordInput;
     public Button enterButton;
 
 
@@ -24,8 +25,8 @@ public class LoginGUI{
         email = email + "@bsu.edu";
         JSONReader reader = new JSONReader();
         String nameFromJSONDoc = reader.getEmail("ceendris@bsu.edu");
-        String passwordFromJSONDoc = reader.getPassword("ceendrdis@bsu.edu");
-        if (email.equals(nameFromJSONDoc) & password.equals(passwordFromJSONDoc)) {
+        String passwordFromJSONDoc = reader.getPassword("ceendris@bsu.edu");
+        if (email.equals(nameFromJSONDoc) && password.equals(passwordFromJSONDoc)) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
             Parent root = loader.load();
             DisplayUserInfoGUI displayUserInfoGUI = loader.getController();
@@ -46,7 +47,9 @@ public class LoginGUI{
 
     }
 
-    public void openSignUpPage(ActionEvent actionEvent) {
-
+    public void openSignUpPage(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SignUpGUI.fxml"));
+        Parent root = loader.load();
+        enterButton.getScene().setRoot(root);
     }
 }
