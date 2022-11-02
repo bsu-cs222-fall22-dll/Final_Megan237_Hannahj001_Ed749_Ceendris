@@ -1,5 +1,6 @@
 package edu.bsu.cs222;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,4 +46,7 @@ public class LoginGUI{
 
     }
 
+    public void openSignUpPage(ActionEvent actionEvent) {
+
+    }
 }
