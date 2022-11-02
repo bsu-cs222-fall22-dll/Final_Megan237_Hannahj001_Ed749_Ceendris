@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class JSONWriter {
+    SignUpGUI inputInformation = new SignUpGUI();
     JSONObject user = new JSONObject();
     String email;
     String name;
@@ -29,8 +30,6 @@ public class JSONWriter {
     }
 
     public void writeToFile() throws IOException {
-
-
     FileWriter fileWriter = new FileWriter(email + ".json");
     fileWriter.write(user.toJSONString());
     fileWriter.flush();
