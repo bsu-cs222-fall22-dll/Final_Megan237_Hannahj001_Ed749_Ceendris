@@ -24,16 +24,18 @@ public class LoginGUI{
         String password = passwordInput.getText();
         email = email + "@bsu.edu";
         JSONReader reader = new JSONReader();
-        String nameFromJSONDoc = reader.getEmail("ceendris@bsu.edu");
-        String passwordFromJSONDoc = reader.getPassword("ceendris@bsu.edu");
+        String nameFromJSONDoc = reader.getEmail(email);
+        String passwordFromJSONDoc = reader.getPassword(email);
         if (email.equals(nameFromJSONDoc) && password.equals(passwordFromJSONDoc)) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
             Parent root = loader.load();
-            DisplayUserInfoGUI displayUserInfoGUI = loader.getController();
-            displayUserInfoGUI.displayEmail(email);
-            displayUserInfoGUI.displayName(email);
-            displayUserInfoGUI.displayPhoneNumber(email);
-            displayUserInfoGUI.setDisplaySchedule(email);
+
+            MainScreenGUI mainScreenGUI = loader.getController();
+            mainScreenGUI.displayEmail(email);
+            mainScreenGUI.displayName(email);
+            mainScreenGUI.displayPhoneNumber(email);
+
             enterButton.getScene().setRoot(root);
 
         }

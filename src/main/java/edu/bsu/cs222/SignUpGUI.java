@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class SignUpGUI {
@@ -21,6 +23,8 @@ public class SignUpGUI {
     public Label passwordErrorBox;
     public Button signUpButton;
 
+    public ArrayList<Character> passwordCheckList = new ArrayList<>();
+
 
     @FXML
     public void checkingPasswords(ActionEvent actionEvent) {
@@ -29,7 +33,17 @@ public class SignUpGUI {
 
         if (!Objects.equals(mainPassword, checkPassword)){
             passwordErrorBox.setText("Passwords Do Not Match");
+
         }
+    }
+
+    @FXML
+    public void passwordCheck(KeyEvent keyEvent) {
+        String full = checkPasswordInput.getText();
+        char[] list = full.toLowerCase().toCharArray();
+        String mainPassword = passwordInput.getText();
+        char[] passwordlist = mainPassword.toLowerCase().toCharArray();
+
     }
 
     @FXML
@@ -41,6 +55,12 @@ public class SignUpGUI {
             alert.setContentText("You have not entered all of the sign up information");
             alert.showAndWait();
         }else {
+            JSONWriter writer = new JSONWriter();
+            writer.writeName(getName());
+            writer.writeEmail(getEmail());
+            writer.writePhoneNumber(getPhoneNumber());
+            writer.writePassword(getPassword());
+            writer.writeToFile(getEmail());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginGUI.fxml"));
             Parent root = loader.load();
             signUpButton.getScene().setRoot(root);
@@ -48,7 +68,10 @@ public class SignUpGUI {
     }
 
     public String getName(){
-        return firstNameInput.getText();
+        String firstName = firstNameInput.getText();
+        String lastName = lastNameInput.getText();
+
+        return firstName +" "+ lastName;
     }
 
     public String getEmail(){
@@ -63,4 +86,24 @@ public class SignUpGUI {
         return passwordInput.getText();
     }
 
+    @FXML
+    public void firstNameProgressBarUpdate(KeyEvent keyEvent) {
+        progressBar.setProgress(0.16);
+    }
+    @FXML
+    public void lastNameProgressBarUpdate(KeyEvent keyEvent) {
+        progressBar.setProgress(0.32);
+    }
+    @FXML
+    public void emailProgressBarUpdate(KeyEvent keyEvent) {
+        progressBar.setProgress(0.48);
+    }
+    @FXML
+    public void phoneProgressBarUpdate(KeyEvent keyEvent) {
+        progressBar.setProgress(0.64);
+    }
+    @FXML
+    public void passwordMainProgressBarUpdate(KeyEvent keyEvent) {
+        progressBar.setProgress(0.80);
+    }
 }
