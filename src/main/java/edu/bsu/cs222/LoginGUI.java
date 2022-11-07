@@ -37,8 +37,7 @@ public class LoginGUI{
             mainScreenGUI.displayEmail(email);
             mainScreenGUI.displayName(email);
             mainScreenGUI.displayPhoneNumber(email);
-//            mainScreenGUI.setEmail(email);
-            //trying to get profile button to work
+            mainScreenGUI.setEmail(email);
 
             enterButton.getScene().setRoot(root);
 

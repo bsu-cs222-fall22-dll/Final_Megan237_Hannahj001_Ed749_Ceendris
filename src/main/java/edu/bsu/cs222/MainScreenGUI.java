@@ -21,9 +21,9 @@ public class MainScreenGUI {
 
     public String userEmail;
 
-//    public void setEmail(String email){
-//        userEmail = email;
-//      }
+    public void setEmail(String email){
+        userEmail = email;
+      }
 
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -47,11 +47,12 @@ public class MainScreenGUI {
     public void goToProfile(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
         Parent root = loader.load();
-        JSONReader jsonReader = loader.getController();
-        jsonReader.getEmail(userEmail);
-        jsonReader.getName(userEmail);
-        jsonReader.getPhoneNumber(userEmail);
-        jsonReader.getDays(userEmail);
+        DisplayUserInfoGUI displayUser = loader.getController();
+
+        displayUser.displayEmail(userEmail);
+        displayUser.displayName(userEmail);
+        displayUser.displayPhoneNumber(userEmail);
+        displayUser.setDisplaySchedule(userEmail);
 
         profileButton.getScene().setRoot(root);
 
