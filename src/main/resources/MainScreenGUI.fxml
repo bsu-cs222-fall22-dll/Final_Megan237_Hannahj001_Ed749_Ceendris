@@ -31,7 +31,7 @@
         </effect>
     </Separator>
    <Separator layoutX="19.0" layoutY="134.0" prefHeight="10.0" prefWidth="298.0" />
-   <Button layoutX="106.0" layoutY="635.0" mnemonicParsing="false" text="Profile" />
+   <Button fx:id="profileButton" layoutX="106.0" layoutY="635.0" mnemonicParsing="false" onAction="#goToProfile" text="Profile" />
    <Button layoutX="197.0" layoutY="635.0" mnemonicParsing="false" text="Calendar" />
    <Button layoutX="303.0" layoutY="635.0" mnemonicParsing="false" text="Settings" />
    <ScrollPane layoutX="31.0" layoutY="169.0" prefHeight="447.0" prefWidth="406.0">

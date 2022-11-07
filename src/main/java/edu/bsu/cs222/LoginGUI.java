@@ -18,6 +18,8 @@ public class LoginGUI{
     public Button enterButton;
 
 
+
+
     @FXML
     public void loginUser() throws IOException, URISyntaxException, ParseException {
         String email = emailInput.getText();
@@ -35,6 +37,8 @@ public class LoginGUI{
             mainScreenGUI.displayEmail(email);
             mainScreenGUI.displayName(email);
             mainScreenGUI.displayPhoneNumber(email);
+//            mainScreenGUI.setEmail(email);
+            //trying to get profile button to work
 
             enterButton.getScene().setRoot(root);
 
