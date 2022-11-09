@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import net.minidev.json.parser.ParseException;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -18,11 +20,32 @@ public class SettingsGUI{
     public Button editScheduleButton;
     public Button editUserInfoButton;
     public String userEmail;
+    public Button addRoommateButton;
+    public Label nameBox;
+    public Label phoneNumberBox;
+    public Label emailBox;
+
+    public JSONReader jsonReader = new JSONReader();
 
 
-    public void setEmail(String email){
-        userEmail = email;
+    @FXML
+    public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        String name = jsonReader.getName(email);
+        nameBox.setText(name);
     }
+
+    @FXML
+    public void displayEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        String Displayedemail = jsonReader.getEmail(email);
+        emailBox.setText(Displayedemail);
+    }
+
+    @FXML
+    public void displayPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        String phoneNumber = jsonReader.getPhoneNumber(email);
+        phoneNumberBox.setText(phoneNumber);
+    }
+
 
     @FXML
     public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
@@ -47,5 +70,10 @@ public class SettingsGUI{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginGUI.fxml"));
         Parent root = loader.load();
         logOutButton.getScene().setRoot(root);
+    }
+
+    public void addRoommate(ActionEvent actionEvent) {
+
+
     }
 }

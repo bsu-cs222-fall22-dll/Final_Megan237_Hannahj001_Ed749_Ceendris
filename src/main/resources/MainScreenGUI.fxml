@@ -36,7 +36,7 @@
    <Button fx:id="settingsButton" layoutX="303.0" layoutY="635.0" mnemonicParsing="false" onAction="#openSettings" text="Settings" />
     <ScrollPane layoutX="31.0" layoutY="169.0" prefHeight="447.0" prefWidth="406.0">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="391.0">
-            <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#openRoommate1" prefHeight="95.0" prefWidth="327.0" text="Roomate1">
+            <Button fx:id="roommate1Button" alignment="TOP_LEFT" layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#openRoommate1" prefHeight="95.0" prefWidth="327.0" text="Roomate1">
                 <font>
                     <Font name="Arial Black" size="24.0" />
                 </font>

@@ -24,6 +24,7 @@ public class MainScreenGUI {
     public Label phoneNumberBox11;
     public Label phoneNumberBox1;
     public Button settingsButton;
+    public Button roommate1Button;
 
     public void setEmail(String email){
         userEmail = email;
@@ -34,6 +35,15 @@ public class MainScreenGUI {
         String name = jsonReader.getName(email);
         nameBox.setText(name);
     }
+    @FXML
+    /// ROOMMATES NEED TO ADD EMAIL
+    public void displayRoommates(String email){
+
+        roommate1Button.setText("Hannah");
+
+    }
+
+
 
     @FXML
     public void displayEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -61,6 +71,7 @@ public class MainScreenGUI {
         profileButton.getScene().setRoot(root);
     }
 
+
     public void openRoommate1(ActionEvent actionEvent) {
 
     }
@@ -73,12 +84,17 @@ public class MainScreenGUI {
 
     }
 
-    public void openSettings(ActionEvent actionEvent) throws IOException {
-        SettingsGUI settingsGUI = new SettingsGUI();
-        settingsGUI.setEmail(userEmail);
+    public void openSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SettingsGUI.fxml"));
         Parent root = loader.load();
+        SettingsGUI settingsGUI = loader.getController();
+
+        settingsGUI.displayEmail(userEmail);
+        settingsGUI.displayName(userEmail);
+        settingsGUI.displayPhoneNumber(userEmail);
+
         settingsButton.getScene().setRoot(root);
+
 
     }
 

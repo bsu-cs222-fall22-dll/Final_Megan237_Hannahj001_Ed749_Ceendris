@@ -38,6 +38,7 @@ public class LoginGUI{
             mainScreenGUI.displayName(email);
             mainScreenGUI.displayPhoneNumber(email);
             mainScreenGUI.setEmail(email);
+            mainScreenGUI.displayRoommates(email);
 
             enterButton.getScene().setRoot(root);
 
