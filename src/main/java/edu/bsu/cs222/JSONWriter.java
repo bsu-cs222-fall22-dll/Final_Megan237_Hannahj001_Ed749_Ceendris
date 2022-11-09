@@ -35,5 +35,7 @@ public class JSONWriter {
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
         Files.createFile(path);
         Files.write(path, user.toJSONString().getBytes(StandardCharsets.UTF_8));
+
+
     }
 }

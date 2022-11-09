@@ -20,6 +20,9 @@ public class MainScreenGUI {
     public Button profileButton;
 
     public String userEmail;
+    public Label phoneNumberBox111;
+    public Label phoneNumberBox11;
+    public Label phoneNumberBox1;
 
     public void setEmail(String email){
         userEmail = email;
@@ -55,6 +58,17 @@ public class MainScreenGUI {
         displayUser.setDisplaySchedule(userEmail);
 
         profileButton.getScene().setRoot(root);
+    }
+
+    public void openRoommate1(ActionEvent actionEvent) {
+
+    }
+
+    public void openRoommate2(ActionEvent actionEvent) {
+
+    }
+
+    public void openRoommate3(ActionEvent actionEvent) {
 
     }
 }

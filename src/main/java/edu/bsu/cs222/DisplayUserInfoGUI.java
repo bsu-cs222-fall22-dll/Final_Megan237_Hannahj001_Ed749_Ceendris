@@ -1,10 +1,15 @@
 package edu.bsu.cs222;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 
 
@@ -15,6 +20,7 @@ public class DisplayUserInfoGUI {
     public Label emailBox;
     public JSONReader jsonReader = new JSONReader();
     public Label displaySchedule;
+    public Button goBackToMainButton;
 
 
     @FXML
@@ -60,5 +66,19 @@ public class DisplayUserInfoGUI {
         }
         displaySchedule.setText(schedule.toString());
     }
+
+    public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
+        Parent root = loader.load();
+
+        MainScreenGUI mainScreenGUI = loader.getController();
+        mainScreenGUI.displayEmail(emailBox.getText());
+        mainScreenGUI.displayName(emailBox.getText());
+        mainScreenGUI.displayPhoneNumber(emailBox.getText());
+        mainScreenGUI.setEmail(emailBox.getText());
+
+        goBackToMainButton.getScene().setRoot(root);
+    }
+
 }
 
