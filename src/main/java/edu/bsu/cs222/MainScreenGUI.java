@@ -23,6 +23,7 @@ public class MainScreenGUI {
     public Label phoneNumberBox111;
     public Label phoneNumberBox11;
     public Label phoneNumberBox1;
+    public Button settingsButton;
 
     public void setEmail(String email){
         userEmail = email;
@@ -70,5 +71,26 @@ public class MainScreenGUI {
 
     public void openRoommate3(ActionEvent actionEvent) {
 
+    }
+
+    public void openSettings(ActionEvent actionEvent) throws IOException {
+        SettingsGUI settingsGUI = new SettingsGUI();
+        settingsGUI.setEmail(userEmail);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SettingsGUI.fxml"));
+        Parent root = loader.load();
+        settingsButton.getScene().setRoot(root);
+
+    }
+
+
+    public void reOpenMainScreen(String email) throws IOException, URISyntaxException, ParseException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
+        Parent root = loader.load();
+
+        MainScreenGUI mainScreenGUI = loader.getController();
+        mainScreenGUI.displayEmail(email);
+        mainScreenGUI.displayName(email);
+        mainScreenGUI.displayPhoneNumber(email);
+        mainScreenGUI.setEmail(email);
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.bsu.cs222.EditUserInformationGUI">
+   <Button fx:id="goBackButton" layoutX="360.0" layoutY="489.0" mnemonicParsing="false" onAction="#goBackToSettings"
+           text="Go Back"/>
+</AnchorPane>
