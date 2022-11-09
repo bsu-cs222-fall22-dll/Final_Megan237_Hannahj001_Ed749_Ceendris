@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.bsu.cs222.EditUserInformationGUI">
-   <Button fx:id="goBackButton" layoutX="360.0" layoutY="489.0" mnemonicParsing="false" onAction="#goBackToSettings"
-           text="Go Back"/>
+<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.EditUserInformationGUI">
+   <Button fx:id="goBackButton" layoutX="365.0" layoutY="652.0" mnemonicParsing="false" onAction="#goBackToSettings" text="Go Back" />
+   <Label layoutX="167.0" layoutY="22.0" text="User ">
+      <font>
+         <Font name="Arial Black" size="52.0" />
+      </font>
+   </Label>
+   <TextField fx:id="ChangeFirstNameBox" layoutX="119.0" layoutY="130.0" prefHeight="37.0" prefWidth="243.0" promptText="[First Name]" />
+   <TextField fx:id="changeLastNameBox" layoutX="121.0" layoutY="203.0" prefHeight="37.0" prefWidth="243.0" promptText="[Last Name]" />
+   <Separator layoutX="-7.0" layoutY="98.0" prefHeight="5.0" prefWidth="459.0" />
+   <TextField fx:id="ChangePhoneNumberBox" layoutX="121.0" layoutY="276.0" prefHeight="37.0" prefWidth="243.0" promptText="[Phone Number]" />
+   <TextField fx:id="ChangeEmailBox" layoutX="121.0" layoutY="347.0" prefHeight="37.0" prefWidth="243.0" promptText="[Email]" />
+   <TextField fx:id="changePasswordBox" layoutX="119.0" layoutY="419.0" prefHeight="37.0" prefWidth="243.0" promptText="[Password]" />
+   <ImageView fx:id="userImage" fitHeight="136.0" fitWidth="126.0" layoutX="115.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true" />
+   <Button fx:id="changeUserPhotoButton" layoutX="259.0" layoutY="542.0" mnemonicParsing="false" onAction="#changeUserPhoto" prefHeight="37.0" prefWidth="105.0" text="Change Image?" />
+   <Button fx:id="saveChangesButton" layoutX="193.0" layoutY="652.0" mnemonicParsing="false" onAction="#saveChanges" text="Save Changes" />
 </AnchorPane>
