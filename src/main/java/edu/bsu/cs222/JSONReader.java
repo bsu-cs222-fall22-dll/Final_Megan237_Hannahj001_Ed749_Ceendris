@@ -4,14 +4,12 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 import com.jayway.jsonpath.JsonPath;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-
 
 public class JSONReader {
 
@@ -22,7 +20,6 @@ public class JSONReader {
         FileReader reader = new FileReader(new File(resource.toURI()));
         return jsonParser.parse(reader);
     }
-
     public String parseName(Object name){
         Object result = JsonPath.read(name, "$..User");
         String finalResult = result.toString().replace("[", "");
@@ -59,7 +56,6 @@ public class JSONReader {
         Object object = getJsonObject(email);
         return parseEmail(object);
     }
-
     public String parsePhoneNumber(Object phoneNumber) {
         Object result = JsonPath.read(phoneNumber, "$..PhoneNumber");
         String finalResult = result.toString().replace("[", "");
@@ -67,12 +63,10 @@ public class JSONReader {
 
         return finalR.replace("]", "");
     }
-
     public String getPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         Object object = getJsonObject(email);
         return parsePhoneNumber(object);
     }
-
     public ArrayList<String> parseClasses(Object classes) {
         JSONArray result = JsonPath.read(classes, "$..Name");
         int resultLength = result.size();
@@ -85,7 +79,6 @@ public class JSONReader {
         }
         return listOfClasses;
     }
-
     public ArrayList<String> getClasses(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         Object object = getJsonObject(email);
         return parseClasses(object);

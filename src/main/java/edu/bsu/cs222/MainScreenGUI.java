@@ -101,8 +101,6 @@ public class MainScreenGUI {
 
     public void reOpenMainScreen(String email) throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
-        Parent root = loader.load();
-
         MainScreenGUI mainScreenGUI = loader.getController();
         mainScreenGUI.displayEmail(email);
         mainScreenGUI.displayName(email);

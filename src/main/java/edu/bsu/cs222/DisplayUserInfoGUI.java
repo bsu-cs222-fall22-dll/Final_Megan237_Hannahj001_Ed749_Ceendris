@@ -7,11 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import net.minidev.json.parser.ParseException;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-
 
 public class DisplayUserInfoGUI {
     @FXML
@@ -21,7 +19,6 @@ public class DisplayUserInfoGUI {
     public JSONReader jsonReader = new JSONReader();
     public Label displaySchedule;
     public Button goBackToMainButton;
-
 
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -70,15 +67,12 @@ public class DisplayUserInfoGUI {
     public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
         Parent root = loader.load();
-
         MainScreenGUI mainScreenGUI = loader.getController();
         mainScreenGUI.displayEmail(emailBox.getText());
         mainScreenGUI.displayName(emailBox.getText());
         mainScreenGUI.displayPhoneNumber(emailBox.getText());
         mainScreenGUI.setEmail(emailBox.getText());
-
         goBackToMainButton.getScene().setRoot(root);
     }
-
 }
 

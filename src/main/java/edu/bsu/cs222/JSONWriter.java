@@ -34,8 +34,6 @@ public class JSONWriter {
     public void writeToFile(String email) throws IOException {
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
         Files.createFile(path);
-        Files.write(path, user.toJSONString().getBytes(StandardCharsets.UTF_8));
-
-
+        Files.writeString(path, user.toJSONString());
     }
 }
