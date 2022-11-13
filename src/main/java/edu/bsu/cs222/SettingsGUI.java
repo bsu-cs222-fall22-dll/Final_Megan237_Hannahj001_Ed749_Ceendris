@@ -19,7 +19,6 @@ public class SettingsGUI{
     public Button logOutButton;
     public Button editScheduleButton;
     public Button editUserInfoButton;
-    public String userEmail;
     public Button addRoommateButton;
     public Label nameBox;
     public Label phoneNumberBox;
@@ -49,8 +48,15 @@ public class SettingsGUI{
 
     @FXML
     public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
-        MainScreenGUI mainScreenGUI = new MainScreenGUI();
-        mainScreenGUI.reOpenMainScreen(userEmail);
+        String email = emailBox.getText();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
+        Parent root = loader.load();
+        MainScreenGUI mainScreenGUI = loader.getController();
+        mainScreenGUI.displayEmail(email);
+        mainScreenGUI.displayName(email);
+        mainScreenGUI.displayPhoneNumber(email);
+        mainScreenGUI.setEmail(email);
+        backButton.getScene().setRoot(root);
 
     }
 
@@ -72,7 +78,10 @@ public class SettingsGUI{
         logOutButton.getScene().setRoot(root);
     }
 
-    public void addRoommate(ActionEvent actionEvent) {
+    public void addRoommate(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateAddGUI.fxml"));
+        Parent root = loader.load();
+        editScheduleButton.getScene().setRoot(root);
 
 
     }

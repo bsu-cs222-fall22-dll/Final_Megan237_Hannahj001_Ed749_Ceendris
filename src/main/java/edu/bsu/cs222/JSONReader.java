@@ -20,25 +20,28 @@ public class JSONReader {
         FileReader reader = new FileReader(new File(resource.toURI()));
         return jsonParser.parse(reader);
     }
-    public String parseName(Object name){
+
+    public String parseName(Object name) {
         Object result = JsonPath.read(name, "$..User");
         String finalResult = result.toString().replace("[", "");
         String finalR = finalResult.replace("\"", "");
 
         return finalR.replace("]", "");
     }
+
     public String getName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         Object object = getJsonObject(email);
         return parseName(object);
     }
 
-    public String parsePassword(Object password){
+    public String parsePassword(Object password) {
         Object result = JsonPath.read(password, "$..Password");
         String finalResult = result.toString().replace("[", "");
         String finalR = finalResult.replace("\"", "");
 
         return finalR.replace("]", "");
     }
+
     public String getPassword(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         Object object = getJsonObject(email);
         return parsePassword(object);
@@ -56,6 +59,7 @@ public class JSONReader {
         Object object = getJsonObject(email);
         return parseEmail(object);
     }
+
     public String parsePhoneNumber(Object phoneNumber) {
         Object result = JsonPath.read(phoneNumber, "$..PhoneNumber");
         String finalResult = result.toString().replace("[", "");
@@ -63,22 +67,25 @@ public class JSONReader {
 
         return finalR.replace("]", "");
     }
+
     public String getPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         Object object = getJsonObject(email);
         return parsePhoneNumber(object);
     }
+
     public ArrayList<String> parseClasses(Object classes) {
         JSONArray result = JsonPath.read(classes, "$..Name");
         int resultLength = result.size();
         ArrayList<String> listOfClasses = new ArrayList<>();
 
         int i = 0;
-        while (i < resultLength){
-            listOfClasses.add(i,result.get(i).toString());
+        while (i < resultLength) {
+            listOfClasses.add(i, result.get(i).toString());
             i++;
         }
         return listOfClasses;
     }
+
     public ArrayList<String> getClasses(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         Object object = getJsonObject(email);
         return parseClasses(object);
@@ -90,8 +97,8 @@ public class JSONReader {
         ArrayList<String> listOfDays = new ArrayList<>();
 
         int i = 0;
-        while (i < resultLength){
-            listOfDays.add(i,result.get(i).toString());
+        while (i < resultLength) {
+            listOfDays.add(i, result.get(i).toString());
             i++;
         }
         return listOfDays;
@@ -109,14 +116,14 @@ public class JSONReader {
 
         int classesCounter = 0;
         int day = 0;
-        while(day < days.size()){
-            if (days.get(day).equals("F") || days.get(day).equals("R")){
-                classesCounter+=1;
+        while (day < days.size()) {
+            if (days.get(day).equals("F") || days.get(day).equals("R")) {
+                classesCounter += 1;
             }
-            if (days.get(day).equals("M")){
+            if (days.get(day).equals("M")) {
                 monday.add(classes.get(classesCounter));
             }
-            day+=1;
+            day += 1;
         }
         return monday;
 
@@ -129,14 +136,14 @@ public class JSONReader {
 
         int classesCounter = 0;
         int day = 0;
-        while(day < days.size()){
-            if (days.get(day).equals("F") || days.get(day).equals("R")){
-                classesCounter+=1;
+        while (day < days.size()) {
+            if (days.get(day).equals("F") || days.get(day).equals("R")) {
+                classesCounter += 1;
             }
-            if (days.get(day).equals("T")){
+            if (days.get(day).equals("T")) {
                 tuesday.add(classes.get(classesCounter));
             }
-            day+=1;
+            day += 1;
         }
         return tuesday;
     }
@@ -148,14 +155,14 @@ public class JSONReader {
 
         int classesCounter = 0;
         int day = 0;
-        while(day < days.size()){
-            if (days.get(day).equals("F") || days.get(day).equals("R")){
-                classesCounter+=1;
+        while (day < days.size()) {
+            if (days.get(day).equals("F") || days.get(day).equals("R")) {
+                classesCounter += 1;
             }
-            if (days.get(day).equals("W")){
+            if (days.get(day).equals("W")) {
                 wednesday.add(classes.get(classesCounter));
             }
-            day+=1;
+            day += 1;
         }
         return wednesday;
     }
@@ -167,15 +174,15 @@ public class JSONReader {
 
         int classesCounter = 0;
         int day = 0;
-        while(day < days.size()){
-            if (days.get(day).equals("F")){
-                classesCounter+=1;
+        while (day < days.size()) {
+            if (days.get(day).equals("F")) {
+                classesCounter += 1;
             }
-            if (days.get(day).equals("R")){
+            if (days.get(day).equals("R")) {
                 thursday.add(classes.get(classesCounter));
-                classesCounter+=1;
+                classesCounter += 1;
             }
-            day+=1;
+            day += 1;
         }
         return thursday;
     }
@@ -187,15 +194,15 @@ public class JSONReader {
 
         int classesCounter = 0;
         int day = 0;
-        while(day < days.size()){
-            if (days.get(day).equals("F")){
+        while (day < days.size()) {
+            if (days.get(day).equals("F")) {
                 friday.add(classes.get(classesCounter));
-                classesCounter+=1;
+                classesCounter += 1;
             }
-            if (days.get(day).equals("R")){
-                classesCounter+=1;
+            if (days.get(day).equals("R")) {
+                classesCounter += 1;
             }
-            day+=1;
+            day += 1;
         }
         return friday;
     }

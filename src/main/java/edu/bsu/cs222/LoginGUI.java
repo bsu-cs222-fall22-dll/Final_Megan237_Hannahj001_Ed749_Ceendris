@@ -32,8 +32,13 @@ public class LoginGUI{
             mainScreenGUI.displayName(email);
             mainScreenGUI.displayPhoneNumber(email);
             mainScreenGUI.setEmail(email);
-            mainScreenGUI.displayRoommates(email);
+
+            // NEEDS TO GRAB ARRAY LIST OF ROOMATES FROM JSON
+//            mainScreenGUI.displayRoommates(email);
+
+
             enterButton.getScene().setRoot(root);
+
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -49,4 +54,5 @@ public class LoginGUI{
         Parent root = loader.load();
         enterButton.getScene().setRoot(root);
     }
+
 }

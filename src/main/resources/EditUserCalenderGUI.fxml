@@ -4,8 +4,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.EditUserCalenderGUI">
-   <Button fx:id="goBackButton" layoutX="362.0" layoutY="646.0" mnemonicParsing="false" onAction="#goBackToSettings" text="Go Back" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.EditUserCalenderGUI">
+   <Button fx:id="goBackButton" layoutX="375.0" layoutY="665.0" mnemonicParsing="false" onAction="#goBackToSettings" text="Go Back">
+      <font>
+         <Font name="Arial" size="13.0" />
+      </font></Button>
    <Label layoutX="103.0" layoutY="15.0" text="Schedule">
       <font>
          <Font name="Arial Black" size="52.0" />

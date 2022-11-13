@@ -3,11 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.SettingsGUI">
-   <Circle fill="DODGERBLUE" layoutX="63.0" layoutY="63.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.SettingsGUI">
+   <ImageView fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@REG-378623.png"/>
+   </ImageView>
    <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
       <font>
          <Font name="Arial Black" size="28.0" />

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="700.0" prefWidth="469.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.MainScreenGUI">
-    <Circle fill="DODGERBLUE" layoutX="63.0" layoutY="63.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+    <ImageView fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@REG-378623.png" />
+    </ImageView>
     <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
         <font>
             <Font name="Arial Black" size="28.0" />
@@ -40,13 +40,11 @@
                 <font>
                     <Font name="Arial Black" size="24.0" />
                 </font>
-                <graphic>
-                    <Circle fill="DODGERBLUE" radius="37.0" stroke="BLACK" strokeType="INSIDE">
-                        <cursor>
-                            <Cursor fx:constant="NONE" />
-                        </cursor>
-                    </Circle>
-                </graphic>
+            <graphic>
+                <ImageView fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@REG-378623.png"/>
+                </ImageView>
+            </graphic>
             </Button>
             <Label fx:id="phoneNumberBox1" layoutX="33.0" layoutY="125.0" prefHeight="46.0" prefWidth="148.0" text="RoomateStatus1">
                 <font>
@@ -58,11 +56,9 @@
                     <Font name="Arial Black" size="24.0" />
                 </font>
                 <graphic>
-                    <Circle fill="DODGERBLUE" radius="37.0" stroke="BLACK" strokeType="INSIDE">
-                        <cursor>
-                            <Cursor fx:constant="NONE" />
-                        </cursor>
-                    </Circle>
+                    <ImageView fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@REG-378623.png"/>
+                    </ImageView>
                 </graphic>
             </Button>
             <Label fx:id="phoneNumberBox11" layoutX="33.0" layoutY="304.0" prefHeight="46.0" prefWidth="148.0" text="RoomateStatus2">
@@ -75,11 +71,9 @@
                     <Font name="Arial Black" size="24.0" />
                 </font>
                 <graphic>
-                    <Circle fill="DODGERBLUE" radius="37.0" stroke="BLACK" strokeType="INSIDE">
-                        <cursor>
-                            <Cursor fx:constant="NONE" />
-                        </cursor>
-                    </Circle>
+                    <ImageView fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@REG-378623.png"/>
+                    </ImageView>
                 </graphic>
             </Button>
             <Label fx:id="phoneNumberBox111" layoutX="33.0" layoutY="470.0" prefHeight="46.0" prefWidth="148.0" text="RoomateStatus3">
@@ -89,5 +83,4 @@
             </Label>
         </AnchorPane>
     </ScrollPane>
-   <ImageView fitHeight="150.0" fitWidth="84.0" layoutX="21.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
 </AnchorPane>
