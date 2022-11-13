@@ -7,31 +7,28 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class EditUserInformationGUI {
+public class RoommateAddGUI {
+    public Label nameBox;
+    public Label phoneNumberBox;
+    public Label emailBox;
+    public TextField roommatesEmailBox;
+    public Button addRoommateButton;
     public Button goBackButton;
-    public Button saveChangesButton;
-    public Button changeUserPhotoButton;
-    public ImageView userImage;
-    public TextField changePasswordBox;
-    public TextField ChangeEmailBox;
-    public TextField ChangePhoneNumberBox;
-    public TextField changeLastNameBox;
-    public TextField ChangeFirstNameBox;
     public JSONReader jsonReader = new JSONReader();
 
 
-    public Label nameBox;
-    public Label emailBox;
-    public Label phoneNumberBox;
+    @FXML
+    public void addRoommate(ActionEvent actionEvent) {
+        //WRITE TO JSON FILE
+    }
 
-    public void goBackToSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void goBackToSettingsPage(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SettingsGUI.fxml"));
         Parent root = loader.load();
@@ -40,12 +37,6 @@ public class EditUserInformationGUI {
         settingsGUI.displayName(email);
         settingsGUI.displayPhoneNumber(email);
         goBackButton.getScene().setRoot(root);
-    }
-
-    public void changeUserPhoto(ActionEvent actionEvent) {
-    }
-
-    public void saveChanges(ActionEvent actionEvent) {
     }
 
     @FXML
@@ -64,5 +55,6 @@ public class EditUserInformationGUI {
     public void displayPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String phoneNumber = jsonReader.getPhoneNumber(email);
         phoneNumberBox.setText(phoneNumber);
+
     }
 }

@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
@@ -19,32 +21,26 @@ public class MainScreenGUI {
     public Label emailBox;
     public JSONReader jsonReader = new JSONReader();
     public Button profileButton;
-    public Label phoneNumberBox111;
-    public Label phoneNumberBox11;
-    public Label phoneNumberBox1;
+    public Label status3;
+    public Label status2;
+    public Label status1;
     public Button settingsButton;
-    public Button roommate1Button;
 
     public String userEmail;
     public String roommate1Email;
     public String roommate2Email;
     public String roommate3Email;
+    public ScrollPane roommateScrollPane;
+    public AnchorPane anchorPaneOfRoommates;
+
+    public Button roommate1Button;
+    public Button roommate2Button;
+    public Button roommate3Button;
 
 
     public void setEmail(String email){
         userEmail = email;
       }
-
-
-    public void setRoommate1Email(String email){
-        userEmail = email;
-    }
-    public void setRoommate2Email(String email){
-        userEmail = email;
-    }
-    public void setRoommate3Email(String email){
-        userEmail = email;
-    }
 
 
     @FXML
@@ -55,17 +51,32 @@ public class MainScreenGUI {
     @FXML
     /// ROOMMATES NEED TO GRAB ARAY LIST OF ROOMMATES FROM THE LOGIN PAGE
     public void displayRoommates(ArrayList<String> roommates){
-        int roommatesNumber = roommates.size();
+        if (roommates.size() == 3){
+            roommate1Button.setText(roommates.get(0));
+            roommate2Button.setText(roommates.get(1));
+            roommate3Button.setText(roommates.get(2));
+        }else if(roommates.size() == 2){
+            roommate1Button.setText(roommates.get(0));
+            roommate2Button.setText(roommates.get(1));
 
+            roommate3Button.setVisible(false);
 
+        } else if(roommates.size() == 1){
+            roommate1Button.setText(roommates.get(0));
+
+            roommate2Button.setVisible(false);
+            roommate3Button.setVisible(false);
+
+        }else {
+            anchorPaneOfRoommates.setVisible(false);
+        }
     }
-
-
 
     @FXML
     public void displayEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String Displayedemail = jsonReader.getEmail(email);
         emailBox.setText(Displayedemail);
+
     }
 
     @FXML
@@ -73,7 +84,6 @@ public class MainScreenGUI {
         String phoneNumber = jsonReader.getPhoneNumber(email);
         phoneNumberBox.setText(phoneNumber);
     }
-
 
     public void goToProfile(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
@@ -87,7 +97,6 @@ public class MainScreenGUI {
 
         profileButton.getScene().setRoot(root);
     }
-
 
     public void openRoommate1(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
@@ -141,17 +150,5 @@ public class MainScreenGUI {
         settingsGUI.displayPhoneNumber(userEmail);
 
         settingsButton.getScene().setRoot(root);
-
-
-    }
-
-
-    public void reOpenMainScreen(String email) throws IOException, URISyntaxException, ParseException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
-        MainScreenGUI mainScreenGUI = loader.getController();
-        mainScreenGUI.displayEmail(email);
-        mainScreenGUI.displayName(email);
-        mainScreenGUI.displayPhoneNumber(email);
-        mainScreenGUI.setEmail(email);
     }
 }

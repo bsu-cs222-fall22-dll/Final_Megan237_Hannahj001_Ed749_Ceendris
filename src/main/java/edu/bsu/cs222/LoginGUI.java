@@ -33,7 +33,7 @@ public class LoginGUI{
             mainScreenGUI.displayPhoneNumber(email);
             mainScreenGUI.setEmail(email);
 
-            // NEEDS TO GRAB ARRAY LIST OF ROOMATES FROM JSON
+            // NEEDS TO GRAB ARRAY LIST OF ROOMMATES FROM JSON
 //            mainScreenGUI.displayRoommates(email);
 
 

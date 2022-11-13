@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import net.minidev.json.parser.ParseException;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -60,15 +61,26 @@ public class SettingsGUI{
 
     }
 
-    public void GoToEditUserScreen(ActionEvent actionEvent) throws IOException {
+    public void GoToEditUserScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditUserInformationGUI.fxml"));
         Parent root = loader.load();
+        EditUserInformationGUI editUserInformationGUI = loader.getController();
+        editUserInformationGUI.displayEmail(email);
+        editUserInformationGUI.displayName(email);
+        editUserInformationGUI.displayPhoneNumber(email);
         editUserInfoButton.getScene().setRoot(root);
     }
 
-    public void GoToEditScheduleScreen(ActionEvent actionEvent) throws IOException {
+    public void GoToEditScheduleScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditUserCalenderGUI.fxml"));
         Parent root = loader.load();
+        EditUserCalenderGUI editUserCalenderGUI = loader.getController();
+        editUserCalenderGUI.displayEmail(email);
+        editUserCalenderGUI.displayName(email);
+        editUserCalenderGUI.displayPhoneNumber(email);
+
         editScheduleButton.getScene().setRoot(root);
     }
 
@@ -78,9 +90,15 @@ public class SettingsGUI{
         logOutButton.getScene().setRoot(root);
     }
 
-    public void addRoommate(ActionEvent actionEvent) throws IOException {
+    public void addRoommate(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateAddGUI.fxml"));
         Parent root = loader.load();
+        RoommateAddGUI roommateAddGUI = loader.getController();
+        roommateAddGUI.displayEmail(email);
+        roommateAddGUI.displayName(email);
+        roommateAddGUI.displayPhoneNumber(email);
+
         editScheduleButton.getScene().setRoot(root);
 
 
