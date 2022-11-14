@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.EditUserCalenderGUI">
    <Separator layoutX="1.0" layoutY="120.0" prefHeight="4.0" prefWidth="450.0" />
    <Button fx:id="goBackButton" layoutX="375.0" layoutY="665.0" mnemonicParsing="false" onAction="#goBackToSettings" text="Go Back">
@@ -14,7 +13,7 @@
          <Font name="Arial" size="13.0" />
       </font></Button>
    <ImageView fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@REG-378623.png"/>
+      <Image url="@REG-378623.png" />
    </ImageView>
    <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
       <font>
@@ -36,4 +35,29 @@
          <Glow />
       </effect>
    </Separator>
+   <TextField alignment="CENTER" layoutX="115.0" layoutY="190.0" prefHeight="38.0" prefWidth="220.0" promptText="Event Name" />
+   <Button layoutX="169.0" layoutY="445.0" mnemonicParsing="false" text="Add To Schedule" />
+   <Label layoutX="123.0" layoutY="132.0" prefHeight="35.0" prefWidth="234.0" text="Add New Event">
+      <font>
+         <Font name="Arial Black" size="25.0" />
+      </font>
+   </Label>
+   <CheckBox layoutX="112.0" layoutY="253.0" mnemonicParsing="false" text="Monday" />
+   <CheckBox layoutX="251.0" layoutY="253.0" mnemonicParsing="false" text="Tuesday" />
+   <CheckBox layoutX="112.0" layoutY="288.0" mnemonicParsing="false" text="Wednesday" />
+   <CheckBox layoutX="251.0" layoutY="288.0" mnemonicParsing="false" text="Thursday" />
+   <CheckBox layoutX="112.0" layoutY="322.0" mnemonicParsing="false" text="Friday" />
+   <CheckBox layoutX="251.0" layoutY="322.0" mnemonicParsing="false" text="Saturday" />
+   <CheckBox layoutX="112.0" layoutY="358.0" mnemonicParsing="false" text="Sunday" />
+   <TextField alignment="CENTER" layoutX="49.0" layoutY="392.0" prefHeight="38.0" prefWidth="148.0" promptText="Start Time (10:00)" />
+   <TextField alignment="CENTER" layoutX="240.0" layoutY="392.0" prefHeight="38.0" prefWidth="148.0" promptText="End Time ( 15:00)" />
+
+   <Separator layoutX="1.0" layoutY="487.0" prefHeight="4.0" prefWidth="450.0" />
+   <Label layoutX="127.0" layoutY="491.0" text="Remove Event">
+      <font>
+         <Font name="Arial Black" size="25.0" />
+      </font>
+   </Label>
+   <ChoiceBox layoutX="105.0" layoutY="543.0" prefHeight="45.0" prefWidth="234.0" />
+   <Button layoutX="191.0" layoutY="614.0" mnemonicParsing="false" text="Remove?" />
 </AnchorPane>
