@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import net.minidev.json.parser.ParseException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class LoginGUI{
     public TextField emailInput;
@@ -24,6 +25,7 @@ public class LoginGUI{
         JSONReader reader = new JSONReader();
         String nameFromJSONDoc = reader.getEmail(email);
         String passwordFromJSONDoc = reader.getPassword(email);
+        ArrayList<String> roommateList = reader.getRoommates(email);
         if (email.equals(nameFromJSONDoc) && password.equals(passwordFromJSONDoc)) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
             Parent root = loader.load();
@@ -33,8 +35,8 @@ public class LoginGUI{
             mainScreenGUI.displayPhoneNumber(email);
             mainScreenGUI.setEmail(email);
 
-            // NEEDS TO GRAB ARRAY LIST OF ROOMMATES FROM JSON
-//            mainScreenGUI.displayRoommates(email);
+            ///NEEDS to desplay roomates
+            mainScreenGUI.displayRoommates(roommateList);
 
 
             enterButton.getScene().setRoot(root);

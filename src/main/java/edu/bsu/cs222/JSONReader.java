@@ -33,7 +33,25 @@ public class JSONReader {
         Object object = getJsonObject(email);
         return parseName(object);
     }
+//------------------------------------------------------------------
+    public ArrayList<String> parseRoommates(Object roommate) {
+        JSONArray result = JsonPath.read(roommate, "$..Roommate");
+        int resultLength = result.size();
+        ArrayList<String> listOfRoommates = new ArrayList<>();
 
+        int i = 0;
+        while (i < resultLength) {
+            listOfRoommates.add(i, result.get(i).toString());
+            i++;
+        }
+        return listOfRoommates;
+    }
+
+    public ArrayList<String> getRoommates(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseRoommates(object);
+    }
+///------------------------------------------------------------------
     public String parsePassword(Object password) {
         Object result = JsonPath.read(password, "$..Password");
         String finalResult = result.toString().replace("[", "");

@@ -4,6 +4,7 @@
   "Password": "1234",
   "User": "Clare",
   "PhoneNumber": "3172585282",
+  "Roommates": ["hjjohnston@bsuedu"],
   "Classes": [
     {
       "ID:": "CS 222",

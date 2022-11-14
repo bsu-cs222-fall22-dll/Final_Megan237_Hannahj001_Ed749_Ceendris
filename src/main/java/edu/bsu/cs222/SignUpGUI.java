@@ -39,10 +39,8 @@ public class SignUpGUI {
 
     @FXML
     public void passwordCheck(KeyEvent keyEvent) {
-        String full = checkPasswordInput.getText();
-        char[] list = full.toLowerCase().toCharArray();
         String mainPassword = passwordInput.getText();
-        char[] passwordlist = mainPassword.toLowerCase().toCharArray();
+        String letter = keyEvent.getText();
 
     }
 
@@ -64,6 +62,7 @@ public class SignUpGUI {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginGUI.fxml"));
             Parent root = loader.load();
             signUpButton.getScene().setRoot(root);
+
         }
     }
 
