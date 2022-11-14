@@ -48,22 +48,32 @@ public class MainScreenGUI {
     @FXML
     public void displayRoommates(ArrayList<String> roommates){
         if (roommates.size() == 3){
+
             roommate1Button.setText(roommates.get(0));
             roommate2Button.setText(roommates.get(1));
             roommate3Button.setText(roommates.get(2));
+            status1.setText(roommates.get(0));
+            status2.setText(roommates.get(1));
+            status3.setText(roommates.get(2));
         }
         else if(roommates.size() == 2){
             roommate1Button.setText(roommates.get(0));
             roommate2Button.setText(roommates.get(1));
+            status1.setText(roommates.get(0));
+            status2.setText(roommates.get(1));
 
             roommate3Button.setVisible(false);
+            status3.setVisible(false);
 
         }
         else if(roommates.size() == 1){
             roommate1Button.setText(roommates.get(0));
+            status1.setText(roommates.get(0));
 
             roommate2Button.setVisible(false);
+            status2.setVisible(false);
             roommate3Button.setVisible(false);
+            status3.setVisible(false);
 
         }
         else {
