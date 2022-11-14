@@ -1,44 +1,33 @@
 package edu.bsu.cs222;
 
+import edu.bsu.cs222.JSONReader;
+import edu.bsu.cs222.MainScreenGUI;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import net.minidev.json.parser.ParseException;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class DisplayUserInfoGUI {
-    @FXML
-    public Label nameBox;
-    public Label phoneNumberBox;
-    public Label emailBox;
-    public JSONReader jsonReader = new JSONReader();
-    public Label displaySchedule;
+public class RoommateDisplayGUI {
     public Button goBackToMainButton;
-
-
-
-    @FXML
-    public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
-        String name = jsonReader.getName(email);
-        nameBox.setText(name);
-    }
+    public Label displaySchedule;
+    public Label emailBox;
+    public Label phoneNumberBox;
+    public Label nameBox;
+    public JSONReader jsonReader = new JSONReader();
+    public Label nameScheduleLabel;
 
     @FXML
-    public void displayEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
-        String Displayedemail = jsonReader.getEmail(email);
-        emailBox.setText(Displayedemail);
-    }
+    public void setRoommateDisplay(String email){
+        nameScheduleLabel.setText(email + " Schedule");
 
-    @FXML
-    public void displayPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
-        String phoneNumber = jsonReader.getPhoneNumber(email);
-        phoneNumberBox.setText(phoneNumber);
     }
-
     @FXML
     public void setDisplaySchedule(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         StringBuilder schedule;
@@ -65,18 +54,36 @@ public class DisplayUserInfoGUI {
         displaySchedule.setText(schedule.toString());
     }
 
-    public void goBackToMainScreen() throws IOException, URISyntaxException, ParseException {
+
+
+    public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
         Parent root = loader.load();
         MainScreenGUI mainScreenGUI = loader.getController();
-        mainScreenGUI.displayEmail(emailBox.getText());
-        mainScreenGUI.displayName(emailBox.getText());
-        mainScreenGUI.displayPhoneNumber(emailBox.getText());
-        mainScreenGUI.setEmail(emailBox.getText());
+        mainScreenGUI.displayEmail(email);
+        mainScreenGUI.displayName(email);
+        mainScreenGUI.displayPhoneNumber(email);
+        mainScreenGUI.setEmail(email);
         mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
         goBackToMainButton.getScene().setRoot(root);
     }
 
+    @FXML
+    public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        String name = jsonReader.getName(email);
+        nameBox.setText(name);
+    }
 
+    @FXML
+    public void displayEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        String Displayedemail = jsonReader.getEmail(email);
+        emailBox.setText(Displayedemail);
+    }
+
+    @FXML
+    public void displayPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        String phoneNumber = jsonReader.getPhoneNumber(email);
+        phoneNumberBox.setText(phoneNumber);
+    }
 }
-

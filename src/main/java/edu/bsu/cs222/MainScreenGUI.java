@@ -34,10 +34,6 @@ public class MainScreenGUI {
     public Button roommate2Button;
     public Button roommate3Button;
 
-    public MainScreenGUI() throws FileNotFoundException, URISyntaxException, ParseException {
-
-    }
-
 
     public void setEmail(String email){
         userEmail = email;
@@ -50,7 +46,6 @@ public class MainScreenGUI {
         nameBox.setText(name);
     }
     @FXML
-    /// ROOMMATES NEED TO GRAB ARRAY LIST OF ROOMMATES FROM THE LOGIN PAGE
     public void displayRoommates(ArrayList<String> roommates){
         if (roommates.size() == 3){
             roommate1Button.setText(roommates.get(0));
@@ -103,44 +98,44 @@ public class MainScreenGUI {
     }
 
     public void openRoommate1(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateDisplayGUI.fxml"));
         Parent root = loader.load();
-        DisplayUserInfoGUI displayUser = loader.getController();
-        String roommate1E = jsonReader.getRoommates(userEmail).get(0);
-        displayUser.displayEmail(roommate1E);
-        displayUser.displayName(roommate1E);
-        displayUser.displayPhoneNumber(roommate1E);
-        displayUser.setDisplaySchedule(roommate1E);
-
-        roommate1Button.getScene().setRoot(root);
+        RoommateDisplayGUI roommateDisplayGUI = loader.getController();
+        roommateDisplayGUI.displayEmail(userEmail);
+        roommateDisplayGUI.displayName(userEmail);
+        roommateDisplayGUI.displayPhoneNumber(userEmail);
+        roommateDisplayGUI.setDisplaySchedule(roommate1Button.getText());
+        roommateDisplayGUI.setRoommateDisplay(roommate1Button.getText());
+        profileButton.getScene().setRoot(root);
 
     }
 
     public void openRoommate2(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateDisplayGUI.fxml"));
         Parent root = loader.load();
-        DisplayUserInfoGUI displayUser = loader.getController();
-        String roommate2E = jsonReader.getRoommates(userEmail).get(1);
-        displayUser.displayEmail(roommate2E);
-        displayUser.displayName(roommate2E);
-        displayUser.displayPhoneNumber(roommate2E);
-        displayUser.setDisplaySchedule(roommate2E);
+        RoommateDisplayGUI roommateDisplayGUI = loader.getController();
+        roommateDisplayGUI.displayEmail(userEmail);
+        roommateDisplayGUI.displayName(userEmail);
+        roommateDisplayGUI.displayPhoneNumber(userEmail);
+        roommateDisplayGUI.setDisplaySchedule(roommate2Button.getText());
+        roommateDisplayGUI.setRoommateDisplay(roommate2Button.getText());
 
-        roommate2Button.getScene().setRoot(root);
+        profileButton.getScene().setRoot(root);
 
     }
 
     public void openRoommate3(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateDisplayGUI.fxml"));
         Parent root = loader.load();
-        DisplayUserInfoGUI displayUser = loader.getController();
-        String roommate3E = jsonReader.getRoommates(userEmail).get(2);
-        displayUser.displayEmail(roommate3E);
-        displayUser.displayName(roommate3E);
-        displayUser.displayPhoneNumber(roommate3E);
-        displayUser.setDisplaySchedule(roommate3E);
+        RoommateDisplayGUI roommateDisplayGUI = loader.getController();
 
-        roommate3Button.getScene().setRoot(root);
+        roommateDisplayGUI.displayEmail(userEmail);
+        roommateDisplayGUI.displayName(userEmail);
+        roommateDisplayGUI.displayPhoneNumber(userEmail);
+        roommateDisplayGUI.setDisplaySchedule(roommate3Button.getText());
+        roommateDisplayGUI.setRoommateDisplay(roommate3Button.getText());
+
+        profileButton.getScene().setRoot(root);
 
     }
 
