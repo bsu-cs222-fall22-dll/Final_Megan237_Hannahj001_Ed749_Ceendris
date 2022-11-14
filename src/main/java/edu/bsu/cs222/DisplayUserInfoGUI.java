@@ -1,6 +1,5 @@
 package edu.bsu.cs222;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -64,7 +63,7 @@ public class DisplayUserInfoGUI {
         displaySchedule.setText(schedule.toString());
     }
 
-    public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void goBackToMainScreen() throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
         Parent root = loader.load();
         MainScreenGUI mainScreenGUI = loader.getController();

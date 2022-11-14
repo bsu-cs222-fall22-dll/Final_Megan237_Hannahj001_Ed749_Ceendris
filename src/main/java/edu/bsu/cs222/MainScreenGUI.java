@@ -49,25 +49,28 @@ public class MainScreenGUI {
         nameBox.setText(name);
     }
     @FXML
-    /// ROOMMATES NEED TO GRAB ARAY LIST OF ROOMMATES FROM THE LOGIN PAGE
+    /// ROOMMATES NEED TO GRAB ARRAY LIST OF ROOMMATES FROM THE LOGIN PAGE
     public void displayRoommates(ArrayList<String> roommates){
         if (roommates.size() == 3){
             roommate1Button.setText(roommates.get(0));
             roommate2Button.setText(roommates.get(1));
             roommate3Button.setText(roommates.get(2));
-        }else if(roommates.size() == 2){
+        }
+        else if(roommates.size() == 2){
             roommate1Button.setText(roommates.get(0));
             roommate2Button.setText(roommates.get(1));
 
             roommate3Button.setVisible(false);
 
-        } else if(roommates.size() == 1){
+        }
+        else if(roommates.size() == 1){
             roommate1Button.setText(roommates.get(0));
 
             roommate2Button.setVisible(false);
             roommate3Button.setVisible(false);
 
-        }else {
+        }
+        else {
             anchorPaneOfRoommates.setVisible(false);
         }
     }

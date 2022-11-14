@@ -35,7 +35,7 @@ public class LoginGUI{
             mainScreenGUI.displayPhoneNumber(email);
             mainScreenGUI.setEmail(email);
 
-            ///NEEDS to desplay roomates
+            ///NEEDS to display roommates
             mainScreenGUI.displayRoommates(roommateList);
 
 

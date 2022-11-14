@@ -34,24 +34,24 @@ public class JSONReader {
         return parseName(object);
     }
 
-    public ArrayList<String> parseRoommates(Object room) {
-        JSONArray numberOfRoommates = JsonPath.read(room, "$..Roommates");
+    public ArrayList<String> parseRoommates(Object roommates) {
+        JSONArray numberOfRoommates = JsonPath.read(roommates, "$..Roommates");
         int number = numberOfRoommates.size();
-        ArrayList<String> listOfClasses = new ArrayList<>();
+        ArrayList<String> listOfRoommates = new ArrayList<>();
         int j = 0;
-        while (j<number){
-            JSONArray result = JsonPath.read(room, "$..Roommates[0].Email" + j);
+        while (j <= number){
+            JSONArray result = JsonPath.read(roommates, "$..Roommates[0].Email" + j);
             int resultLength = result.size();
 
 
             int i = 0;
             while (i < resultLength) {
-                listOfClasses.add(i, result.get(i).toString());
+                listOfRoommates.add(i, result.get(i).toString());
                 i++;
             }
             j++;
         }
-        return listOfClasses;
+        return listOfRoommates;
     }
 
     public ArrayList<String> getRoommates(String email) throws FileNotFoundException, URISyntaxException, ParseException {

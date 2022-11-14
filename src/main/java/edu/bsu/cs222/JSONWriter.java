@@ -2,15 +2,11 @@ package edu.bsu.cs222;
 
 import net.minidev.json.JSONObject;
 
-import java.io.File;
-import java.io.FileWriter;
+
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class JSONWriter {
     JSONObject user = new JSONObject();
