@@ -27,9 +27,15 @@ public class JSONWriter {
         user.put("Password", password);
     }
 
+    public void writeRoommate(String email){
+        user.put("Roommate", email);
+    }
+
     public void writeToFile(String email) throws IOException {
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
         Files.createFile(path);
         Files.writeString(path, user.toJSONString());
     }
+
+
 }

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,6 +13,7 @@ import net.minidev.json.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class RoommateAddGUI {
     public Label nameBox;
@@ -21,11 +23,25 @@ public class RoommateAddGUI {
     public Button addRoommateButton;
     public Button goBackButton;
     public JSONReader jsonReader = new JSONReader();
+    public JSONWriter writer = new JSONWriter();
+
 
 
     @FXML
-    public void addRoommate(ActionEvent actionEvent) {
-        //WRITE TO JSON FILE
+    public void addRoommate(ActionEvent actionEvent) throws FileNotFoundException, URISyntaxException, ParseException {
+        String roommateEmail = roommatesEmailBox.getText();
+        String emailJSON = jsonReader.getEmail(roommateEmail);
+        if (roommateEmail.equals(emailJSON)) {
+            //writer.writeRoommate(roommateEmail);
+
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("That user does not exist.");
+            alert.setContentText("Please enter a different email.");
+            alert.showAndWait();
+        }
+
     }
 
     public void goBackToSettingsPage(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {

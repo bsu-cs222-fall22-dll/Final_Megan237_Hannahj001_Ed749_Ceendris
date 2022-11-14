@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,8 +25,6 @@ public class SignUpGUI {
     public Button signUpButton;
     public Double progress = 0.0;
 
-    public ArrayList<Character> passwordCheckList = new ArrayList<>();
-
 
     @FXML
     public void checkingPasswords(ActionEvent actionEvent) {
@@ -39,9 +38,9 @@ public class SignUpGUI {
     }
 
     @FXML
-    public void passwordCheck(KeyEvent keyEvent) {
+    public void passwordCheck(InputMethodEvent event) {
         String mainPassword = passwordInput.getText();
-        String letter = keyEvent.getText();
+        String letter = event.toString();
 
     }
 
@@ -87,28 +86,33 @@ public class SignUpGUI {
     }
 
     @FXML
-    public void firstNameProgressBarUpdate(KeyEvent keyEvent) {
-        progress = progress + 0.16;
+    public void firstNameProgressBarUpdate(InputMethodEvent keyEvent) {
+        progress += 0.16;
         progressBar.setProgress(progress);
     }
     @FXML
-    public void lastNameProgressBarUpdate(KeyEvent keyEvent) {
-        progress = progress + 0.16;
+    public void lastNameProgressBarUpdate(InputMethodEvent keyEvent) {
+        progress += 0.16;
         progressBar.setProgress(progress);
     }
     @FXML
-    public void emailProgressBarUpdate(KeyEvent keyEvent) {
-        progress = progress + 0.16;
+    public void emailProgressBarUpdate(InputMethodEvent keyEvent) {
+        progress += 0.16;
         progressBar.setProgress(progress);
     }
     @FXML
-    public void phoneProgressBarUpdate(KeyEvent keyEvent) {
-        progress = progress + 0.16;
+    public void phoneProgressBarUpdate(InputMethodEvent keyEvent) {
+        progress += 0.16;
         progressBar.setProgress(progress);
     }
     @FXML
-    public void passwordMainProgressBarUpdate(KeyEvent keyEvent) {
-        progress = progress + 0.16;
+    public void passwordMainProgressBarUpdate(InputMethodEvent keyEvent) {
+        progress += 0.16;
+        progressBar.setProgress(progress);
+    }
+
+    public void firstNameUpdate(MouseEvent mouseEvent) {
+        progress += 0.16;
         progressBar.setProgress(progress);
     }
 }
