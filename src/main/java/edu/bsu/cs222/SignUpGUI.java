@@ -22,6 +22,7 @@ public class SignUpGUI {
     public ProgressBar progressBar;
     public Label passwordErrorBox;
     public Button signUpButton;
+    public Double progress = 0.0;
 
     public ArrayList<Character> passwordCheckList = new ArrayList<>();
 
@@ -87,22 +88,27 @@ public class SignUpGUI {
 
     @FXML
     public void firstNameProgressBarUpdate(KeyEvent keyEvent) {
-        progressBar.setProgress(0.16);
+        progress = progress + 0.16;
+        progressBar.setProgress(progress);
     }
     @FXML
     public void lastNameProgressBarUpdate(KeyEvent keyEvent) {
-        progressBar.setProgress(0.32);
+        progress = progress + 0.16;
+        progressBar.setProgress(progress);
     }
     @FXML
     public void emailProgressBarUpdate(KeyEvent keyEvent) {
-        progressBar.setProgress(0.48);
+        progress = progress + 0.16;
+        progressBar.setProgress(progress);
     }
     @FXML
     public void phoneProgressBarUpdate(KeyEvent keyEvent) {
-        progressBar.setProgress(0.64);
+        progress = progress + 0.16;
+        progressBar.setProgress(progress);
     }
     @FXML
     public void passwordMainProgressBarUpdate(KeyEvent keyEvent) {
-        progressBar.setProgress(0.80);
+        progress = progress + 0.16;
+        progressBar.setProgress(progress);
     }
 }
