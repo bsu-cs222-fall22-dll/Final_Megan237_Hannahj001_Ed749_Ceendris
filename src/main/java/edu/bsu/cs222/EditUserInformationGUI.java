@@ -8,11 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import net.minidev.json.JSONObject;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class EditUserInformationGUI {
     public Button goBackButton;
@@ -45,7 +49,39 @@ public class EditUserInformationGUI {
     public void changeUserPhoto(ActionEvent actionEvent) {
     }
 
-    public void saveChanges(ActionEvent actionEvent) {
+    public void saveChanges(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        JSONReader jsonReader = new JSONReader();
+        String email = emailBox.getText();
+        String file = "src/main/resources/" + email.replace(".","") + ".json";
+        String json = new String(Files.readAllBytes(Paths.get(file)));
+
+        String oldPassword = jsonReader.getPassword(email);
+        String newPassword = changePasswordBox.getText();
+        String oldPhoneNumber = jsonReader.getPhoneNumber(email);
+        String newPhoneNumber = ChangePhoneNumberBox.getText();
+        String oldFirstName = jsonReader.getName(email);
+        String newFirstName = ChangeFirstNameBox.getText();
+        String oldEmail = jsonReader.getEmail(email);
+        String newEmail = ChangeEmailBox.getText();
+        if (oldPassword != newPassword || oldPhoneNumber != newPhoneNumber || oldFirstName != newFirstName || oldEmail != newEmail) {
+            if (newPassword == null) {
+                newPassword = oldPassword;
+            }
+            if (newPhoneNumber == null) {
+                newPhoneNumber = oldPhoneNumber;
+            }
+            if (newFirstName == null) {
+                newFirstName = oldFirstName;
+            }
+            if (newEmail == null) {
+                newEmail = oldEmail;
+            }
+            Path path = Paths.get(file);
+            Files.writeString(path, json.replace(oldPassword, newPassword).replace(oldPhoneNumber, newPhoneNumber).replace(oldFirstName, newFirstName).replace(oldEmail, newEmail));
+        }
+
+        goBackToSettings(actionEvent);
+
     }
 
     @FXML
