@@ -27,15 +27,16 @@ public class MainScreenGUI {
     public Button settingsButton;
 
     public String userEmail;
-    public String roommate1Email;
-    public String roommate2Email;
-    public String roommate3Email;
     public ScrollPane roommateScrollPane;
     public AnchorPane anchorPaneOfRoommates;
 
     public Button roommate1Button;
     public Button roommate2Button;
     public Button roommate3Button;
+
+    public MainScreenGUI() throws FileNotFoundException, URISyntaxException, ParseException {
+
+    }
 
 
     public void setEmail(String email){
@@ -105,13 +106,13 @@ public class MainScreenGUI {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
         Parent root = loader.load();
         DisplayUserInfoGUI displayUser = loader.getController();
+        String roommate1E = jsonReader.getRoommates(userEmail).get(0);
+        displayUser.displayEmail(roommate1E);
+        displayUser.displayName(roommate1E);
+        displayUser.displayPhoneNumber(roommate1E);
+        displayUser.setDisplaySchedule(roommate1E);
 
-        displayUser.displayEmail(roommate1Email);
-        displayUser.displayName(roommate1Email);
-        displayUser.displayPhoneNumber(roommate1Email);
-        displayUser.setDisplaySchedule(roommate1Email);
-
-        profileButton.getScene().setRoot(root);
+        roommate1Button.getScene().setRoot(root);
 
     }
 
@@ -119,13 +120,13 @@ public class MainScreenGUI {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
         Parent root = loader.load();
         DisplayUserInfoGUI displayUser = loader.getController();
+        String roommate2E = jsonReader.getRoommates(userEmail).get(1);
+        displayUser.displayEmail(roommate2E);
+        displayUser.displayName(roommate2E);
+        displayUser.displayPhoneNumber(roommate2E);
+        displayUser.setDisplaySchedule(roommate2E);
 
-        displayUser.displayEmail(roommate2Email);
-        displayUser.displayName(roommate2Email);
-        displayUser.displayPhoneNumber(roommate2Email);
-        displayUser.setDisplaySchedule(roommate2Email);
-
-        profileButton.getScene().setRoot(root);
+        roommate2Button.getScene().setRoot(root);
 
     }
 
@@ -133,13 +134,13 @@ public class MainScreenGUI {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
         Parent root = loader.load();
         DisplayUserInfoGUI displayUser = loader.getController();
+        String roommate3E = jsonReader.getRoommates(userEmail).get(2);
+        displayUser.displayEmail(roommate3E);
+        displayUser.displayName(roommate3E);
+        displayUser.displayPhoneNumber(roommate3E);
+        displayUser.setDisplaySchedule(roommate3E);
 
-        displayUser.displayEmail(roommate3Email);
-        displayUser.displayName(roommate3Email);
-        displayUser.displayPhoneNumber(roommate3Email);
-        displayUser.setDisplaySchedule(roommate3Email);
-
-        profileButton.getScene().setRoot(root);
+        roommate3Button.getScene().setRoot(root);
 
     }
 
