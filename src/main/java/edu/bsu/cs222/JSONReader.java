@@ -34,22 +34,38 @@ public class JSONReader {
         return parseName(object);
     }
 
-    public ArrayList<String> parseRoommates(Object roommates) {
-        JSONArray numberOfRoommates = JsonPath.read(roommates, "$..Roommates");
-        int number = numberOfRoommates.size();
+//    public ArrayList<String> parseRoommates(Object roommates) {
+//        JSONArray numberOfRoommates = JsonPath.read(roommates, "$..Roommates");
+//        int number = numberOfRoommates.size();
+//        ArrayList<String> listOfRoommates = new ArrayList<>();
+//        int j = 0;
+//        while (j <= number){
+//            JSONArray result = JsonPath.read(roommates, "$..Roommates[0].Email" + j);
+//            int resultLength = result.size();
+//
+//
+//            int i = 0;
+//            while (i < resultLength) {
+//                listOfRoommates.add(i, result.get(i).toString());
+//                i++;
+//            }
+//            j++;
+//        }
+//        return listOfRoommates;
+//    }
+
+    public ArrayList<String> parseRoommates(Object roommates){
         ArrayList<String> listOfRoommates = new ArrayList<>();
-        int j = 0;
-        while (j <= number){
-            JSONArray result = JsonPath.read(roommates, "$..Roommates[0].Email" + j);
-            int resultLength = result.size();
-
-
-            int i = 0;
-            while (i < resultLength) {
-                listOfRoommates.add(i, result.get(i).toString());
-                i++;
+        int num = 0;
+        while (true){
+            String parsedResult = JsonPath.read(roommates, "$..Roommate" + num).toString();
+            if (parsedResult.contains("@")){
+                listOfRoommates.add(parsedResult);
+                num+=1;
             }
-            j++;
+            else {
+                break;
+            }
         }
         return listOfRoommates;
     }

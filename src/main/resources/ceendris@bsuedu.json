@@ -4,12 +4,10 @@
   "Password": "1234",
   "User": "Clare",
   "PhoneNumber": "3172585282",
-  "Roommates": [
-    {
-      "Email0" : "hjjohnston@bsuedu",
-      "Email1" : "meganstinefield@bsuedu"
-    }
-  ],
+  "Roommate0": "hjjohnston@bsuedu",
+  "Roommate1": "meganstinefield@bsuedu",
+  "Roommate2": "email2",
+
   "Classes": [
     {
       "ID:": "CS 222",
