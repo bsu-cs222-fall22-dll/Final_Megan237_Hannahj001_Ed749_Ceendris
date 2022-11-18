@@ -23,10 +23,7 @@ public class JSONReader {
 
     public String parseName(Object name) {
         Object result = JsonPath.read(name, "$..User");
-        String finalResult = result.toString().replace("[", "");
-        String finalR = finalResult.replace("\"", "");
-
-        return finalR.replace("]", "");
+        return result.toString().replace("[", "").replace("\"", "").replace("]", "");
     }
 
     public String getName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -34,33 +31,14 @@ public class JSONReader {
         return parseName(object);
     }
 
-//    public ArrayList<String> parseRoommates(Object roommates) {
-//        JSONArray numberOfRoommates = JsonPath.read(roommates, "$..Roommates");
-//        int number = numberOfRoommates.size();
-//        ArrayList<String> listOfRoommates = new ArrayList<>();
-//        int j = 0;
-//        while (j <= number){
-//            JSONArray result = JsonPath.read(roommates, "$..Roommates[0].Email" + j);
-//            int resultLength = result.size();
-//
-//
-//            int i = 0;
-//            while (i < resultLength) {
-//                listOfRoommates.add(i, result.get(i).toString());
-//                i++;
-//            }
-//            j++;
-//        }
-//        return listOfRoommates;
-//    }
-
     public ArrayList<String> parseRoommates(Object roommates){
         ArrayList<String> listOfRoommates = new ArrayList<>();
         int num = 0;
         while (true){
             String parsedResult = JsonPath.read(roommates, "$..Roommate" + num).toString();
-            if (parsedResult.contains("@")){
-                listOfRoommates.add(parsedResult);
+            String newResult = parsedResult.replace("\"", "").replace("[", "").replace("]", "");
+            if (newResult.contains("@")){
+                listOfRoommates.add(newResult);
                 num+=1;
             }
             else {
@@ -78,10 +56,7 @@ public class JSONReader {
 
     public String parsePassword(Object password) {
         Object result = JsonPath.read(password, "$..Password");
-        String finalResult = result.toString().replace("[", "");
-        String finalR = finalResult.replace("\"", "");
-
-        return finalR.replace("]", "");
+        return result.toString().replace("[", "").replace("\"", "").replace("]", "");
     }
 
     public String getPassword(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -91,10 +66,7 @@ public class JSONReader {
 
     public String parseEmail(Object email) {
         Object result = JsonPath.read(email, "$..Email");
-        String finalResult = result.toString().replace("[", "");
-        String finalR = finalResult.replace("\"", "");
-
-        return finalR.replace("]", "");
+        return result.toString().replace("[", "").replace("\"", "").replace("]", "");
     }
 
     public String getEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -104,10 +76,7 @@ public class JSONReader {
 
     public String parsePhoneNumber(Object phoneNumber) {
         Object result = JsonPath.read(phoneNumber, "$..PhoneNumber");
-        String finalResult = result.toString().replace("[", "");
-        String finalR = finalResult.replace("\"", "");
-
-        return finalR.replace("]", "");
+        return result.toString().replace("[", "").replace("\"", "").replace("]", "");
     }
 
     public String getPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
