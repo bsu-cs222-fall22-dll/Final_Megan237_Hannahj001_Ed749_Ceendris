@@ -1,6 +1,7 @@
 package edu.bsu.cs222;
 
 import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 import com.jayway.jsonpath.JsonPath;
@@ -19,6 +20,14 @@ public class JSONReader {
         assert resource != null;
         FileReader reader = new FileReader(new File(resource.toURI()));
         return jsonParser.parse(reader);
+    }
+
+    public JSONObject parseFullFile(Object file){
+        return JsonPath.read(file, "$");
+    }
+    public JSONObject fullFile(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseFullFile(object);
     }
 
     public String parseName(Object name) {
