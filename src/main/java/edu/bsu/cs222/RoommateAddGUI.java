@@ -28,11 +28,19 @@ public class RoommateAddGUI {
 
 
     @FXML
-    public void addRoommate(ActionEvent actionEvent) throws FileNotFoundException, URISyntaxException, ParseException {
+    public void addRoommate(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         String roommateEmail = roommatesEmailBox.getText();
         String emailJSON = jsonReader.getEmail(roommateEmail);
         if (roommateEmail.equals(emailJSON)) {
-            //writer.writeRoommate(roommateEmail);
+            writer.writeRoommate(emailBox.getText(), roommateEmail);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateAddGUI.fxml"));
+            Parent root = loader.load();
+            RoommateAddGUI roommateAddGUI = loader.getController();
+            roommateAddGUI.displayEmail(emailBox.getText());
+            roommateAddGUI.displayName(emailBox.getText());
+            roommateAddGUI.displayPhoneNumber(emailBox.getText());
+            addRoommateButton.getScene().setRoot(root);
 
         }else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

@@ -3,6 +3,8 @@ package edu.bsu.cs222;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.ParseException;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -30,8 +32,28 @@ public class JSONWriter {
         user.put("Password", password);
     }
 
-    public void writeRoommate(String email){
-        user.put("Roommate", email);
+    public void writeRoommate(String userEmail, String roommateEmail) throws IOException, URISyntaxException, ParseException {
+        Object originalFile = reader.getJsonObject(userEmail);
+        JSONObject roommate = new JSONObject();
+        JSONArray fullFile = new JSONArray();
+        Path path = Paths.get("src/main/resources/" + userEmail.replace(".","") + ".json");
+        fullFile.add(originalFile);
+        int i = 0;
+
+        while (true){
+            String checkRoommate = "Roommate" + i;
+            if (originalFile.toString().contains(checkRoommate)){
+                i+=1;
+            }
+            else {
+                break;
+            }
+        }
+        String key = "Roommate"+i;
+        roommate.put(key, roommateEmail);
+        fullFile.add(roommate);
+        Files.writeString(path, fullFile.toJSONString());
+
     }
 
     public void writeToFile(String email) throws IOException {
@@ -41,7 +63,7 @@ public class JSONWriter {
     }
 
     public void writeEvent(String email, String name, ArrayList<String> days) throws IOException, URISyntaxException, ParseException {
-        Object testFile = reader.getJsonObject(email);
+        Object originalFile = reader.getJsonObject(email);
         JSONObject eventInProgress = new JSONObject();
         JSONArray event = new JSONArray();
         JSONArray fullFile = new JSONArray();
@@ -50,12 +72,12 @@ public class JSONWriter {
         eventInProgress.put("Days", days);
         eventInProgress.put("EventName", name);
         event.add(eventInProgress);
-        fullFile.add(testFile);
+        fullFile.add(originalFile);
         int i = 0;
 
         while (true){
             String checkEvent = "Event" + i;
-            if (testFile.toString().contains(checkEvent)){
+            if (originalFile.toString().contains(checkEvent)){
                 i+=1;
             }
             else {
@@ -66,14 +88,5 @@ public class JSONWriter {
         object.put(key, event);
         fullFile.add(object);
         Files.writeString(path, fullFile.toJSONString());
-//        file.clear();
-//        eventInProgress.clear();
-//        event.clear();
-//        fullFile.clear();
-//        object.clear();
-
-
     }
-
-
 }
