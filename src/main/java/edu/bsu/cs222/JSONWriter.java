@@ -1,26 +1,18 @@
 package edu.bsu.cs222;
 
-import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.ParseException;
-import net.minidev.json.reader.JsonWriter;
-
-
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class JSONWriter {
     JSONObject user = new JSONObject();
-    JSONObject eventInProgress = new JSONObject();
-    JSONArray event = new JSONArray();
-    JSONArray fullFile = new JSONArray();
+    JSONReader reader = new JSONReader();
 
     public void writeEmail(String email) {
         user.put("Email", email);
@@ -49,17 +41,36 @@ public class JSONWriter {
     }
 
     public void writeEvent(String email, String name, ArrayList<String> days) throws IOException, URISyntaxException, ParseException {
-        JSONReader reader = new JSONReader();
-        JSONObject file = reader.fullFile(email);
+        Object testFile = reader.getJsonObject(email);
+        JSONObject eventInProgress = new JSONObject();
+        JSONArray event = new JSONArray();
+        JSONArray fullFile = new JSONArray();
         JSONObject object = new JSONObject();
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
-        eventInProgress.put("EventName", name);
         eventInProgress.put("Days", days);
+        eventInProgress.put("EventName", name);
         event.add(eventInProgress);
-        object.put("Event", event);
-        fullFile.add(file);
+        fullFile.add(testFile);
+        int i = 0;
+
+        while (true){
+            String checkEvent = "Event" + i;
+            if (testFile.toString().contains(checkEvent)){
+                i+=1;
+            }
+            else {
+                break;
+            }
+        }
+        String key = "Event"+i;
+        object.put(key, event);
         fullFile.add(object);
         Files.writeString(path, fullFile.toJSONString());
+//        file.clear();
+//        eventInProgress.clear();
+//        event.clear();
+//        fullFile.clear();
+//        object.clear();
 
 
     }

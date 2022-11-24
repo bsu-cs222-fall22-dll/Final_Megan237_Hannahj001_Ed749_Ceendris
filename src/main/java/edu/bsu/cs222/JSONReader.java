@@ -22,14 +22,6 @@ public class JSONReader {
         return jsonParser.parse(reader);
     }
 
-    public JSONObject parseFullFile(Object file){
-        return JsonPath.read(file, "$");
-    }
-    public JSONObject fullFile(String email) throws FileNotFoundException, URISyntaxException, ParseException {
-        Object object = getJsonObject(email);
-        return parseFullFile(object);
-    }
-
     public String parseName(Object name) {
         Object result = JsonPath.read(name, "$..User");
         return result.toString().replace("[", "").replace("\"", "").replace("]", "");
