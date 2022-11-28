@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import java.time.LocalDate;
+
 public class MainScreenGUI {
     public Label nameBox;
     public Label phoneNumberBox;
@@ -47,6 +49,7 @@ public class MainScreenGUI {
     }
     @FXML
     public void displayRoommates(ArrayList<String> roommates){
+        LocalDate currentDate = LocalDate.now();
         if (roommates.size() == 3){
 
             roommate1Button.setText(roommates.get(0));
