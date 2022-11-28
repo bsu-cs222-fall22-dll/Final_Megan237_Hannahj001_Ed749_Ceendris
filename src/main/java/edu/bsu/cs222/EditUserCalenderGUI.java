@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +27,10 @@ public class EditUserCalenderGUI {
     public Button addToSchedule;
     public TextField eventName;
     public ArrayList<String> days = new ArrayList<>();
+    public CheckBox tuesdayheckboxmain;
+
+
+    //Bug for days array, it adds it if you click then unclick a day
 
 
     @FXML
@@ -61,7 +66,7 @@ public class EditUserCalenderGUI {
         days.add("monday");
     }
 
-    public void tuesdayCheckBox(MouseEvent mouseEvent) {
+    public void tuesdayCheckBox(ActionEvent mouseEvent) {
         days.add("tuesday");
     }
 

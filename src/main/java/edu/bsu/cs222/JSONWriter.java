@@ -69,23 +69,21 @@ public class JSONWriter {
         JSONArray fullFile = new JSONArray();
         JSONObject object = new JSONObject();
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
-        eventInProgress.put("Days", days);
         eventInProgress.put("EventName", name);
-        event.add(eventInProgress);
-        fullFile.add(originalFile);
         int i = 0;
-
         while (true){
-            String checkEvent = "Event" + i;
-            if (originalFile.toString().contains(checkEvent)){
-                i+=1;
+            if (originalFile.toString().contains("Days"+i)){
+                i++;
             }
             else {
                 break;
             }
         }
-        String key = "Event"+i;
-        object.put(key, event);
+        eventInProgress.put("Days"+i, days);
+
+        event.add(eventInProgress);
+        fullFile.add(originalFile);
+        object.put("Event", event);
         fullFile.add(object);
         Files.writeString(path, fullFile.toJSONString());
     }

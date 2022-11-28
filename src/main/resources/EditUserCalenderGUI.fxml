@@ -43,7 +43,7 @@
       </font>
    </Label>
    <CheckBox layoutX="112.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#mondayCheckBox" text="Monday" />
-   <CheckBox layoutX="251.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#tuesdayCheckBox" text="Tuesday" />
+   <CheckBox fx:id="tuesdayheckboxmain" layoutX="251.0" layoutY="253.0" mnemonicParsing="false" onAction="#tuesdayCheckBox" text="Tuesday" />
    <CheckBox layoutX="112.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#wednesdayCheckBox" text="Wednesday" />
    <CheckBox layoutX="251.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#thursdayCheckBox" text="Thursday" />
    <CheckBox layoutX="112.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#FridayCheckBox" text="Friday" />

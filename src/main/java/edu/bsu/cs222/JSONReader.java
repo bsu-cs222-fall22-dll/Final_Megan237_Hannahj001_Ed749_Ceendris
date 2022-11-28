@@ -1,7 +1,6 @@
 package edu.bsu.cs222;
 
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 import com.jayway.jsonpath.JsonPath;
@@ -83,6 +82,48 @@ public class JSONReader {
     public String getPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         Object object = getJsonObject(email);
         return parsePhoneNumber(object);
+    }
+
+    public ArrayList<ArrayList<String>> parseEvent(Object event){
+        ArrayList<ArrayList<String>> eventInfo = new ArrayList<>();
+        ArrayList<String> eventNames = JsonPath.read(event, "$..Event..EventName");
+        int lengthOfEvents = eventNames.size();
+        ArrayList<String> monday = new ArrayList<>();
+        ArrayList<String> tuesday = new ArrayList<>();
+        ArrayList<String> wednesday = new ArrayList<>();
+        ArrayList<String> thursday = new ArrayList<>();
+        ArrayList<String> friday = new ArrayList<>();
+        for (int i = 0; i<lengthOfEvents; i++){
+            for (int j = 0; j<7;j++) {
+                ArrayList<String> daysResult = JsonPath.read(event, "$..Event..Days"+i+"["+j+"]");
+                if (daysResult.contains("monday")) {
+                    monday.add(eventNames.get(i));
+                }
+                if (daysResult.contains("tuesday")) {
+                    tuesday.add(eventNames.get(i));
+                }
+                if (daysResult.contains("wednesday")) {
+                    wednesday.add(eventNames.get(i));
+                }
+                if (daysResult.contains("thursday")) {
+                    thursday.add(eventNames.get(i));
+                }
+                if (daysResult.contains("friday")) {
+                    friday.add(eventNames.get(i));
+                }
+            }
+        }
+        eventInfo.add(monday);
+        eventInfo.add(tuesday);
+        eventInfo.add(wednesday);
+        eventInfo.add(thursday);
+        eventInfo.add(friday);
+        return eventInfo;
+
+    }
+    public ArrayList<ArrayList<String>> getEvent(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseEvent(object);
     }
 
     public ArrayList<String> parseClasses(Object classes) {
