@@ -72,7 +72,7 @@ public class DisplayUserInfoGUI {
         displaySchedule.setText(schedule.toString());
     }
 
-    public void goBackToMainScreen() throws IOException, URISyntaxException, ParseException {
+    public void goBackToMainScreen() throws IOException, URISyntaxException, ParseException, java.text.ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
         Parent root = loader.load();
 

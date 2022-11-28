@@ -162,6 +162,42 @@ public class JSONReader {
         return parseDays(object);
     }
 
+    public ArrayList<String> parseStartTimes(Object classes) {
+        JSONArray result = JsonPath.read(classes, "$..Meetings..Start");
+        int resultLength = result.size();
+        ArrayList<String> listOfStartTimes = new ArrayList<>();
+
+        int i = 0;
+        while (i < resultLength) {
+            listOfStartTimes.add(i, result.get(i).toString());
+            i++;
+        }
+        return listOfStartTimes;
+    }
+
+    public ArrayList<String> getStartTimes(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseStartTimes(object);
+    }
+
+    public ArrayList<String> parseEndTimes(Object classes) {
+        JSONArray result = JsonPath.read(classes, "$..Meetings..End");
+        int resultLength = result.size();
+        ArrayList<String> listOfEndTimes = new ArrayList<>();
+
+        int i = 0;
+        while (i < resultLength) {
+            listOfEndTimes.add(i, result.get(i).toString());
+            i++;
+        }
+        return listOfEndTimes;
+    }
+
+    public ArrayList<String> getEndTimes(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseEndTimes(object);
+    }
+
     public ArrayList<String> mondayArray(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         ArrayList<String> classes = getClasses(email);
         ArrayList<String> days = getDays(email);

@@ -18,7 +18,7 @@ public class LoginGUI{
     public Button enterButton;
 
     @FXML
-    public void loginUser() throws IOException, URISyntaxException, ParseException {
+    public void loginUser() throws IOException, URISyntaxException, ParseException, java.text.ParseException {
         String email = emailInput.getText();
         String password = passwordInput.getText();
         email = email + "@bsu.edu";
