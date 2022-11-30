@@ -153,6 +153,64 @@ public class JSONReaderTest {
     }
 
     @Test
+    public void readListOfStartTimes() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
+
+
+        URL resource = getClass().getClassLoader().getResource("User1.json");
+        assert resource != null;
+        FileReader reader = new FileReader(new File(resource.toURI()));
+        Object object = jsonParser.parse(reader);
+        JSONReader JSONFileReader = new JSONReader();
+        ArrayList<String> result = JSONFileReader.parseStartTimes(object);
+
+        ArrayList<String> testResult = new ArrayList<>();
+        testResult.add("11:00"); testResult.add("11:00"); testResult.add("11:00"); testResult.add("15:00"); testResult.add("15:00"); testResult.add("15:00");
+        testResult.add("11:00"); testResult.add("11:00"); testResult.add("12:30"); testResult.add("12:30"); testResult.add("15:30"); testResult.add("15:00");
+
+        Assertions.assertEquals(testResult, result);
+    }
+
+    @Test
+    public void getListOfStartTimes() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONReader JSONFileReader = new JSONReader();
+        ArrayList<String> result = JSONFileReader.getStartTimes("User1");
+        ArrayList<String> testResult = new ArrayList<>();
+        testResult.add("11:00"); testResult.add("11:00"); testResult.add("11:00"); testResult.add("15:00"); testResult.add("15:00"); testResult.add("15:00");
+        testResult.add("11:00"); testResult.add("11:00"); testResult.add("12:30"); testResult.add("12:30"); testResult.add("15:30"); testResult.add("15:00");
+        Assertions.assertEquals(testResult, result);
+    }
+
+    @Test
+    public void readListOfEndTimes() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONParser jsonParser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
+
+
+        URL resource = getClass().getClassLoader().getResource("User1.json");
+        assert resource != null;
+        FileReader reader = new FileReader(new File(resource.toURI()));
+        Object object = jsonParser.parse(reader);
+        JSONReader JSONFileReader = new JSONReader();
+        ArrayList<String> result = JSONFileReader.parseEndTimes(object);
+
+        ArrayList<String> testResult = new ArrayList<>();
+        testResult.add("11:50"); testResult.add("11:50"); testResult.add("11:50"); testResult.add("15:50"); testResult.add("15:50"); testResult.add("15:50");
+        testResult.add("12:15"); testResult.add("12:15"); testResult.add("15:15"); testResult.add("15:15"); testResult.add("18:15"); testResult.add("18:15");
+
+        Assertions.assertEquals(testResult, result);
+    }
+
+    @Test
+    public void getListOfEndTimes() throws FileNotFoundException, ParseException, URISyntaxException {
+        JSONReader JSONFileReader = new JSONReader();
+        ArrayList<String> result = JSONFileReader.getEndTimes("User1");
+        ArrayList<String> testResult = new ArrayList<>();
+        testResult.add("11:50"); testResult.add("11:50"); testResult.add("11:50"); testResult.add("15:50"); testResult.add("15:50"); testResult.add("15:50");
+        testResult.add("12:15"); testResult.add("12:15"); testResult.add("15:15"); testResult.add("15:15"); testResult.add("18:15"); testResult.add("18:15");
+        Assertions.assertEquals(testResult, result);
+    }
+
+    @Test
     public void getMondayArray() throws FileNotFoundException, URISyntaxException, ParseException {
         JSONReader JSONFileReader = new JSONReader();
         ArrayList<String> result = JSONFileReader.mondayArray("User1");

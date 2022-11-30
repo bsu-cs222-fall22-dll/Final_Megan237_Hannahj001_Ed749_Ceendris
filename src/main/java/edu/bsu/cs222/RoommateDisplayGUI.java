@@ -63,7 +63,7 @@ public class RoommateDisplayGUI {
 
 
 
-    public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException, java.text.ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
         Parent root = loader.load();
