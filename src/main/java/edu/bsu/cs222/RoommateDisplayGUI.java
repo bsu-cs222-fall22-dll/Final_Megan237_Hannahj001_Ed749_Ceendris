@@ -72,7 +72,7 @@ public class RoommateDisplayGUI {
         mainScreenGUI.displayName(email);
         mainScreenGUI.displayPhoneNumber(email);
         mainScreenGUI.setEmail(email);
-        mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
+//        mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
         goBackToMainButton.getScene().setRoot(root);
     }
 

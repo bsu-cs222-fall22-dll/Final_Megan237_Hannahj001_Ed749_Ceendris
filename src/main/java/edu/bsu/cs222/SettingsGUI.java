@@ -57,7 +57,7 @@ public class SettingsGUI{
         mainScreenGUI.displayName(email);
         mainScreenGUI.displayPhoneNumber(email);
         mainScreenGUI.setEmail(email);
-        mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
+//        mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
         backButton.getScene().setRoot(root);
 
     }

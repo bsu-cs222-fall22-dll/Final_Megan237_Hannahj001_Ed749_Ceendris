@@ -5,11 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class SignUpGUI {
@@ -23,24 +23,24 @@ public class SignUpGUI {
     public ProgressBar progressBar;
     public Label passwordErrorBox;
     public Button signUpButton;
-    public Double progress = 0.0;
+
+
+
 
 
     @FXML
-    public void checkingPasswords(ActionEvent actionEvent) {
+    public void checkPassword(KeyEvent mouseEvent) {
         String mainPassword = passwordInput.getText();
         String checkPassword = checkPasswordInput.getText();
 
-        if (!Objects.equals(mainPassword, checkPassword)){
+        if (mainPassword.equals(checkPassword)){
+            passwordErrorBox.setTextFill(Color.web("#69c06d"));
+            //#69c06d or #008000
+            passwordErrorBox.setText("Passwords match");
+        }else{
+            passwordErrorBox.setTextFill(Color.web("#DC143C"));
             passwordErrorBox.setText("Passwords Do Not Match");
-
         }
-    }
-
-    @FXML
-    public void passwordCheck(InputMethodEvent event) {
-        String mainPassword = passwordInput.getText();
-        String letter = event.toString();
 
     }
 
@@ -85,34 +85,24 @@ public class SignUpGUI {
         return passwordInput.getText();
     }
 
-    @FXML
-    public void firstNameProgressBarUpdate(InputMethodEvent keyEvent) {
-        progress += 0.16;
-        progressBar.setProgress(progress);
-    }
-    @FXML
-    public void lastNameProgressBarUpdate(InputMethodEvent keyEvent) {
-        progress += 0.16;
-        progressBar.setProgress(progress);
-    }
-    @FXML
-    public void emailProgressBarUpdate(InputMethodEvent keyEvent) {
-        progress += 0.16;
-        progressBar.setProgress(progress);
-    }
-    @FXML
-    public void phoneProgressBarUpdate(InputMethodEvent keyEvent) {
-        progress += 0.16;
-        progressBar.setProgress(progress);
-    }
-    @FXML
-    public void passwordMainProgressBarUpdate(InputMethodEvent keyEvent) {
-        progress += 0.16;
-        progressBar.setProgress(progress);
+
+    private boolean checkEmpty(String input){
+        boolean check = false;
+        if (!Objects.equals(input, "")){
+            check = true;
+        }
+        return check;
     }
 
-    public void firstNameUpdate(MouseEvent mouseEvent) {
-        progress += 0.16;
-        progressBar.setProgress(progress);
+
+    public void progressBarUpdates(MouseEvent mouseEvent) {
+        boolean firstNameCheck = checkEmpty(firstNameInput.getText());
+        boolean lastNameCheck = checkEmpty(lastNameInput.getText());
+        boolean emailCheck = checkEmpty(emailInput.getText());
+        boolean phoneCheck = checkEmpty(phoneNumberInput.getText());
+        boolean password1Check = checkEmpty(passwordInput.getText());
+        boolean password2Check = checkEmpty(checkPasswordInput.getText());
+
+
     }
 }
