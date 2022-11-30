@@ -64,16 +64,16 @@ public class EditUserInformationGUI {
         String oldEmail = jsonReader.getEmail(email);
         String newEmail = ChangeEmailBox.getText();
         if (oldPassword != newPassword || oldPhoneNumber != newPhoneNumber || oldFirstName != newFirstName || oldEmail != newEmail) {
-            if (newPassword == null) {
+            if (newPassword.equals("")) {
                 newPassword = oldPassword;
             }
-            if (newPhoneNumber == null) {
+            if (newPhoneNumber.equals("")) {
                 newPhoneNumber = oldPhoneNumber;
             }
-            if (newFirstName == null) {
+            if (newFirstName.equals("")) {
                 newFirstName = oldFirstName;
             }
-            if (newEmail == null) {
+            if (newEmail.equals("")) {
                 newEmail = oldEmail;
             }
             Path path = Paths.get(file);
