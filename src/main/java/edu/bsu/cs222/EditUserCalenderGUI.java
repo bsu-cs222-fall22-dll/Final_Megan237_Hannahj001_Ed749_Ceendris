@@ -27,7 +27,13 @@ public class EditUserCalenderGUI {
     public Button addToSchedule;
     public TextField eventName;
     public ArrayList<String> days = new ArrayList<>();
+    public CheckBox mondayCheck;
     public CheckBox tuesdayheckboxmain;
+    public CheckBox wednesdayCheck;
+    public CheckBox ThursdayCheck;
+    public CheckBox fridayCheck;
+    public CheckBox saturdayCheck;
+    public CheckBox sundayCheck;
 
 
     //Bug for days array, it adds it if you click then unclick a day
@@ -62,35 +68,29 @@ public class EditUserCalenderGUI {
         goBackButton.getScene().setRoot(root);
     }
 
-    public void mondayCheckBox(MouseEvent mouseEvent) {
-        days.add("monday");
-    }
-
-    public void tuesdayCheckBox(ActionEvent mouseEvent) {
-        days.add("tuesday");
-    }
-
-    public void wednesdayCheckBox(MouseEvent mouseEvent) {
-        days.add("wednesday");
-    }
-
-    public void thursdayCheckBox(MouseEvent mouseEvent) {
-        days.add("thursday");
-    }
-
-    public void FridayCheckBox(MouseEvent mouseEvent) {
-        days.add("friday");
-    }
-
-    public void SaturdayCheckBox(MouseEvent mouseEvent) {
-        days.add("saturday");
-    }
-
-    public void SundayCheckBox(MouseEvent mouseEvent) {
-        days.add("sunday");
-    }
-
     public void addToSchedule(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        if (mondayCheck.isSelected()) {
+            days.add("monday");
+        }
+        if (tuesdayheckboxmain.isSelected()) {
+            days.add("tuesday");
+        }
+        if (wednesdayCheck.isSelected()) {
+            days.add("wednesday");
+        }
+        if (ThursdayCheck.isSelected()) {
+            days.add("thursday");
+        }
+        if (fridayCheck.isSelected()) {
+            days.add("friday");
+        }
+        if (saturdayCheck.isSelected()) {
+            days.add("saturday");
+        }
+        if (sundayCheck.isSelected()) {
+            days.add("sunday");
+        }
+
         JSONWriter writer = new JSONWriter();
         String userEmail = emailBox.getText();
         String nameOfEvent = eventName.getText();

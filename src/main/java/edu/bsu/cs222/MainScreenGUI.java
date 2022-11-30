@@ -57,9 +57,9 @@ public class MainScreenGUI {
     public String displayStatus(String email) throws FileNotFoundException, URISyntaxException, ParseException, java.text.ParseException {
         JSONReader jsonReader = new JSONReader();
         email = email.replace("@bsu.edu", "");
-        ArrayList<String> days = jsonReader.getDays(email);
-        ArrayList<String> startTimes = jsonReader.getStartTimes(email);
-        ArrayList<String> endTimes = jsonReader.getEndTimes(email);
+//        ArrayList<String> days = jsonReader.getDays(email);
+//        ArrayList<String> startTimes = jsonReader.getStartTimes(email);
+//        ArrayList<String> endTimes = jsonReader.getEndTimes(email);
 
         LocalDate localDate = LocalDate.now();
         DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
@@ -74,32 +74,32 @@ public class MainScreenGUI {
         LocalTime localTime = LocalTime.now();
         status1.setText("Home");
 
-        for (int i = 0; i < days.size(); i++) {
-
-            String startTime = startTimes.get(i) + ":00";
-            Date startDate = new SimpleDateFormat("HH:mm:ss").parse(startTime);
-            Calendar startCalendar = Calendar.getInstance();
-            startCalendar.setTime(startDate);
-            startCalendar.add(Calendar.DATE, 1);
-
-
-            String endTime = endTimes.get(i) + ":00";
-            Date endDate = new SimpleDateFormat("HH:mm:ss").parse(endTime);
-            Calendar endCalendar = Calendar.getInstance();
-            endCalendar.setTime(endDate);
-            endCalendar.add(Calendar.DATE, 1);
-
-            String currentTime = String.valueOf(localTime);
-            Date currentDate = new SimpleDateFormat("HH:mm:ss").parse(currentTime);
-            Calendar currentCalendar = Calendar.getInstance();
-            currentCalendar.setTime(currentDate);
-            currentCalendar.add(Calendar.DATE, 1);
-
-            Date x = currentCalendar.getTime();
-            if (x.after(startCalendar.getTime()) && x.before(endCalendar.getTime()) && currentDay.equals(days.get(i))) {
-                return("Away");
-            }
-        }
+//        for (int i = 0; i < days.size(); i++) {
+//
+//            String startTime = startTimes.get(i) + ":00";
+//            Date startDate = new SimpleDateFormat("HH:mm:ss").parse(startTime);
+//            Calendar startCalendar = Calendar.getInstance();
+//            startCalendar.setTime(startDate);
+//            startCalendar.add(Calendar.DATE, 1);
+//
+//
+//            String endTime = endTimes.get(i) + ":00";
+//            Date endDate = new SimpleDateFormat("HH:mm:ss").parse(endTime);
+//            Calendar endCalendar = Calendar.getInstance();
+//            endCalendar.setTime(endDate);
+//            endCalendar.add(Calendar.DATE, 1);
+//
+//            String currentTime = String.valueOf(localTime);
+//            Date currentDate = new SimpleDateFormat("HH:mm:ss").parse(currentTime);
+//            Calendar currentCalendar = Calendar.getInstance();
+//            currentCalendar.setTime(currentDate);
+//            currentCalendar.add(Calendar.DATE, 1);
+//
+//            Date x = currentCalendar.getTime();
+//            if (x.after(startCalendar.getTime()) && x.before(endCalendar.getTime()) && currentDay.equals(days.get(i))) {
+//                return("Away");
+//            }
+        //}
         return("Home");
     }
     @FXML
