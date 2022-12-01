@@ -81,7 +81,7 @@ public class DisplayUserInfoGUI {
         mainScreenGUI.displayName(emailBox.getText());
         mainScreenGUI.displayPhoneNumber(emailBox.getText());
         mainScreenGUI.setEmail(emailBox.getText());
-//        mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
+        mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
         goBackToMainButton.getScene().setRoot(root);
     }
 

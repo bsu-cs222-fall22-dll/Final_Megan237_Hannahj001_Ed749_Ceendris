@@ -40,6 +40,7 @@ public class MainScreenGUI {
     public Button roommate1Button;
     public Button roommate2Button;
     public Button roommate3Button;
+    public Button calendarButton;
 
 
     public void setEmail(String email){
@@ -217,5 +218,18 @@ public class MainScreenGUI {
         settingsGUI.displayPhoneNumber(userEmail);
 
         settingsButton.getScene().setRoot(root);
+    }
+
+    public void openCalendar(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayFullCalendarGUI.fxml"));
+        Parent root = loader.load();
+        DisplayFullCalendarGUI calendarGUI = loader.getController();
+
+        calendarGUI.displayEmail(userEmail);
+        calendarGUI.displayName(userEmail);
+        calendarGUI.displayPhoneNumber(userEmail);
+        calendarGUI.test();
+
+        calendarButton.getScene().setRoot(root);
     }
 }
