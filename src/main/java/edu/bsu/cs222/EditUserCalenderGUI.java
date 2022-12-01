@@ -8,9 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import net.minidev.json.parser.ParseException;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -34,9 +32,6 @@ public class EditUserCalenderGUI {
     public CheckBox fridayCheck;
     public CheckBox saturdayCheck;
     public CheckBox sundayCheck;
-
-
-    //Bug for days array, it adds it if you click then unclick a day
 
 
     @FXML

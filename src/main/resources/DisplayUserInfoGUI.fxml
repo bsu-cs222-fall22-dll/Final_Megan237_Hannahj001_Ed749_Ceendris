@@ -32,13 +32,17 @@
             <Font name="Arial Black" size="22.0" />
         </font>
     </Label>
-    <Label fx:id="displaySchedule" alignment="TOP_LEFT" layoutX="27.0" layoutY="185.0" prefHeight="501.0" prefWidth="407.0" text="Label">
-        <font>
-          <Font name="Arial" size="18.0" />
-        </font>
-    </Label>
    <Button fx:id="goBackToMainButton" layoutX="375.0" layoutY="665.0" mnemonicParsing="false" onAction="#goBackToMainScreen" prefHeight="28.0" prefWidth="64.0" text="Go Back" />
     <ImageView fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@REG-378623.png"/>
+        <Image url="@REG-378623.png" />
     </ImageView>
+   <ScrollPane layoutX="17.0" layoutY="171.0" prefHeight="483.0" prefWidth="421.0">
+      <content>
+          <Label fx:id="displaySchedule" alignment="TOP_LEFT" maxHeight="1.0E17" prefHeight="501.0" prefWidth="400.0" text="Label">
+              <font>
+                <Font name="Arial" size="18.0" />
+              </font>
+          </Label>
+      </content>
+   </ScrollPane>
 </AnchorPane>
