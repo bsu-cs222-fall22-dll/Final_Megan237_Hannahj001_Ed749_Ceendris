@@ -4,18 +4,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane onDragDetected="#progressBarUpdates" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.SignUpGUI">
-   <TextField fx:id="firstNameInput" layoutX="134.0" layoutY="137.0" prefHeight="41.0" prefWidth="182.0" promptText="First Name" />
-   <TextField fx:id="lastNameInput" layoutX="134.0" layoutY="199.0" prefHeight="41.0" prefWidth="182.0" promptText="Last Name" />
-   <PasswordField fx:id="passwordInput" layoutX="134.0" layoutY="391.0" onKeyTyped="#checkPassword" prefHeight="41.0" prefWidth="182.0" promptText="Create Password" />
-   <PasswordField fx:id="checkPasswordInput" layoutX="134.0" layoutY="456.0" onKeyTyped="#checkPassword" prefHeight="41.0" prefWidth="182.0" promptText="Check Password" />
+<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.SignUpGUI">
+   <TextField fx:id="firstNameInput" layoutX="134.0" layoutY="137.0" onKeyTyped="#firstNameProgress" prefHeight="41.0" prefWidth="182.0" promptText="First Name" />
+   <TextField fx:id="lastNameInput" layoutX="134.0" layoutY="199.0" onKeyTyped="#lastNameProgress" prefHeight="41.0" prefWidth="182.0" promptText="Last Name" />
+   <PasswordField fx:id="passwordInput" layoutX="134.0" layoutY="391.0" onKeyReleased="#password1Progress" onKeyTyped="#checkPassword" prefHeight="41.0" prefWidth="182.0" promptText="Create Password" />
+   <PasswordField fx:id="checkPasswordInput" layoutX="134.0" layoutY="456.0" onKeyReleased="#password2Progress" onKeyTyped="#checkPassword" prefHeight="41.0" prefWidth="182.0" promptText="Check Password" />
    <Label layoutX="115.0" layoutY="30.0" text="Sign Up">
       <font>
          <Font name="Arial Black" size="52.0" />
       </font>
    </Label>
-   <TextField fx:id="emailInput" layoutX="134.0" layoutY="265.0" prefHeight="41.0" prefWidth="182.0" promptText="Email" />
-   <TextField fx:id="phoneNumberInput" layoutX="134.0" layoutY="328.0" prefHeight="41.0" prefWidth="182.0" promptText="Primary Phone Number" />
+   <TextField fx:id="emailInput" layoutX="134.0" layoutY="265.0" onKeyTyped="#emailProgress" prefHeight="41.0" prefWidth="182.0" promptText="Email" />
+   <TextField fx:id="phoneNumberInput" layoutX="134.0" layoutY="328.0" onKeyTyped="#phoneNumberProgress" prefHeight="41.0" prefWidth="182.0" promptText="Primary Phone Number" />
    <ProgressBar fx:id="progressBar" layoutX="125.0" layoutY="548.0" prefWidth="200.0" progress="0.0" />
    <Separator layoutY="114.0" prefHeight="4.0" prefWidth="450.0" />
    <Button fx:id="signUpButton" layoutX="193.0" layoutY="577.0" mnemonicParsing="false" onAction="#completeSignUp" text="Sign up?" />

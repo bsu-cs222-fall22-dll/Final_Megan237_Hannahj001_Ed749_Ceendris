@@ -23,9 +23,64 @@ public class SignUpGUI {
     public ProgressBar progressBar;
     public Label passwordErrorBox;
     public Button signUpButton;
+    private double firstNameProgress = 0.0;
+    private double lastNameProgress = 0.0;
+    private double emailProgress = 0.0;
+    private double phoneNumberProgress = 0.0;
+    private double password1Progress = 0.0;
+    private double password2Progress = 0.0;
+    private double progress = 0.0;
 
 
 
+    @FXML
+    public void firstNameProgress(KeyEvent keyEvent) {
+        if (firstNameProgress == 0){
+            firstNameProgress += 0.16;
+            progress += 0.16;
+            progressBar.setProgress(progress);
+        }
+    }
+    @FXML
+    public void lastNameProgress(KeyEvent keyEvent) {
+        if(lastNameProgress == 0){
+            lastNameProgress =+ 0.16;
+            progress += 0.16;
+            progressBar.setProgress(progress);
+        }
+    }
+    @FXML
+    public void password1Progress(KeyEvent keyEvent) {
+        if(password1Progress == 0){
+            password1Progress =+ 0.16;
+            progress += 0.16;
+            progressBar.setProgress(progress);
+        }
+    }
+    @FXML
+    public void password2Progress(KeyEvent keyEvent) {
+        if(password2Progress == 0){
+            password2Progress =+ 0.16;
+            progress += 0.16;
+            progressBar.setProgress(progress);
+        }
+    }
+    @FXML
+    public void emailProgress(KeyEvent keyEvent) {
+        if(emailProgress == 0){
+            emailProgress =+ 0.16;
+            progress += 0.16;
+            progressBar.setProgress(progress);
+        }
+    }
+    @FXML
+    public void phoneNumberProgress(KeyEvent keyEvent) {
+        if(phoneNumberProgress == 0){
+            phoneNumberProgress =+ 0.16;
+            progress += 0.16;
+            progressBar.setProgress(progress);
+        }
+    }
 
 
     @FXML
@@ -83,26 +138,5 @@ public class SignUpGUI {
 
     public String getPassword(){
         return passwordInput.getText();
-    }
-
-
-    private boolean checkEmpty(String input){
-        boolean check = false;
-        if (!Objects.equals(input, "")){
-            check = true;
-        }
-        return check;
-    }
-
-
-    public void progressBarUpdates(MouseEvent mouseEvent) {
-        boolean firstNameCheck = checkEmpty(firstNameInput.getText());
-        boolean lastNameCheck = checkEmpty(lastNameInput.getText());
-        boolean emailCheck = checkEmpty(emailInput.getText());
-        boolean phoneCheck = checkEmpty(phoneNumberInput.getText());
-        boolean password1Check = checkEmpty(passwordInput.getText());
-        boolean password2Check = checkEmpty(checkPasswordInput.getText());
-
-
     }
 }
