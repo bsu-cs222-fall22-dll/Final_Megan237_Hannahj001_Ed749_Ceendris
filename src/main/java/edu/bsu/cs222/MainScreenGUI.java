@@ -228,7 +228,7 @@ public class MainScreenGUI {
         calendarGUI.displayEmail(userEmail);
         calendarGUI.displayName(userEmail);
         calendarGUI.displayPhoneNumber(userEmail);
-        calendarGUI.test();
+        calendarGUI.displayAllClasses();
 
         calendarButton.getScene().setRoot(root);
     }
