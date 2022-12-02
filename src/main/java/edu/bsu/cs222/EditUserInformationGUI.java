@@ -7,10 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.ImageInput;
 import javafx.scene.image.ImageView;
-import net.minidev.json.JSONObject;
+import javafx.stage.FileChooser;
 import net.minidev.json.parser.ParseException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -45,11 +47,10 @@ public class EditUserInformationGUI {
         settingsGUI.displayPhoneNumber(email);
         goBackButton.getScene().setRoot(root);
     }
-
-    public void changeUserPhoto(ActionEvent actionEvent) {
-    }
+    
 
     public void saveChanges(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+
         JSONReader jsonReader = new JSONReader();
         String email = emailBox.getText();
         String file = "src/main/resources/" + email.replace(".","") + ".json";

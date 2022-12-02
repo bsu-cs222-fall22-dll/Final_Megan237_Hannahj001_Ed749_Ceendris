@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import net.minidev.json.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -63,39 +60,74 @@ public class EditUserCalenderGUI {
         goBackButton.getScene().setRoot(root);
     }
 
-    public void addToSchedule(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public boolean checkNullDays(){
+        boolean value = false;
         if (mondayCheck.isSelected()) {
-            days.add("monday");
+            value = true;
         }
         if (tuesdayheckboxmain.isSelected()) {
-            days.add("tuesday");
+            value = true;
         }
         if (wednesdayCheck.isSelected()) {
-            days.add("wednesday");
+            value = true;
         }
         if (ThursdayCheck.isSelected()) {
-            days.add("thursday");
+            value = true;
         }
         if (fridayCheck.isSelected()) {
-            days.add("friday");
+            value = true;
         }
         if (saturdayCheck.isSelected()) {
-            days.add("saturday");
+            value = true;
         }
         if (sundayCheck.isSelected()) {
-            days.add("sunday");
+            value = true;
         }
+        return value;
+    }
 
-        JSONWriter writer = new JSONWriter();
-        String userEmail = emailBox.getText();
-        String nameOfEvent = eventName.getText();
-        writer.writeEvent(userEmail, nameOfEvent, days);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditUserCalenderGUI.fxml"));
-        Parent root = loader.load();
-        EditUserCalenderGUI editUserCalenderGUI = loader.getController();
-        editUserCalenderGUI.displayEmail(userEmail);
-        editUserCalenderGUI.displayName(userEmail);
-        editUserCalenderGUI.displayPhoneNumber(userEmail);
-        addToSchedule.getScene().setRoot(root);
+    public void addToSchedule(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        if (eventName == null || startTime == null || endTime == null || !checkNullDays()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("A Calender Error Occurred");
+            alert.setContentText("You have not entered all of the information");
+            alert.showAndWait();
+        }else {
+
+            if (mondayCheck.isSelected()) {
+                days.add("monday");
+            }
+            if (tuesdayheckboxmain.isSelected()) {
+                days.add("tuesday");
+            }
+            if (wednesdayCheck.isSelected()) {
+                days.add("wednesday");
+            }
+            if (ThursdayCheck.isSelected()) {
+                days.add("thursday");
+            }
+            if (fridayCheck.isSelected()) {
+                days.add("friday");
+            }
+            if (saturdayCheck.isSelected()) {
+                days.add("saturday");
+            }
+            if (sundayCheck.isSelected()) {
+                days.add("sunday");
+            }
+
+            JSONWriter writer = new JSONWriter();
+            String userEmail = emailBox.getText();
+            String nameOfEvent = eventName.getText();
+            writer.writeEvent(userEmail, nameOfEvent, days);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditUserCalenderGUI.fxml"));
+            Parent root = loader.load();
+            EditUserCalenderGUI editUserCalenderGUI = loader.getController();
+            editUserCalenderGUI.displayEmail(userEmail);
+            editUserCalenderGUI.displayName(userEmail);
+            editUserCalenderGUI.displayPhoneNumber(userEmail);
+            addToSchedule.getScene().setRoot(root);
+        }
     }
 }
