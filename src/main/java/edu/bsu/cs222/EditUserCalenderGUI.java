@@ -120,7 +120,7 @@ public class EditUserCalenderGUI {
             JSONWriter writer = new JSONWriter();
             String userEmail = emailBox.getText();
             String nameOfEvent = eventName.getText();
-            writer.writeEvent(userEmail, nameOfEvent, days);
+            writer.writeEvent(userEmail, nameOfEvent, days, startTime.getText(), endTime.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditUserCalenderGUI.fxml"));
             Parent root = loader.load();
             EditUserCalenderGUI editUserCalenderGUI = loader.getController();

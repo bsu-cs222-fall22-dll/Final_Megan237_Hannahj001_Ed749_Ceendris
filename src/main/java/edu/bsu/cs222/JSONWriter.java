@@ -62,7 +62,7 @@ public class JSONWriter {
         Files.writeString(path, user.toJSONString());
     }
 
-    public void writeEvent(String email, String name, ArrayList<String> days) throws IOException, URISyntaxException, ParseException {
+    public void writeEvent(String email, String name, ArrayList<String> days, String startTime, String endTime) throws IOException, URISyntaxException, ParseException {
         Object originalFile = reader.getJsonObject(email);
         JSONObject eventInProgress = new JSONObject();
         JSONArray event = new JSONArray();
@@ -70,6 +70,8 @@ public class JSONWriter {
         JSONObject object = new JSONObject();
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
         eventInProgress.put("EventName", name);
+        eventInProgress.put("StartTime", startTime);
+        eventInProgress.put("EndTime", endTime);
         int i = 0;
         while (true){
             if (originalFile.toString().contains("Days"+i)){
