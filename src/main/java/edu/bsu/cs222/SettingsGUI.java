@@ -81,6 +81,7 @@ public class SettingsGUI{
         editUserCalenderGUI.displayEmail(email);
         editUserCalenderGUI.displayName(email);
         editUserCalenderGUI.displayPhoneNumber(email);
+        editUserCalenderGUI.displayRemovableEvents(email);
 
         editScheduleButton.getScene().setRoot(root);
     }

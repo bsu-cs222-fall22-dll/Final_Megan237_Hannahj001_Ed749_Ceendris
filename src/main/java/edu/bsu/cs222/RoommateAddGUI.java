@@ -95,7 +95,7 @@ public class RoommateAddGUI {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
             alert.setHeaderText("A Selection Error Occurred");
-            alert.setContentText("You need to select a roommate to remove them.");
+            alert.setContentText("You need to select a roommate to remove it.");
             alert.showAndWait();
         }else{
             //NEEDS TO REMOVE EMAIL OF ROOMMATE FROM JSON\

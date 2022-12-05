@@ -1,5 +1,7 @@
 package edu.bsu.cs222;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +31,8 @@ public class EditUserCalenderGUI {
     public CheckBox fridayCheck;
     public CheckBox saturdayCheck;
     public CheckBox sundayCheck;
+    public ChoiceBox<String> calenderDayTab;
+    public ChoiceBox calenderEventTab;
 
 
     @FXML
@@ -128,6 +132,41 @@ public class EditUserCalenderGUI {
             editUserCalenderGUI.displayName(userEmail);
             editUserCalenderGUI.displayPhoneNumber(userEmail);
             addToSchedule.getScene().setRoot(root);
+        }
+    }
+
+    public void displayRemovableEvents(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        ArrayList<ArrayList<String>> eventArrayList = jsonReader.getEvent(email);
+        ObservableList<String> eventList = FXCollections.observableArrayList("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
+        calenderDayTab.setItems(eventList);
+
+    }
+
+
+    public void selectDay(ActionEvent actionEvent) {
+        String selection = calenderDayTab.getValue();
+        if (selection == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("A Selection Error Occurred");
+            alert.setContentText("You need to select an event to remove it.");
+            alert.showAndWait();
+        }else{
+            //changes the event choice box to that days events
+
+        }
+    }
+
+    public void removeEvent(ActionEvent actionEvent) {
+        String selection = (String) calenderEventTab.getValue();
+        if (selection == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("A Selection Error Occurred");
+            alert.setContentText("You need to select an event to remove it.");
+            alert.showAndWait();
+        }else{
+            //removes from json
         }
     }
 }
