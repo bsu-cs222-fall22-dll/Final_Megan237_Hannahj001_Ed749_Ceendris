@@ -124,4 +124,22 @@ public class JSONReader {
         Object object = getJsonObject(email);
         return parseEvent(object);
     }
+
+    public ArrayList<String> parseStartTime(Object startTime){
+        return JsonPath.read(startTime, "$..Event..StartTime");
+    }
+
+    public ArrayList<String> getStartTime(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseStartTime(object);
+    }
+
+    public ArrayList<String> parseEndTime(Object endTime){
+        return JsonPath.read(endTime, "$..Event..EndTime");
+    }
+
+    public ArrayList<String> getEndTime(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseEndTime(object);
+    }
 }
