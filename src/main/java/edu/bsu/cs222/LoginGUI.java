@@ -16,6 +16,7 @@ public class LoginGUI{
     public TextField emailInput;
     public PasswordField passwordInput;
     public Button enterButton;
+    public JSONReader jsonReader = new JSONReader();
 
     @FXML
     public void loginUser() throws IOException, URISyntaxException, ParseException, java.text.ParseException {

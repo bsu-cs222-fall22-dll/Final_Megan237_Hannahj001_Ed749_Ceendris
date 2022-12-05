@@ -1,13 +1,12 @@
 package edu.bsu.cs222;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
@@ -24,7 +23,7 @@ public class RoommateAddGUI {
     public Button goBackButton;
     public JSONReader jsonReader = new JSONReader();
     public JSONWriter writer = new JSONWriter();
-
+    public ChoiceBox<String> roommateRemoveTabBox;
 
 
     @FXML
@@ -79,6 +78,14 @@ public class RoommateAddGUI {
     public void displayPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String phoneNumber = jsonReader.getPhoneNumber(email);
         phoneNumberBox.setText(phoneNumber);
+
+    }
+
+    public void displayRemoveRoommates(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        ArrayList<String> roommatesEmails = jsonReader.getRoommates(email);
+        ObservableList<String> roommatesList = FXCollections.observableArrayList("Select Roommate");
+        roommatesList.setAll(roommatesEmails);
+        roommateRemoveTabBox.setItems(roommatesList);
 
     }
 }

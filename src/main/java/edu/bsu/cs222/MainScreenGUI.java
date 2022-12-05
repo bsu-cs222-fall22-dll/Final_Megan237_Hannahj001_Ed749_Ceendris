@@ -116,8 +116,15 @@ public class MainScreenGUI {
             status3.setText(displayStatus(roommates.get(2)));
         }
         else if(roommates.size() == 2){
-            roommate1Button.setText(roommates.get(0));
-            roommate2Button.setText(roommates.get(1));
+            String roommateEmail1 = roommates.get(0);
+            String roommate1Name = jsonReader.getName(roommateEmail1);
+            roommate1Button.setText(roommate1Name);
+
+            String roommateEmail2 = roommates.get(1);
+            String roommate2Name = jsonReader.getName(roommateEmail2);
+
+            roommate2Button.setText(roommate2Name);
+
             status1.setText(displayStatus(roommates.get(0)));
             status2.setText(displayStatus(roommates.get(1)));
 
@@ -126,7 +133,9 @@ public class MainScreenGUI {
 
         }
         else if(roommates.size() == 1){
-            roommate1Button.setText(roommates.get(0));
+            String roommateEmail = roommates.get(0);
+            jsonReader.getName(roommateEmail);
+            roommate1Button.setText(roommateEmail);
             status1.setText(displayStatus(roommates.get(0)));
 
             roommate2Button.setVisible(false);

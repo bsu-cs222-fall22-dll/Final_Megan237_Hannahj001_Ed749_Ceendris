@@ -99,6 +99,7 @@ public class SettingsGUI{
         roommateAddGUI.displayEmail(email);
         roommateAddGUI.displayName(email);
         roommateAddGUI.displayPhoneNumber(email);
+        roommateAddGUI.displayRemoveRoommates(email);
 
         editScheduleButton.getScene().setRoot(root);
 
