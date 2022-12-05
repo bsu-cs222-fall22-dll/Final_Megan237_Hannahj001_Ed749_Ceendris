@@ -80,12 +80,27 @@ public class RoommateAddGUI {
         phoneNumberBox.setText(phoneNumber);
 
     }
-
+    @FXML
     public void displayRemoveRoommates(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         ArrayList<String> roommatesEmails = jsonReader.getRoommates(email);
         ObservableList<String> roommatesList = FXCollections.observableArrayList("Select Roommate");
         roommatesList.setAll(roommatesEmails);
         roommateRemoveTabBox.setItems(roommatesList);
 
+    }
+    @FXML
+    public void removeRoommateButton(ActionEvent actionEvent) {
+        String selection = roommateRemoveTabBox.getValue();
+        if (selection == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("A Selection Error Occurred");
+            alert.setContentText("You need to select a roommate to remove them.");
+            alert.showAndWait();
+        }else{
+            //NEEDS TO REMOVE EMAIL OF ROOMMATE FROM JSON\
+
+
+        }
     }
 }
