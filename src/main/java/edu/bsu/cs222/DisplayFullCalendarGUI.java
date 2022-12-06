@@ -12,6 +12,8 @@ import net.minidev.json.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DisplayFullCalendarGUI {
@@ -75,9 +77,7 @@ public class DisplayFullCalendarGUI {
             allFriday.addAll(friday);
         }
 
-
-
-        schedule.append("Monday\n");
+        schedule.append("\nMonday\n");
         for (String day : allMonday) {
             schedule.append(day).append("\n");
         }
@@ -98,7 +98,41 @@ public class DisplayFullCalendarGUI {
             schedule.append(day).append("\n");
 
         }
-        calendar.setText(schedule.toString());
+        schedule.append("\nSaturday\nNo classes!\n\nSunday\nNo classes!\n\n");
+
+        LocalDate localDate = LocalDate.now();
+        DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
+
+        String mondaySubstring = schedule.substring(0, schedule.indexOf("Tuesday"));
+        String tuesdaySubstring = schedule.substring(schedule.indexOf("Tuesday"), schedule.indexOf("Wednesday"));
+        String wednesdaySubstring = schedule.substring(schedule.indexOf("Wednesday"), schedule.indexOf("Thursday"));
+        String thursdaySubstring = schedule.substring(schedule.indexOf("Thursday"), schedule.indexOf("Friday"));
+        String fridaySubstring = schedule.substring(schedule.indexOf("Friday"), schedule.indexOf("Saturday"));
+        String saturdaySubstring = schedule.substring(schedule.indexOf("Saturday"), schedule.indexOf("Sunday"));
+        String sundaySubstring = schedule.substring(schedule.indexOf("Sunday"), schedule.lastIndexOf("\n"));
+
+        if (dayOfWeek.name().equals("MONDAY")){
+            calendar.setText(mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring);
+        }
+        else if (dayOfWeek.name().equals("TUESDAY")) {
+            calendar.setText(tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring);
+        }
+        else if (dayOfWeek.name().equals("WEDNESDAY")) {
+            calendar.setText(wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring);
+        }
+        else if (dayOfWeek.name().equals("THURSDAY")) {
+            calendar.setText(thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring);
+        }
+        else if (dayOfWeek.name().equals("FRIDAY")) {
+            calendar.setText(fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring);
+        }
+        else if (dayOfWeek.name().equals("SATURDAY")) {
+            calendar.setText(saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring);
+        }
+        else {
+            calendar.setText(sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring);
+        }
+
     }
     public void goBackToSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException, java.text.ParseException {
         String email = emailBox.getText();
