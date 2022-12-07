@@ -12,7 +12,7 @@
       <font>
          <Font name="Arial" size="13.0" />
       </font></Button>
-   <ImageView fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="userImage" fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@REG-378623.png" />
    </ImageView>
    <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
@@ -44,7 +44,7 @@
    </Label>
    <CheckBox fx:id="mondayCheck" layoutX="112.0" layoutY="253.0" mnemonicParsing="false" text="Monday" />
    <CheckBox fx:id="tuesdayheckboxmain" layoutX="251.0" layoutY="253.0" mnemonicParsing="false" text="Tuesday" />
-   <CheckBox fx:id="wednesdayCheck" layoutX="112.0" layoutY="288.0" mnemonicParsing="false"  text="Wednesday" />
+   <CheckBox fx:id="wednesdayCheck" layoutX="112.0" layoutY="288.0" mnemonicParsing="false" text="Wednesday" />
    <CheckBox fx:id="ThursdayCheck" layoutX="251.0" layoutY="288.0" mnemonicParsing="false" text="Thursday" />
    <CheckBox fx:id="fridayCheck" layoutX="112.0" layoutY="322.0" mnemonicParsing="false" text="Friday" />
    <CheckBox fx:id="saturdayCheck" layoutX="251.0" layoutY="322.0" mnemonicParsing="false" text="Saturday" />
