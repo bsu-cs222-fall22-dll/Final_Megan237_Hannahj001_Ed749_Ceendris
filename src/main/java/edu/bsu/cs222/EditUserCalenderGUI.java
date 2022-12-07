@@ -132,6 +132,11 @@ public class EditUserCalenderGUI {
             editUserCalenderGUI.displayName(userEmail);
             editUserCalenderGUI.displayPhoneNumber(userEmail);
             addToSchedule.getScene().setRoot(root);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Event Added");
+            alert.setHeaderText("Calender Has Been Updated");
+            alert.setContentText("Exit Application to Finish Updating");
+            alert.showAndWait();
         }
     }
 

@@ -31,20 +31,14 @@ public class JSONReader {
     }
 
     public ArrayList<String> parseRoommates(Object roommates){
-        ArrayList<String> listOfRoommates = new ArrayList<>();
-        int num = 0;
-        while (true){
-            String parsedResult = JsonPath.read(roommates, "$..Roommate" + num).toString();
-            String newResult = parsedResult.replace("\"", "").replace("[", "").replace("]", "");
-            if (newResult.contains("@")){
-                listOfRoommates.add(newResult);
-                num+=1;
-            }
-            else {
-                break;
+        ArrayList<String> listOfRoommates = JsonPath.read(roommates, "$..Roommate");
+        ArrayList<String> finalListOfRoommates = new ArrayList<>();
+        for (String roommate : listOfRoommates){
+            if (roommate.contains("@")){
+                finalListOfRoommates.add(roommate);
             }
         }
-        return listOfRoommates;
+        return finalListOfRoommates;
     }
 
     public ArrayList<String> getRoommates(String email) throws FileNotFoundException, URISyntaxException, ParseException {

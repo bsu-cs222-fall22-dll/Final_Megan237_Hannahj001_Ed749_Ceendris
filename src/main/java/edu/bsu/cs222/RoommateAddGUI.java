@@ -24,6 +24,7 @@ public class RoommateAddGUI {
     public JSONReader jsonReader = new JSONReader();
     public JSONWriter writer = new JSONWriter();
     public ChoiceBox<String> roommateRemoveTabBox;
+    public Button removeButton;
 
 
     @FXML
@@ -89,7 +90,7 @@ public class RoommateAddGUI {
 
     }
     @FXML
-    public void removeRoommateButton(ActionEvent actionEvent) {
+    public void removeRoommateButton(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         String selection = roommateRemoveTabBox.getValue();
         if (selection == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -99,8 +100,14 @@ public class RoommateAddGUI {
             alert.showAndWait();
         }else{
             //NEEDS TO REMOVE EMAIL OF ROOMMATE FROM JSON\
-
-
+            writer.removeRoommate(emailBox.getText(), selection);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateAddGUI.fxml"));
+            Parent root = loader.load();
+            RoommateAddGUI roommateAddGUI = loader.getController();
+            roommateAddGUI.displayEmail(emailBox.getText());
+            roommateAddGUI.displayName(emailBox.getText());
+            roommateAddGUI.displayPhoneNumber(emailBox.getText());
+            removeButton.getScene().setRoot(root);
         }
     }
 }
