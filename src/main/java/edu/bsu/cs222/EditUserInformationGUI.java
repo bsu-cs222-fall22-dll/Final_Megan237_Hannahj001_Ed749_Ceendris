@@ -102,4 +102,7 @@ public class EditUserInformationGUI {
         String phoneNumber = jsonReader.getPhoneNumber(email);
         phoneNumberBox.setText(phoneNumber);
     }
+
+    public void changeUserPhoto(ActionEvent actionEvent) {
+    }
 }
