@@ -31,20 +31,14 @@ public class JSONReader {
     }
 
     public ArrayList<String> parseRoommates(Object roommates){
-        ArrayList<String> listOfRoommates = new ArrayList<>();
-        int num = 0;
-        while (true){
-            String parsedResult = JsonPath.read(roommates, "$..Roommate" + num).toString();
-            String newResult = parsedResult.replace("\"", "").replace("[", "").replace("]", "");
-            if (newResult.contains("@")){
-                listOfRoommates.add(newResult);
-                num+=1;
-            }
-            else {
-                break;
+        ArrayList<String> listOfRoommates = JsonPath.read(roommates, "$..Roommate");
+        ArrayList<String> finalListOfRoommates = new ArrayList<>();
+        for (String roommate : listOfRoommates){
+            if (roommate.contains("@")){
+                finalListOfRoommates.add(roommate);
             }
         }
-        return listOfRoommates;
+        return finalListOfRoommates;
     }
 
     public ArrayList<String> getRoommates(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -86,29 +80,46 @@ public class JSONReader {
     public ArrayList<ArrayList<String>> parseEvent(Object event){
         ArrayList<ArrayList<String>> eventInfo = new ArrayList<>();
         ArrayList<String> eventNames = JsonPath.read(event, "$..Event..EventName");
+        ArrayList<String> startTimes = JsonPath.read(event, "$..Event..StartTime");
+        ArrayList<String> endTime = JsonPath.read(event, "$..Event..EndTime");
         int lengthOfEvents = eventNames.size();
         ArrayList<String> monday = new ArrayList<>();
+        ArrayList<String> mondayStartAndEndTimes = new ArrayList<>();
         ArrayList<String> tuesday = new ArrayList<>();
+        ArrayList<String> tuesdayStartAndEndTimes = new ArrayList<>();
         ArrayList<String> wednesday = new ArrayList<>();
+        ArrayList<String> wednesdayStartAndEndTimes = new ArrayList<>();
         ArrayList<String> thursday = new ArrayList<>();
+        ArrayList<String> thursdayStartAndEndTimes = new ArrayList<>();
         ArrayList<String> friday = new ArrayList<>();
+        ArrayList<String> fridayStartAndEndTimes = new ArrayList<>();
         for (int i = 0; i<lengthOfEvents; i++){
             for (int j = 0; j<7;j++) {
                 ArrayList<String> daysResult = JsonPath.read(event, "$..Event..Days"+i+"["+j+"]");
                 if (daysResult.contains("monday")) {
                     monday.add(eventNames.get(i));
+                    mondayStartAndEndTimes.add(startTimes.get(i));
+                    mondayStartAndEndTimes.add(endTime.get(i));
                 }
                 if (daysResult.contains("tuesday")) {
                     tuesday.add(eventNames.get(i));
+                    tuesdayStartAndEndTimes.add(startTimes.get(i));
+                    tuesdayStartAndEndTimes.add(endTime.get(i));
                 }
                 if (daysResult.contains("wednesday")) {
                     wednesday.add(eventNames.get(i));
+                    wednesdayStartAndEndTimes.add(startTimes.get(i));
+                    wednesdayStartAndEndTimes.add(endTime.get(i));
                 }
                 if (daysResult.contains("thursday")) {
                     thursday.add(eventNames.get(i));
+                    thursdayStartAndEndTimes.add(startTimes.get(i));
+                    thursdayStartAndEndTimes.add(endTime.get(i));
                 }
                 if (daysResult.contains("friday")) {
                     friday.add(eventNames.get(i));
+                    fridayStartAndEndTimes.add(startTimes.get(i));
+                    fridayStartAndEndTimes.add(endTime.get(i));
                 }
             }
         }
@@ -117,11 +128,34 @@ public class JSONReader {
         eventInfo.add(wednesday);
         eventInfo.add(thursday);
         eventInfo.add(friday);
+        eventInfo.add(mondayStartAndEndTimes);
+        eventInfo.add(tuesdayStartAndEndTimes);
+        eventInfo.add(wednesdayStartAndEndTimes);
+        eventInfo.add(thursdayStartAndEndTimes);
+        eventInfo.add(fridayStartAndEndTimes);
         return eventInfo;
 
     }
     public ArrayList<ArrayList<String>> getEvent(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         Object object = getJsonObject(email);
         return parseEvent(object);
+    }
+
+    public ArrayList<String> parseStartTime(Object startTime){
+        return JsonPath.read(startTime, "$..Event..StartTime");
+    }
+
+    public ArrayList<String> getStartTime(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseStartTime(object);
+    }
+
+    public ArrayList<String> parseEndTime(Object endTime){
+        return JsonPath.read(endTime, "$..Event..EndTime");
+    }
+
+    public ArrayList<String> getEndTime(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseEndTime(object);
     }
 }

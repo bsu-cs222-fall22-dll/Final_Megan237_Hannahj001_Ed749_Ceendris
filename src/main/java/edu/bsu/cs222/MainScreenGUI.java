@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import net.minidev.json.parser.ParseException;
-import javafx.scene.image.Image;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -55,27 +54,27 @@ public class MainScreenGUI {
         nameBox.setText(name);
     }
 
-//    @FXML
-//    public String displayStatus(String email) throws FileNotFoundException, URISyntaxException, ParseException, java.text.ParseException {
-//        JSONReader jsonReader = new JSONReader();
-//        email = email.replace("@bsu.edu", "");
+    @FXML
+    public String displayStatus(String email) throws FileNotFoundException, URISyntaxException, ParseException, java.text.ParseException {
+        JSONReader jsonReader = new JSONReader();
+        email = email.replace("@bsu.edu", "");
 //        ArrayList<String> days = jsonReader.getDays(email);
 //        ArrayList<String> startTimes = jsonReader.getStartTimes(email);
 //        ArrayList<String> endTimes = jsonReader.getEndTimes(email);
-//
-//        LocalDate localDate = LocalDate.now();
-//        DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
-//        String currentDay = "";
-//        if (dayOfWeek.name().equals("MONDAY") || dayOfWeek.name().equals("TUESDAY") || dayOfWeek.name().equals("WEDNESDAY") || dayOfWeek.name().equals("FRIDAY")) {
-//            currentDay = dayOfWeek.name().substring(0, 1);
-//        }
-//        else {
-//            currentDay = "R";
-//        }
-//
-//        LocalTime localTime = LocalTime.now();
-//        status1.setText("Home");
-//
+
+        LocalDate localDate = LocalDate.now();
+        DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
+        String currentDay = "";
+        if (dayOfWeek.name().equals("MONDAY") || dayOfWeek.name().equals("TUESDAY") || dayOfWeek.name().equals("WEDNESDAY") || dayOfWeek.name().equals("FRIDAY")) {
+            currentDay = dayOfWeek.name().substring(0, 1);
+        }
+        else {
+            currentDay = "R";
+        }
+
+        LocalTime localTime = LocalTime.now();
+        status1.setText("Home");
+
 //        for (int i = 0; i < days.size(); i++) {
 //
 //            String startTime = startTimes.get(i) + ":00";
@@ -101,9 +100,9 @@ public class MainScreenGUI {
 //            if (x.after(startCalendar.getTime()) && x.before(endCalendar.getTime()) && currentDay.equals(days.get(i))) {
 //                return("Away");
 //            }
-//        }
-//        return("Home");
-//    }
+        //}
+        return("Home");
+    }
     @FXML
     public void displayRoommates(ArrayList<String> roommates) throws FileNotFoundException, URISyntaxException, ParseException, java.text.ParseException {
         LocalDate currentDate = LocalDate.now();
@@ -112,23 +111,32 @@ public class MainScreenGUI {
             roommate1Button.setText(roommates.get(0));
             roommate2Button.setText(roommates.get(1));
             roommate3Button.setText(roommates.get(2));
-//            status1.setText(displayStatus(roommates.get(0)));
-//            status2.setText(displayStatus(roommates.get(1)));
-//            status3.setText(displayStatus(roommates.get(2)));
+            status1.setText(displayStatus(roommates.get(0)));
+            status2.setText(displayStatus(roommates.get(1)));
+            status3.setText(displayStatus(roommates.get(2)));
         }
         else if(roommates.size() == 2){
-            roommate1Button.setText(roommates.get(0));
-            roommate2Button.setText(roommates.get(1));
-//            status1.setText(displayStatus(roommates.get(0)));
-//            status2.setText(displayStatus(roommates.get(1)));
+            String roommateEmail1 = roommates.get(0);
+            String roommate1Name = jsonReader.getName(roommateEmail1);
+            roommate1Button.setText(roommate1Name);
+
+            String roommateEmail2 = roommates.get(1);
+            String roommate2Name = jsonReader.getName(roommateEmail2);
+
+            roommate2Button.setText(roommate2Name);
+
+            status1.setText(displayStatus(roommates.get(0)));
+            status2.setText(displayStatus(roommates.get(1)));
 
             roommate3Button.setVisible(false);
             status3.setVisible(false);
 
         }
         else if(roommates.size() == 1){
-            roommate1Button.setText(roommates.get(0));
-//            status1.setText(displayStatus(roommates.get(0)));
+            String roommateEmail = roommates.get(0);
+            jsonReader.getName(roommateEmail);
+            roommate1Button.setText(roommateEmail);
+            status1.setText(displayStatus(roommates.get(0)));
 
             roommate2Button.setVisible(false);
             status2.setVisible(false);

@@ -37,7 +37,7 @@
     </Separator>
    <ScrollPane fx:id="scrollView" layoutX="26.0" layoutY="176.0" prefHeight="456.0" prefWidth="411.0">
       <content>
-         <Label fx:id="calendar" alignment="TOP_CENTER" contentDisplay="TOP" maxHeight="1.0E19" minHeight="-Infinity" prefWidth="403.0" text="Today" textAlignment="CENTER">
+         <Label fx:id="calendar" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.0E19" maxWidth="1.0E12" text="Today">
             <font>
                <Font name="Arial Italic" size="24.0" />
             </font>

@@ -49,25 +49,60 @@ public class DisplayUserInfoGUI {
         ArrayList<String> wednesday = allEvents.get(2);
         ArrayList<String> thursday = allEvents.get(3);
         ArrayList<String> friday = allEvents.get(4);
+        ArrayList<String> mondayTime = allEvents.get(5);
+        ArrayList<String> tuesdayTime = allEvents.get(6);
+        ArrayList<String> wednesdayTime = allEvents.get(7);
+        ArrayList<String> thursdayTime = allEvents.get(8);
+        ArrayList<String> fridayTime = allEvents.get(9);
         schedule = new StringBuilder("Monday\n");
-        for (String day : monday){
+        int j = 0;
+        for (String day : monday) {
+            schedule.append(mondayTime.get(j));
+            schedule.append("-");
+            schedule.append(mondayTime.get(j + 1));
+            schedule.append(" ");
             schedule.append(day).append("\n");
+            j = j + 2;
         }
+        j=0;
         schedule.append("\nTuesday\n");
         for (String day : tuesday){
+            schedule.append(tuesdayTime.get(j));
+            schedule.append("-");
+            schedule.append(tuesdayTime.get(j + 1));
+            schedule.append(" ");
             schedule.append(day).append("\n");
+            j = j + 2;
         }
+        j=0;
         schedule.append("\nWednesday\n");
         for (String day : wednesday){
+            schedule.append(wednesdayTime.get(j));
+            schedule.append("-");
+            schedule.append(wednesdayTime.get(j + 1));
+            schedule.append(" ");
             schedule.append(day).append("\n");
+            j = j + 2;
         }
+        j=0;
         schedule.append("\nThursday\n");
         for (String day : thursday){
+            schedule.append(thursdayTime.get(j));
+            schedule.append("-");
+            schedule.append(thursdayTime.get(j + 1));
+            schedule.append(" ");
             schedule.append(day).append("\n");
+            j = j + 2;
         }
+        j=0;
         schedule.append("\nFriday\n");
         for (String day : friday){
+            schedule.append(fridayTime.get(j));
+            schedule.append("-");
+            schedule.append(fridayTime.get(j + 1));
+            schedule.append(" ");
             schedule.append(day).append("\n");
+            j = j + 2;
         }
         displaySchedule.setText(schedule.toString());
     }

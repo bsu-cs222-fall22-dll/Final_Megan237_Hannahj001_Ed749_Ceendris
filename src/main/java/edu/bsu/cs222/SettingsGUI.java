@@ -81,6 +81,7 @@ public class SettingsGUI{
         editUserCalenderGUI.displayEmail(email);
         editUserCalenderGUI.displayName(email);
         editUserCalenderGUI.displayPhoneNumber(email);
+        editUserCalenderGUI.displayRemovableEvents(email);
 
         editScheduleButton.getScene().setRoot(root);
     }
@@ -99,6 +100,7 @@ public class SettingsGUI{
         roommateAddGUI.displayEmail(email);
         roommateAddGUI.displayName(email);
         roommateAddGUI.displayPhoneNumber(email);
+        roommateAddGUI.displayRemoveRoommates(email);
 
         editScheduleButton.getScene().setRoot(root);
 

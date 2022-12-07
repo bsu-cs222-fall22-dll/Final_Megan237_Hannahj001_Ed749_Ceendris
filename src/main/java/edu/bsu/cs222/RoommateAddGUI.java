@@ -1,13 +1,12 @@
 package edu.bsu.cs222;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
@@ -24,7 +23,8 @@ public class RoommateAddGUI {
     public Button goBackButton;
     public JSONReader jsonReader = new JSONReader();
     public JSONWriter writer = new JSONWriter();
-
+    public ChoiceBox<String> roommateRemoveTabBox;
+    public Button removeButton;
 
 
     @FXML
@@ -80,5 +80,34 @@ public class RoommateAddGUI {
         String phoneNumber = jsonReader.getPhoneNumber(email);
         phoneNumberBox.setText(phoneNumber);
 
+    }
+    @FXML
+    public void displayRemoveRoommates(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        ArrayList<String> roommatesEmails = jsonReader.getRoommates(email);
+        ObservableList<String> roommatesList = FXCollections.observableArrayList("Select Roommate");
+        roommatesList.setAll(roommatesEmails);
+        roommateRemoveTabBox.setItems(roommatesList);
+
+    }
+    @FXML
+    public void removeRoommateButton(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        String selection = roommateRemoveTabBox.getValue();
+        if (selection == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("A Selection Error Occurred");
+            alert.setContentText("You need to select a roommate to remove it.");
+            alert.showAndWait();
+        }else{
+            //NEEDS TO REMOVE EMAIL OF ROOMMATE FROM JSON\
+            writer.removeRoommate(emailBox.getText(), selection);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateAddGUI.fxml"));
+            Parent root = loader.load();
+            RoommateAddGUI roommateAddGUI = loader.getController();
+            roommateAddGUI.displayEmail(emailBox.getText());
+            roommateAddGUI.displayName(emailBox.getText());
+            roommateAddGUI.displayPhoneNumber(emailBox.getText());
+            removeButton.getScene().setRoot(root);
+        }
     }
 }

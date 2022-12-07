@@ -30,6 +30,7 @@ public class SignUpGUI {
     private double password1Progress = 0.0;
     private double password2Progress = 0.0;
     private double progress = 0.0;
+    public JSONReader jsonReader = new JSONReader();
 
 
 
@@ -44,7 +45,7 @@ public class SignUpGUI {
     @FXML
     public void lastNameProgress(KeyEvent keyEvent) {
         if(lastNameProgress == 0){
-            lastNameProgress =+ 0.16;
+            lastNameProgress = 0.16;
             progress += 0.16;
             progressBar.setProgress(progress);
         }
@@ -52,7 +53,7 @@ public class SignUpGUI {
     @FXML
     public void password1Progress(KeyEvent keyEvent) {
         if(password1Progress == 0){
-            password1Progress =+ 0.16;
+            password1Progress = 0.16;
             progress += 0.16;
             progressBar.setProgress(progress);
         }
@@ -60,7 +61,7 @@ public class SignUpGUI {
     @FXML
     public void password2Progress(KeyEvent keyEvent) {
         if(password2Progress == 0){
-            password2Progress =+ 0.16;
+            password2Progress = 0.16;
             progress += 0.16;
             progressBar.setProgress(progress);
         }
@@ -68,7 +69,7 @@ public class SignUpGUI {
     @FXML
     public void emailProgress(KeyEvent keyEvent) {
         if(emailProgress == 0){
-            emailProgress =+ 0.16;
+            emailProgress = 0.16;
             progress += 0.16;
             progressBar.setProgress(progress);
         }
@@ -76,7 +77,7 @@ public class SignUpGUI {
     @FXML
     public void phoneNumberProgress(KeyEvent keyEvent) {
         if(phoneNumberProgress == 0){
-            phoneNumberProgress =+ 0.16;
+            phoneNumberProgress = 0.16;
             progress += 0.16;
             progressBar.setProgress(progress);
         }
@@ -107,7 +108,13 @@ public class SignUpGUI {
             alert.setHeaderText("A Sign Up Error Occurred");
             alert.setContentText("You have not entered all of the sign up information");
             alert.showAndWait();
-        }else {
+        }
+
+//        else if(emailInput.getText()){
+//            ERROR MESSAGE THAT "THIS USER ALREADY EXISTS
+//        }
+
+        else {
             JSONWriter writer = new JSONWriter();
             writer.writeName(getName());
             writer.writeEmail(getEmail());

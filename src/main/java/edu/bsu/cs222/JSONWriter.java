@@ -38,19 +38,19 @@ public class JSONWriter {
         JSONArray fullFile = new JSONArray();
         Path path = Paths.get("src/main/resources/" + userEmail.replace(".","") + ".json");
         fullFile.add(originalFile);
-        int i = 0;
-
-        while (true){
-            String checkRoommate = "Roommate" + i;
-            if (originalFile.toString().contains(checkRoommate)){
-                i+=1;
-            }
-            else {
-                break;
-            }
-        }
-        String key = "Roommate"+i;
-        roommate.put(key, roommateEmail);
+//        int i = 0;
+//
+//        while (true){
+//            String checkRoommate = "Roommate" + i;
+//            if (originalFile.toString().contains(checkRoommate)){
+//                i+=1;
+//            }
+//            else {
+//                break;
+//            }
+//        }
+//        String key = "Roommate"+i;
+        roommate.put("Roommate", roommateEmail);
         fullFile.add(roommate);
         Files.writeString(path, fullFile.toJSONString());
 
@@ -62,7 +62,7 @@ public class JSONWriter {
         Files.writeString(path, user.toJSONString());
     }
 
-    public void writeEvent(String email, String name, ArrayList<String> days) throws IOException, URISyntaxException, ParseException {
+    public void writeEvent(String email, String name, ArrayList<String> days, String startTime, String endTime) throws IOException, URISyntaxException, ParseException {
         Object originalFile = reader.getJsonObject(email);
         JSONObject eventInProgress = new JSONObject();
         JSONArray event = new JSONArray();
@@ -70,6 +70,8 @@ public class JSONWriter {
         JSONObject object = new JSONObject();
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
         eventInProgress.put("EventName", name);
+        eventInProgress.put("StartTime", startTime);
+        eventInProgress.put("EndTime", endTime);
         int i = 0;
         while (true){
             if (originalFile.toString().contains("Days"+i)){
@@ -86,5 +88,12 @@ public class JSONWriter {
         object.put("Event", event);
         fullFile.add(object);
         Files.writeString(path, fullFile.toJSONString());
+    }
+
+    public void removeRoommate(String email, String roommateEmail) throws IOException, URISyntaxException, ParseException {
+        String file = "src/main/resources/" + email.replace(".","") + ".json";
+        String json = new String(Files.readAllBytes(Paths.get(file)));
+        Path path = Paths.get(file);
+        Files.writeString(path, json.replace(roommateEmail, ""));
     }
 }
