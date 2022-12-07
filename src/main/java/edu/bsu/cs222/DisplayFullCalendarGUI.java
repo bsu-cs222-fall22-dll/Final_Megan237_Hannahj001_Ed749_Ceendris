@@ -48,7 +48,7 @@ public class DisplayFullCalendarGUI {
 
     @FXML
     public void displayAllClasses() throws FileNotFoundException, URISyntaxException, ParseException {
-        StringBuilder schedule = new StringBuilder();
+        StringBuilder schedule;
         ArrayList<String> roommates = jsonReader.getRoommates(emailBox.getText());
         roommates.add(emailBox.getText());
         ArrayList<String> allMonday = new ArrayList<>();

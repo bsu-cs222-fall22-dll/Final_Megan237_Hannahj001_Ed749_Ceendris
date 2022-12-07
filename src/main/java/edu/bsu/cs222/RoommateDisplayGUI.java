@@ -13,6 +13,8 @@ import net.minidev.json.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RoommateDisplayGUI {
@@ -43,7 +45,7 @@ public class RoommateDisplayGUI {
         ArrayList<String> wednesdayTime = allEvents.get(7);
         ArrayList<String> thursdayTime = allEvents.get(8);
         ArrayList<String> fridayTime = allEvents.get(9);
-        schedule = new StringBuilder("Monday\n");
+        schedule = new StringBuilder("\nMonday\n");
         int j = 0;
         for (String day : monday) {
             schedule.append(mondayTime.get(j));
@@ -93,7 +95,40 @@ public class RoommateDisplayGUI {
             schedule.append(day).append("\n");
             j = j + 2;
         }
-        displaySchedule.setText(schedule.toString());
+        schedule.append("\nSaturday\nNo classes!\n\nSunday\nNo classes!\n\n");
+
+        LocalDate localDate = LocalDate.now();
+        DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
+
+        String mondaySubstring = schedule.substring(0, schedule.indexOf("Tuesday"));
+        String tuesdaySubstring = schedule.substring(schedule.indexOf("Tuesday"), schedule.indexOf("Wednesday"));
+        String wednesdaySubstring = schedule.substring(schedule.indexOf("Wednesday"), schedule.indexOf("Thursday"));
+        String thursdaySubstring = schedule.substring(schedule.indexOf("Thursday"), schedule.indexOf("Friday"));
+        String fridaySubstring = schedule.substring(schedule.indexOf("Friday"), schedule.indexOf("Saturday"));
+        String saturdaySubstring = schedule.substring(schedule.indexOf("Saturday"), schedule.indexOf("Sunday"));
+        String sundaySubstring = schedule.substring(schedule.indexOf("Sunday"), schedule.lastIndexOf("\n"));
+
+        if (dayOfWeek.name().equals("MONDAY")){
+            displaySchedule.setText(mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring);
+        }
+        else if (dayOfWeek.name().equals("TUESDAY")) {
+            displaySchedule.setText(tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring);
+        }
+        else if (dayOfWeek.name().equals("WEDNESDAY")) {
+            displaySchedule.setText(wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring);
+        }
+        else if (dayOfWeek.name().equals("THURSDAY")) {
+            displaySchedule.setText(thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring);
+        }
+        else if (dayOfWeek.name().equals("FRIDAY")) {
+            displaySchedule.setText(fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring);
+        }
+        else if (dayOfWeek.name().equals("SATURDAY")) {
+            displaySchedule.setText(saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring);
+        }
+        else {
+            displaySchedule.setText(sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring);
+        }
     }
 
     public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException, java.text.ParseException {
