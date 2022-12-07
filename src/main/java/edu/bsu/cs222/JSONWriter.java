@@ -89,4 +89,11 @@ public class JSONWriter {
         fullFile.add(object);
         Files.writeString(path, fullFile.toJSONString());
     }
+
+    public void removeRoommate(String email, String roommateEmail) throws IOException, URISyntaxException, ParseException {
+        String file = "src/main/resources/" + email.replace(".","") + ".json";
+        String json = new String(Files.readAllBytes(Paths.get(file)));
+        Path path = Paths.get(file);
+        Files.writeString(path, json.replace(roommateEmail, ""));
+    }
 }
