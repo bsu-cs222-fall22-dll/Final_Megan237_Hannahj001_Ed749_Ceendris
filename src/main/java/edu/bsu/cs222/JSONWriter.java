@@ -38,19 +38,19 @@ public class JSONWriter {
         JSONArray fullFile = new JSONArray();
         Path path = Paths.get("src/main/resources/" + userEmail.replace(".","") + ".json");
         fullFile.add(originalFile);
-        int i = 0;
-
-        while (true){
-            String checkRoommate = "Roommate" + i;
-            if (originalFile.toString().contains(checkRoommate)){
-                i+=1;
-            }
-            else {
-                break;
-            }
-        }
-        String key = "Roommate"+i;
-        roommate.put(key, roommateEmail);
+//        int i = 0;
+//
+//        while (true){
+//            String checkRoommate = "Roommate" + i;
+//            if (originalFile.toString().contains(checkRoommate)){
+//                i+=1;
+//            }
+//            else {
+//                break;
+//            }
+//        }
+//        String key = "Roommate"+i;
+        roommate.put("Roommate", roommateEmail);
         fullFile.add(roommate);
         Files.writeString(path, fullFile.toJSONString());
 

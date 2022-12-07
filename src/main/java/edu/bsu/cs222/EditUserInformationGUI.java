@@ -7,12 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 import net.minidev.json.parser.ParseException;
-
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
