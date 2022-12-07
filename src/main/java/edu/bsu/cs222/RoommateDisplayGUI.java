@@ -96,8 +96,6 @@ public class RoommateDisplayGUI {
         displaySchedule.setText(schedule.toString());
     }
 
-
-
     public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException, java.text.ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));

@@ -53,59 +53,8 @@ public class MainScreenGUI {
         String name = jsonReader.getName(email);
         nameBox.setText(name);
     }
-
-    @FXML
-    public String displayStatus(String email) throws FileNotFoundException, URISyntaxException, ParseException, java.text.ParseException {
-        JSONReader jsonReader = new JSONReader();
-        email = email.replace("@bsu.edu", "");
-//        ArrayList<String> days = jsonReader.getDays(email);
-//        ArrayList<String> startTimes = jsonReader.getStartTimes(email);
-//        ArrayList<String> endTimes = jsonReader.getEndTimes(email);
-
-        LocalDate localDate = LocalDate.now();
-        DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
-        String currentDay = "";
-        if (dayOfWeek.name().equals("MONDAY") || dayOfWeek.name().equals("TUESDAY") || dayOfWeek.name().equals("WEDNESDAY") || dayOfWeek.name().equals("FRIDAY")) {
-            currentDay = dayOfWeek.name().substring(0, 1);
-        }
-        else {
-            currentDay = "R";
-        }
-
-        LocalTime localTime = LocalTime.now();
-        status1.setText("Home");
-
-//        for (int i = 0; i < days.size(); i++) {
-//
-//            String startTime = startTimes.get(i) + ":00";
-//            Date startDate = new SimpleDateFormat("HH:mm:ss").parse(startTime);
-//            Calendar startCalendar = Calendar.getInstance();
-//            startCalendar.setTime(startDate);
-//            startCalendar.add(Calendar.DATE, 1);
-//
-//
-//            String endTime = endTimes.get(i) + ":00";
-//            Date endDate = new SimpleDateFormat("HH:mm:ss").parse(endTime);
-//            Calendar endCalendar = Calendar.getInstance();
-//            endCalendar.setTime(endDate);
-//            endCalendar.add(Calendar.DATE, 1);
-//
-//            String currentTime = String.valueOf(localTime);
-//            Date currentDate = new SimpleDateFormat("HH:mm:ss").parse(currentTime);
-//            Calendar currentCalendar = Calendar.getInstance();
-//            currentCalendar.setTime(currentDate);
-//            currentCalendar.add(Calendar.DATE, 1);
-//
-//            Date x = currentCalendar.getTime();
-//            if (x.after(startCalendar.getTime()) && x.before(endCalendar.getTime()) && currentDay.equals(days.get(i))) {
-//                return("Away");
-//            }
-        //}
-        return("Home");
-    }
     @FXML
     public void displayRoommates(ArrayList<String> roommates) throws FileNotFoundException, URISyntaxException, ParseException, java.text.ParseException {
-        LocalDate currentDate = LocalDate.now();
         if (roommates.size() == 3){
 
             roommate1Button.setText(roommates.get(0));
@@ -117,16 +66,13 @@ public class MainScreenGUI {
         }
         else if(roommates.size() == 2){
             String roommateEmail1 = roommates.get(0);
-            String roommate1Name = jsonReader.getName(roommateEmail1);
-            roommate1Button.setText(roommate1Name);
+            roommate1Button.setText(roommateEmail1);
 
             String roommateEmail2 = roommates.get(1);
-            String roommate2Name = jsonReader.getName(roommateEmail2);
+            roommate2Button.setText(roommateEmail2);
 
-            roommate2Button.setText(roommate2Name);
-
-            status1.setText(displayStatus(roommates.get(0)));
-            status2.setText(displayStatus(roommates.get(1)));
+            status1.setText(displayStatus(jsonReader.getEmail(roommateEmail1)));
+            status2.setText(displayStatus(jsonReader.getEmail(roommateEmail2)));
 
             roommate3Button.setVisible(false);
             status3.setVisible(false);
@@ -137,7 +83,6 @@ public class MainScreenGUI {
             jsonReader.getName(roommateEmail);
             roommate1Button.setText(roommateEmail);
             status1.setText(displayStatus(roommates.get(0)));
-
             roommate2Button.setVisible(false);
             status2.setVisible(false);
             roommate3Button.setVisible(false);
@@ -150,9 +95,99 @@ public class MainScreenGUI {
     }
 
     @FXML
+    public String displayStatus(String email) throws FileNotFoundException, URISyntaxException, ParseException, java.text.ParseException {
+        ArrayList<ArrayList<String>> days = jsonReader.getEvent(email);
+        ArrayList<String> startTimes = jsonReader.getStartTime(email);
+        ArrayList<String> endTimes = jsonReader.getEndTime(email);
+
+        LocalTime localTime = LocalTime.now();
+        LocalDate localDate = LocalDate.now();
+        DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
+
+        ArrayList<String> monday = days.get(0);
+        ArrayList<String> tuesday = days.get(1);
+        ArrayList<String> wednesday = days.get(2);
+        ArrayList<String> thursday = days.get(3);
+        ArrayList<String> friday = days.get(4);
+
+        if (dayOfWeek.name().equals("MONDAY")) {
+            for (int i = 0; i < monday.size(); i++) {
+                String startTime = startTimes.get(i) + ":00";
+                String endTime = endTimes.get(i) + ":00";
+                String currentTime = String.valueOf(localTime);
+                Date x = makeCalendar(currentTime).getTime();
+
+                if (x.after(makeCalendar(startTime).getTime()) && x.before(makeCalendar(endTime).getTime())) {
+                    return("Away");
+                }
+            }
+        }
+
+        if (dayOfWeek.name().equals("TUESDAY")) {
+            for (int i = 0; i < tuesday.size(); i++) {
+                String startTime = startTimes.get(i) + ":00";
+                String endTime = endTimes.get(i) + ":00";
+                String currentTime = String.valueOf(localTime);
+                Date x = makeCalendar(currentTime).getTime();
+
+                if (x.after(makeCalendar(startTime).getTime()) && x.before(makeCalendar(endTime).getTime())) {
+                    return("Away");
+                }
+            }
+        }
+
+        if (dayOfWeek.name().equals("WEDNESDAY")) {
+            for (int i = 0; i < wednesday.size(); i++) {
+                String startTime = startTimes.get(i) + ":00";
+                String endTime = endTimes.get(i) + ":00";
+                String currentTime = String.valueOf(localTime);
+                Date x = makeCalendar(currentTime).getTime();
+
+                if (x.after(makeCalendar(startTime).getTime()) && x.before(makeCalendar(endTime).getTime())) {
+                    return("Away");
+                }
+            }
+        }
+
+        if (dayOfWeek.name().equals("THURSDAY")) {
+            for (int i = 0; i < thursday.size(); i++) {
+                String startTime = startTimes.get(i) + ":00";
+                String endTime = endTimes.get(i) + ":00";
+                String currentTime = String.valueOf(localTime);
+                Date x = makeCalendar(currentTime).getTime();
+
+                if (x.after(makeCalendar(startTime).getTime()) && x.before(makeCalendar(endTime).getTime())) {
+                    return("Away");
+                }
+            }
+        }
+        if (dayOfWeek.name().equals("FRIDAY")) {
+            for (int i = 0; i < friday.size(); i++) {
+                String startTime = startTimes.get(i) + ":00";
+                String endTime = endTimes.get(i) + ":00";
+                String currentTime = String.valueOf(localTime);
+                Date x = makeCalendar(currentTime).getTime();
+
+                if (x.after(makeCalendar(startTime).getTime()) && x.before(makeCalendar(endTime).getTime())) {
+                    return("Away");
+                }
+            }
+        }
+        return("Home");
+    }
+
+    public Calendar makeCalendar(String time) throws java.text.ParseException {
+        Date currentDate = new SimpleDateFormat("HH:mm:ss").parse(time);
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.setTime(currentDate);
+        currentCalendar.add(Calendar.DATE, 1);
+        return currentCalendar;
+    }
+
+    @FXML
     public void displayEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
-        String Displayedemail = jsonReader.getEmail(email);
-        emailBox.setText(Displayedemail);
+        String displayedEmail = jsonReader.getEmail(email);
+        emailBox.setText(displayedEmail);
 
     }
 

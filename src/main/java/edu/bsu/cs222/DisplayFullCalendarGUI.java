@@ -47,13 +47,6 @@ public class DisplayFullCalendarGUI {
     }
 
     @FXML
-    public void test(){
-
-        calendar.setText("What\nDay\nIs\nIt\ni\nwant\nice\ncream\ntoday\nwith\nchocolate\nand\ncaramel\n" +
-                "it\nis\ntime\to\npet\nall\nof\nthe\ncats\n");
-    }
-
-    @FXML
     public void displayAllClasses() throws FileNotFoundException, URISyntaxException, ParseException {
         StringBuilder schedule = new StringBuilder();
         ArrayList<String> roommates = jsonReader.getRoommates(emailBox.getText());
@@ -93,7 +86,7 @@ public class DisplayFullCalendarGUI {
         }
 
 
-        schedule = new StringBuilder("Monday\n");
+        schedule = new StringBuilder("\nMonday\n");
         int j = 0;
         for (String day : allMonday) {
             schedule.append(allMondayTime.get(j));
