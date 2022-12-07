@@ -167,4 +167,14 @@ public class JSONReader {
         Object object = getJsonObject(email);
         return eventNames(object);
     }
+    public ArrayList<String> parseDaysBasedOnEventName(Object object, String eventName, String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        ArrayList<String> eventNameArray = getEventNames(email);
+        int indexNumber = eventNameArray.indexOf(eventName);
+        return JsonPath.read(object, "$..Event..Days"+indexNumber+"");
+    }
+
+    public ArrayList<String> getDaysBasesOnEventName(String email, String eventName) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        return parseDaysBasedOnEventName(object, eventName, email);
+    }
 }
