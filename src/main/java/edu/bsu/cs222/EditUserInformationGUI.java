@@ -40,9 +40,8 @@ public class EditUserInformationGUI {
     public Label nameBox;
     public Label emailBox;
     public Label phoneNumberBox;
-    private File filePath;
-    private FileChooser filechooser;
-    private Image photo;
+    public File filePath;
+    public Image photo;
 
     public void goBackToSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
