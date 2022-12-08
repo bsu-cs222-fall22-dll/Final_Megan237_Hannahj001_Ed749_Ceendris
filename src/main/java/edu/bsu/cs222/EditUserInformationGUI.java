@@ -17,12 +17,14 @@ import net.minidev.json.parser.ParseException;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class EditUserInformationGUI {
     public Button goBackButton;
@@ -35,12 +37,11 @@ public class EditUserInformationGUI {
     public TextField changeLastNameBox;
     public TextField ChangeFirstNameBox;
     public JSONReader jsonReader = new JSONReader();
-
-
     public Label nameBox;
     public Label emailBox;
     public Label phoneNumberBox;
-    private File filepath;
+    private File filePath;
+    private FileChooser filechooser;
     private Image photo;
 
     public void goBackToSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
@@ -108,28 +109,17 @@ public class EditUserInformationGUI {
         phoneNumberBox.setText(phoneNumber);
     }
 
-    //this is still in the works, I was able to open the file chooser, but I'm currently unable to figure out how to actually choose a file/select it...
     public void changeUserPhoto(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image");
+
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-
-        File selectedFile = fileChooser.showOpenDialog(stage);
-
-//        String selectedFile = System.getProperty("user.home") + "\\Pictures ";
-//        File selectedFile = new File(selectedFile);
-
-        if (!selectedFile.canRead())
-            selectedFile = new File("c:/");
-
-        fileChooser.setInitialDirectory(selectedFile);
-
-        this.filepath = fileChooser.showOpenDialog(stage);
+        this.filePath = fileChooser.showOpenDialog(stage);
 
         try{
-            BufferedImage bufferedImage = ImageIO.read(filepath);
+            BufferedImage bufferedImage = ImageIO.read(filePath);
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
             userImage.setImage(image);
             this.photo = userImage.getImage();
@@ -137,7 +127,6 @@ public class EditUserInformationGUI {
         } catch(IOException e){
             System.err.println(e.getMessage());
         }
-//        return selectedFile.getAbsolutePath();
     }
 
 }
