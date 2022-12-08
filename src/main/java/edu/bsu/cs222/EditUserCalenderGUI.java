@@ -174,10 +174,10 @@ public class EditUserCalenderGUI {
         //Check what days are selected and remove from json
         String selection = allEventsTab.getValue();
         if (selection == null || selection.equals("Select day/s to remove")){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Error");
-            alert.setHeaderText("A Selection Error Occurred");
-            alert.setContentText("You need to select the days of the event you wish to remove.");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Conformation");
+            alert.setHeaderText("Event Removed");
+            alert.setContentText("Event Removed Successfully");
             alert.showAndWait();
         }else{
 
