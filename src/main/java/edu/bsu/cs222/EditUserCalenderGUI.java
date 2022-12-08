@@ -151,8 +151,8 @@ public class EditUserCalenderGUI {
         ArrayList<String> eventDayList = jsonReader.getDaysBasesOnEventName(email,event);
         ObservableList<String> dayList = FXCollections.observableArrayList();
         dayList.addAll(eventDayList);
-        daysOfEventsTab.setValue("Select day/s to remove");
 
+        daysOfEventsTab.setValue("Select day/s to remove");
         daysOfEventsTab.setItems(dayList);
 
     }
@@ -173,48 +173,14 @@ public class EditUserCalenderGUI {
     public void removeEvent(ActionEvent actionEvent) throws FileNotFoundException, URISyntaxException, ParseException {
         //Check what days are selected and remove from json
         String selection = allEventsTab.getValue();
-        if (selection == null || selection.equals("Select an Event")){
+        if (selection == null || selection.equals("Select day/s to remove")){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
             alert.setHeaderText("A Selection Error Occurred");
-            alert.setContentText("You need to select an event to remove it.");
+            alert.setContentText("You need to select the days of the event you wish to remove.");
             alert.showAndWait();
         }else{
 
-
         }
     }
-
-
-//    public void displayRemovableEvents(String email) throws FileNotFoundException, URISyntaxException, ParseException {
-//        ArrayList<ArrayList<String>> eventArrayList = jsonReader.getEvent(email);
-//        ObservableList<String> eventList = FXCollections.observableArrayList("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
-//        calenderDayTab.setItems(eventList);
-//
-//    }
-//    public void selectDay(ActionEvent actionEvent) {
-//        String selection = calenderDayTab.getValue();
-//        if (selection == null){
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Error");
-//            alert.setHeaderText("A Selection Error Occurred");
-//            alert.setContentText("You need to select an event to remove it.");
-//            alert.showAndWait();
-//        }else{
-//            //changes the event choice box to that days events
-//
-//        }
-//    }
-//    public void removeEvent(ActionEvent actionEvent) {
-//        String selection = (String) calenderEventTab.getValue();
-//        if (selection == null){
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Error");
-//            alert.setHeaderText("A Selection Error Occurred");
-//            alert.setContentText("You need to select an event to remove it.");
-//            alert.showAndWait();
-//        }else{
-//            //removes from json
-//        }
-//    }
 }

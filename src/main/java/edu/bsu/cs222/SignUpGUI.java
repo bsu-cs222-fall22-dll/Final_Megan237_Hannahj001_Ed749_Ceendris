@@ -8,8 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import net.minidev.json.parser.ParseException;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class SignUpGUI {
@@ -101,7 +103,8 @@ public class SignUpGUI {
     }
 
     @FXML
-    public void completeSignUp(ActionEvent actionEvent) throws IOException {
+    public void completeSignUp(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+        String nameFromJSONDoc = jsonReader.getEmail(emailInput.getText());
         if (firstNameInput.getText().equals("")||lastNameInput.getText().equals("")||emailInput.getText().equals("")||phoneNumberInput.getText().equals("")||passwordInput.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Sign Up Error");
@@ -109,11 +112,13 @@ public class SignUpGUI {
             alert.setContentText("You have not entered all of the sign up information");
             alert.showAndWait();
         }
-
-//        else if(emailInput.getText()){
-//            ERROR MESSAGE THAT "THIS USER ALREADY EXISTS
-//        }
-
+        else if (Objects.equals(emailInput.getText(), nameFromJSONDoc)){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Sign Up Error");
+            alert.setHeaderText("A Sign Up Error Occurred");
+            alert.setContentText("This email is being used for an existing user.");
+            alert.showAndWait();
+        }
         else {
             JSONWriter writer = new JSONWriter();
             writer.writeName(getName());
@@ -124,25 +129,20 @@ public class SignUpGUI {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginGUI.fxml"));
             Parent root = loader.load();
             signUpButton.getScene().setRoot(root);
-
         }
     }
-
     public String getName(){
         String firstName = firstNameInput.getText();
         String lastName = lastNameInput.getText();
 
         return firstName +" "+ lastName;
     }
-
     public String getEmail(){
         return emailInput.getText();
     }
-
     public String getPhoneNumber(){
         return phoneNumberInput.getText();
     }
-
     public String getPassword(){
         return passwordInput.getText();
     }
