@@ -41,8 +41,8 @@ public class LoginGUI{
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
-            alert.setHeaderText("That user does not exist.");
-            alert.setContentText("Please enter a different username.");
+            alert.setHeaderText("The username and password do not match.");
+            alert.setContentText("Please try again.");
             alert.showAndWait();
         }
     }
