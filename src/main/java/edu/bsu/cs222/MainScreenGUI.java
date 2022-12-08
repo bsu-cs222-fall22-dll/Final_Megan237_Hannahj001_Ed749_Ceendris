@@ -41,6 +41,7 @@ public class MainScreenGUI {
     public Button roommate2Button;
     public Button roommate3Button;
     public Button calendarButton;
+    public Label noRoommatesLabel;
 
 
     public void setEmail(String email){
@@ -55,6 +56,7 @@ public class MainScreenGUI {
     }
     @FXML
     public void displayRoommates(ArrayList<String> roommates) throws FileNotFoundException, URISyntaxException, ParseException, java.text.ParseException {
+        noRoommatesLabel.setVisible(false);
         if (roommates.size() == 3){
 
             roommate1Button.setText(roommates.get(0));
@@ -86,6 +88,15 @@ public class MainScreenGUI {
             roommate2Button.setVisible(false);
             status2.setVisible(false);
             roommate3Button.setVisible(false);
+            status3.setVisible(false);
+
+        }else if(roommates.size() == 0){
+            noRoommatesLabel.setVisible(true);
+            roommate1Button.setVisible(false);
+            roommate2Button.setVisible(false);
+            roommate3Button.setVisible(false);
+            status1.setVisible(false);
+            status2.setVisible(false);
             status3.setVisible(false);
 
         }

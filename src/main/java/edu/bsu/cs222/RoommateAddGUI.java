@@ -31,7 +31,7 @@ public class RoommateAddGUI {
     public void addRoommate(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
         String roommateEmail = roommatesEmailBox.getText();
         String emailJSON = jsonReader.getEmail(roommateEmail);
-        if (roommateEmail.equals(emailJSON)) {
+        if (roommateEmail.equals(emailJSON) & !roommateEmail.equals(emailBox.getText())) {
             writer.writeRoommate(emailBox.getText(), roommateEmail);
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateAddGUI.fxml"));
@@ -41,8 +41,21 @@ public class RoommateAddGUI {
             roommateAddGUI.displayName(emailBox.getText());
             roommateAddGUI.displayPhoneNumber(emailBox.getText());
             addRoommateButton.getScene().setRoot(root);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Conformation");
+            alert.setHeaderText("Roommate Added");
+            alert.setContentText("You have successfully added a new roommate");
+            alert.showAndWait();
 
-        }else{
+        }else if (roommateEmail.equals(emailBox.getText())){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("Roommate Add Error");
+            alert.setContentText("You cannot add yourself a roommate.");
+            alert.showAndWait();
+        }
+
+        else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
             alert.setHeaderText("That user does not exist.");

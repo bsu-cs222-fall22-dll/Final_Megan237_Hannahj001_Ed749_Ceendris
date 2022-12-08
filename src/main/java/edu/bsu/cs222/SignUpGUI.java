@@ -137,13 +137,14 @@ public class SignUpGUI {
             alert.setContentText("You have not entered all of the sign up information");
             alert.showAndWait();
         }
-        else if (Objects.equals(emailInput.getText(), jsonReader.getEmail(emailInput.getText()))){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Sign Up Error");
-            alert.setHeaderText("A Sign Up Error Occurred");
-            alert.setContentText("This email is being used for an existing user.");
-            alert.showAndWait();
-        }
+// This is the check if the email is already being used
+//        else if (Objects.equals(emailInput.getText(), jsonReader.getEmail(emailInput.getText()))){
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Sign Up Error");
+//            alert.setHeaderText("A Sign Up Error Occurred");
+//            alert.setContentText("This email is being used for an existing user.");
+//            alert.showAndWait();
+//        }
         else {
             JSONWriter writer = new JSONWriter();
             writer.writeName(getName());
