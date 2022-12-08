@@ -91,7 +91,7 @@ public class EditUserCalenderGUI {
     }
 
     public void addToSchedule(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
-        if (eventName == null || startTime == null || endTime == null || !checkNullDays()){
+        if (eventName.getText() == null || startTime.getText() == null || endTime.getText() == null || !checkNullDays()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
             alert.setHeaderText("A Calender Error Occurred");
