@@ -35,12 +35,8 @@ public class LoginGUI{
             mainScreenGUI.displayName(email);
             mainScreenGUI.displayPhoneNumber(email);
             mainScreenGUI.setEmail(email);
-
             mainScreenGUI.displayRoommates(roommateList);
-
-
             enterButton.getScene().setRoot(root);
-
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -50,11 +46,9 @@ public class LoginGUI{
             alert.showAndWait();
         }
     }
-
     public void openSignUpPage(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SignUpGUI.fxml"));
         Parent root = loader.load();
         enterButton.getScene().setRoot(root);
     }
-
 }

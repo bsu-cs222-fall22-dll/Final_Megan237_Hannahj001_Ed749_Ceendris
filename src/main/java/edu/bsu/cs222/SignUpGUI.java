@@ -6,10 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import net.minidev.json.parser.ParseException;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Objects;
@@ -18,13 +16,13 @@ public class SignUpGUI {
 
     public TextField firstNameInput;
     public TextField lastNameInput;
-    public PasswordField passwordInput;
-    public PasswordField checkPasswordInput;
+    public PasswordField password1Input;
+    public PasswordField password2Input;
     public TextField emailInput;
     public TextField phoneNumberInput;
     public ProgressBar progressBar;
-    public Label passwordErrorBox;
     public Button signUpButton;
+    public Label passwordErrorBox;
     private double firstNameProgress = 0.0;
     private double lastNameProgress = 0.0;
     private double emailProgress = 0.0;
@@ -34,85 +32,112 @@ public class SignUpGUI {
     private double progress = 0.0;
     public JSONReader jsonReader = new JSONReader();
 
-
-
     @FXML
     public void firstNameProgress(KeyEvent keyEvent) {
-        if (firstNameProgress == 0){
-            firstNameProgress += 0.16;
-            progress += 0.16;
+        if(firstNameInput.getText() != null){
+            if (firstNameProgress == 0) {
+                firstNameProgress = 1;
+                progress += 0.16;
+                progressBar.setProgress(progress);
+            }
+        }if(Objects.equals(firstNameInput.getText(), "")){
+            firstNameProgress = 0;
+            progress -= 0.16;
             progressBar.setProgress(progress);
         }
     }
     @FXML
     public void lastNameProgress(KeyEvent keyEvent) {
-        if(lastNameProgress == 0){
-            lastNameProgress = 0.16;
-            progress += 0.16;
+        if(lastNameInput.getText() != null){
+            if (lastNameProgress == 0) {
+                lastNameProgress = 1;
+                progress += 0.16;
+                progressBar.setProgress(progress);
+            }
+        }if(Objects.equals(lastNameInput.getText(), "")){
+            lastNameProgress = 0;
+            progress -= 0.16;
             progressBar.setProgress(progress);
         }
     }
     @FXML
     public void password1Progress(KeyEvent keyEvent) {
-        if(password1Progress == 0){
-            password1Progress = 0.16;
-            progress += 0.16;
+        if(password1Input.getText() != null){
+            if (password1Progress == 0) {
+                password1Progress = 1;
+                progress += 0.16;
+                progressBar.setProgress(progress);
+            }
+        }if(Objects.equals(password1Input.getText(), "")){
+            password1Progress = 0;
+            progress -= 0.16;
             progressBar.setProgress(progress);
         }
     }
     @FXML
     public void password2Progress(KeyEvent keyEvent) {
-        if(password2Progress == 0){
-            password2Progress = 0.16;
-            progress += 0.16;
+        if(password2Input.getText() != null){
+            if (password2Progress == 0) {
+                password2Progress = 1;
+                progress += 0.16;
+                progressBar.setProgress(progress);
+            }
+        }if(Objects.equals(password2Input.getText(), "")){
+            password2Progress = 0;
+            progress -= 0.16;
             progressBar.setProgress(progress);
         }
     }
     @FXML
     public void emailProgress(KeyEvent keyEvent) {
-        if(emailProgress == 0){
-            emailProgress = 0.16;
-            progress += 0.16;
+        if(emailInput.getText() != null){
+            if (emailProgress == 0) {
+                emailProgress = 1;
+                progress += 0.16;
+                progressBar.setProgress(progress);
+            }
+        }if(Objects.equals(emailInput.getText(), "")){
+            emailProgress = 0;
+            progress -= 0.16;
             progressBar.setProgress(progress);
         }
     }
     @FXML
     public void phoneNumberProgress(KeyEvent keyEvent) {
-        if(phoneNumberProgress == 0){
-            phoneNumberProgress = 0.16;
-            progress += 0.16;
+        if(phoneNumberInput.getText() != null){
+            if (phoneNumberProgress == 0) {
+                phoneNumberProgress = 1;
+                progress += 0.16;
+                progressBar.setProgress(progress);
+            }
+        }if(Objects.equals(phoneNumberInput.getText(), "")){
+            phoneNumberProgress = 0;
+            progress -= 0.16;
             progressBar.setProgress(progress);
         }
     }
-
-
     @FXML
     public void checkPassword(KeyEvent mouseEvent) {
-        String mainPassword = passwordInput.getText();
-        String checkPassword = checkPasswordInput.getText();
-
+        String mainPassword = password1Input.getText();
+        String checkPassword = password2Input.getText();
         if (mainPassword.equals(checkPassword)){
             passwordErrorBox.setTextFill(Color.web("#69c06d"));
-            //#69c06d or #008000
             passwordErrorBox.setText("Passwords match");
         }else{
             passwordErrorBox.setTextFill(Color.web("#DC143C"));
             passwordErrorBox.setText("Passwords Do Not Match");
         }
-
     }
-
     @FXML
     public void completeSignUp(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
-        String nameFromJSONDoc = jsonReader.getEmail(emailInput.getText());
-        if (firstNameInput.getText().equals("")||lastNameInput.getText().equals("")||emailInput.getText().equals("")||phoneNumberInput.getText().equals("")||passwordInput.getText().equals("")) {
+        if (firstNameInput.getText().equals("")||lastNameInput.getText().equals("")||emailInput.getText().equals("")||phoneNumberInput.getText().equals("")||password1Input.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Sign Up Error");
             alert.setHeaderText("A Sign Up Error Occurred");
             alert.setContentText("You have not entered all of the sign up information");
             alert.showAndWait();
         }
-        else if (Objects.equals(emailInput.getText(), nameFromJSONDoc)){
+        else if (Objects.equals(emailInput.getText(), jsonReader.getEmail(emailInput.getText()))){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Sign Up Error");
             alert.setHeaderText("A Sign Up Error Occurred");
@@ -144,6 +169,6 @@ public class SignUpGUI {
         return phoneNumberInput.getText();
     }
     public String getPassword(){
-        return passwordInput.getText();
+        return password1Input.getText();
     }
 }

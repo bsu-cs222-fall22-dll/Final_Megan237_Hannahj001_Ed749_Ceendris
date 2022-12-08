@@ -20,26 +20,21 @@ public class DisplayUserInfoGUI {
     public Label displaySchedule;
     public Button goBackToMainButton;
 
-
-
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String name = jsonReader.getName(email);
         nameBox.setText(name);
     }
-
     @FXML
     public void displayEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String Displayedemail = jsonReader.getEmail(email);
         emailBox.setText(Displayedemail);
     }
-
     @FXML
     public void displayPhoneNumber(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String phoneNumber = jsonReader.getPhoneNumber(email);
         phoneNumberBox.setText(phoneNumber);
     }
-
     @FXML
     public void setDisplaySchedule(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         StringBuilder schedule;
@@ -106,7 +101,6 @@ public class DisplayUserInfoGUI {
         }
         displaySchedule.setText(schedule.toString());
     }
-
     public void goBackToMainScreen() throws IOException, URISyntaxException, ParseException, java.text.ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
         Parent root = loader.load();
@@ -119,7 +113,4 @@ public class DisplayUserInfoGUI {
         mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
         goBackToMainButton.getScene().setRoot(root);
     }
-
-
 }
-
