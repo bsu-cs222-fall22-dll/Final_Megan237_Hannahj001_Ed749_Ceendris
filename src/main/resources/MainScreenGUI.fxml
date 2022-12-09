@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.MainScreenGUI">
-    <ImageView fx:id="userImage" fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="mainUserImage" fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@REG-378623.png" />
     </ImageView>
     <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
@@ -41,7 +41,7 @@
                     <Font name="Arial Black" size="15.0" />
                 </font>
             <graphic>
-                <ImageView fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="roommate1Image" fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@REG-378623.png" />
                 </ImageView>
             </graphic>
@@ -56,7 +56,7 @@
                     <Font name="Arial Black" size="15.0" />
                 </font>
                 <graphic>
-                    <ImageView fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fx:id="roommate2Image" fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@REG-378623.png" />
                     </ImageView>
                 </graphic>
@@ -71,7 +71,7 @@
                     <Font name="Arial Black" size="15.0" />
                 </font>
                 <graphic>
-                    <ImageView fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fx:id="roommate3image" fitHeight="77.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@REG-378623.png" />
                     </ImageView>
                 </graphic>

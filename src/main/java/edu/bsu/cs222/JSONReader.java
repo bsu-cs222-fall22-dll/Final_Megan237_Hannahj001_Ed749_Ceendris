@@ -178,4 +178,19 @@ public class JSONReader {
         return parseDaysBasedOnEventName(object, eventName, email);
     }
 
+    public ArrayList<String> parseImagePath(Object image){
+        return JsonPath.read(image, "$..ProfileImage");
+    }
+
+    public String getImagePath(String email) throws FileNotFoundException, URISyntaxException, ParseException {
+        Object object = getJsonObject(email);
+        int size = parseImagePath(object).size();
+        if (size != 0){
+            return parseImagePath(object).get(size-1);
+        }
+        else {
+            return "src/main/resources/REG-378623.png";
+        }
+    }
+
 }

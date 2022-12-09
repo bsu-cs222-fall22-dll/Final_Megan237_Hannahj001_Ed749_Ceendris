@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.DisplayUserInfoGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.DisplayUserInfoGUI">
     <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
         <font>
             <Font name="Arial Black" size="28.0" />
@@ -33,16 +33,15 @@
         </font>
     </Label>
    <Button fx:id="goBackToMainButton" layoutX="375.0" layoutY="665.0" mnemonicParsing="false" onAction="#goBackToMainScreen" prefHeight="28.0" prefWidth="64.0" text="Go Back" />
-    <ImageView fx:id="userImage" fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="mainUserImage" fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@REG-378623.png" />
     </ImageView>
-   <ScrollPane layoutX="17.0" layoutY="171.0" prefHeight="483.0" prefWidth="421.0">
-      <content>
-          <Label fx:id="displaySchedule" alignment="TOP_LEFT" maxHeight="1.0E17" prefHeight="501.0" prefWidth="400.0" text="Label">
-              <font>
-                <Font name="Arial" size="18.0" />
-              </font>
-          </Label>
-      </content>
-   </ScrollPane>
+    <ScrollPane layoutX="17.0" layoutY="171.0" prefHeight="483.0" prefWidth="421.0">
+        <Label fx:id="displaySchedule" alignment="TOP_LEFT" maxHeight="1.0E17" prefHeight="501.0" prefWidth="400.0"
+               text="Label">
+            <font>
+              <Font name="Arial" size="18.0"/>
+            </font>
+        </Label>
+    </ScrollPane>
 </AnchorPane>

@@ -6,12 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,6 +29,12 @@ public class DisplayFullCalendarGUI {
     public ScrollPane scrollView;
     public ImageView userImage;
 
+    @FXML
+    public void displayMainUserImage(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        userImage.setImage(image);
+    }
 
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -169,6 +178,7 @@ public class DisplayFullCalendarGUI {
         mainScreenGUI.displayName(email);
         mainScreenGUI.displayPhoneNumber(email);
         mainScreenGUI.setEmail(email);
+        mainScreenGUI.displayMainUserImage(email);
         mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
         goBackButton.getScene().setRoot(root);
 

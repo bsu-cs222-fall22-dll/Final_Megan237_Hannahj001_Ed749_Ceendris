@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.EditUserInformationGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.EditUserInformationGUI">
 
 
    <Separator layoutX="1.0" layoutY="120.0" prefHeight="4.0" prefWidth="450.0" />
-   <ImageView fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="mainUserImage" fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@REG-378623.png" />
    </ImageView>
    <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
@@ -39,10 +39,9 @@
    <TextField fx:id="ChangePhoneNumberBox" layoutX="101.0" layoutY="278.0" prefHeight="37.0" prefWidth="243.0" promptText="[Phone Number]" />
    <TextField fx:id="ChangeEmailBox" layoutX="101.0" layoutY="350.0" prefHeight="37.0" prefWidth="243.0" promptText="[Email]" />
    <TextField fx:id="changePasswordBox" layoutX="101.0" layoutY="420.0" prefHeight="37.0" prefWidth="243.0" promptText="[Password]" />
-   <ImageView fx:id="userImage" fitHeight="136.0" fitWidth="126.0" layoutX="115.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@REG-378623.png" />
-      </image>
+   <ImageView fx:id="userImage" fitHeight="136.0" fitWidth="126.0" layoutX="115.0" layoutY="492.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@REG-378623.png"/>
    </ImageView>
    <Button fx:id="changeUserPhotoButton" layoutX="259.0" layoutY="542.0" mnemonicParsing="false" onAction="#changeUserPhoto" prefHeight="37.0" prefWidth="105.0" text="Change Image?" />
    <Button fx:id="saveChangesButton" layoutX="177.0" layoutY="661.0" mnemonicParsing="false" onAction="#saveChanges" text="Save Changes" />

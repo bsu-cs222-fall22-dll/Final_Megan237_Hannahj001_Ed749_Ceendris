@@ -6,11 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class EditUserCalenderGUI {
@@ -37,6 +40,12 @@ public class EditUserCalenderGUI {
 
 
     @FXML
+    public void displayMainUserImage(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        userImage.setImage(image);
+    }
+    @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String name = jsonReader.getName(email);
         nameBox.setText(name);
@@ -62,6 +71,7 @@ public class EditUserCalenderGUI {
         settingsGUI.displayEmail(email);
         settingsGUI.displayName(email);
         settingsGUI.displayPhoneNumber(email);
+        settingsGUI.displayMainUserImage(email);
         goBackButton.getScene().setRoot(root);
     }
 

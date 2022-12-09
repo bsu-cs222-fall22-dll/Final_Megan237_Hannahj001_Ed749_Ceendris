@@ -5,10 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class DisplayUserInfoGUI {
@@ -19,7 +23,15 @@ public class DisplayUserInfoGUI {
     public JSONReader jsonReader = new JSONReader();
     public Label displaySchedule;
     public Button goBackToMainButton;
+    public ImageView mainUserImage;
 
+    @FXML
+    public void displayMainUserImage(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        mainUserImage.setImage(image);
+    }
+    
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String name = jsonReader.getName(email);
@@ -111,6 +123,7 @@ public class DisplayUserInfoGUI {
         mainScreenGUI.displayPhoneNumber(emailBox.getText());
         mainScreenGUI.setEmail(emailBox.getText());
         mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
+        mainScreenGUI.displayMainUserImage(emailBox.getText());
         goBackToMainButton.getScene().setRoot(root);
     }
 }

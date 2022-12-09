@@ -6,12 +6,21 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import net.minidev.json.parser.ParseException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -42,11 +51,22 @@ public class MainScreenGUI {
     public Button calendarButton;
     public Label noRoommatesLabel;
 
+    public ImageView mainUserImage;
+    public ImageView roommate1Image;
+    public ImageView roommate2Image;
+    public ImageView roommate3image;
+
 
     public void setEmail(String email){
         userEmail = email;
       }
 
+    @FXML
+    public void displayMainUserImage(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        mainUserImage.setImage(image);
+    }
 
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -216,6 +236,7 @@ public class MainScreenGUI {
         displayUser.displayName(userEmail);
         displayUser.displayPhoneNumber(userEmail);
         displayUser.setDisplaySchedule(userEmail);
+        displayUser.displayMainUserImage(userEmail);
 
         profileButton.getScene().setRoot(root);
     }
@@ -229,7 +250,9 @@ public class MainScreenGUI {
         roommateDisplayGUI.displayPhoneNumber(userEmail);
         roommateDisplayGUI.setDisplaySchedule(roommate1Button.getText());
         roommateDisplayGUI.setRoommateDisplay(roommate1Button.getText());
+        roommateDisplayGUI.displayMainUserImage(userEmail);
         profileButton.getScene().setRoot(root);
+
 
     }
 
@@ -242,6 +265,7 @@ public class MainScreenGUI {
         roommateDisplayGUI.displayPhoneNumber(userEmail);
         roommateDisplayGUI.setDisplaySchedule(roommate2Button.getText());
         roommateDisplayGUI.setRoommateDisplay(roommate2Button.getText());
+        roommateDisplayGUI.displayMainUserImage(userEmail);
 
         profileButton.getScene().setRoot(root);
 
@@ -257,7 +281,7 @@ public class MainScreenGUI {
         roommateDisplayGUI.displayPhoneNumber(userEmail);
         roommateDisplayGUI.setDisplaySchedule(roommate3Button.getText());
         roommateDisplayGUI.setRoommateDisplay(roommate3Button.getText());
-
+        roommateDisplayGUI.displayMainUserImage(userEmail);
         profileButton.getScene().setRoot(root);
 
     }
@@ -270,6 +294,7 @@ public class MainScreenGUI {
         settingsGUI.displayEmail(userEmail);
         settingsGUI.displayName(userEmail);
         settingsGUI.displayPhoneNumber(userEmail);
+        settingsGUI.displayMainUserImage(userEmail);
 
         settingsButton.getScene().setRoot(root);
     }
@@ -283,6 +308,7 @@ public class MainScreenGUI {
         calendarGUI.displayName(userEmail);
         calendarGUI.displayPhoneNumber(userEmail);
         calendarGUI.displayAllClasses();
+        calendarGUI.displayMainUserImage(userEmail);
 
         calendarButton.getScene().setRoot(root);
     }

@@ -6,11 +6,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class RoommateAddGUI {
@@ -24,6 +28,7 @@ public class RoommateAddGUI {
     public JSONWriter writer = new JSONWriter();
     public ChoiceBox<String> roommateRemoveTabBox;
     public Button removeButton;
+    public ImageView mainUserImage;
 
 
     @FXML
@@ -72,7 +77,14 @@ public class RoommateAddGUI {
         settingsGUI.displayEmail(email);
         settingsGUI.displayName(email);
         settingsGUI.displayPhoneNumber(email);
+        settingsGUI.displayMainUserImage(email);
         goBackButton.getScene().setRoot(root);
+    }
+    @FXML
+    public void displayMainUserImage(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        mainUserImage.setImage(image);
     }
 
     @FXML

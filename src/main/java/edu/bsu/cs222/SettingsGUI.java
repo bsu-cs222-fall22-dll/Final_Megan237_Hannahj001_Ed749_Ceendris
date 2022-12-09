@@ -5,11 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 
 public class SettingsGUI{
 
@@ -24,7 +28,14 @@ public class SettingsGUI{
     public Label emailBox;
 
     public JSONReader jsonReader = new JSONReader();
+    public ImageView mainUserImage;
 
+    @FXML
+    public void displayMainUserImage(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        mainUserImage.setImage(image);
+    }
 
     @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
@@ -56,6 +67,7 @@ public class SettingsGUI{
         mainScreenGUI.displayPhoneNumber(email);
         mainScreenGUI.setEmail(email);
         mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
+        mainScreenGUI.displayMainUserImage(email);
         backButton.getScene().setRoot(root);
 
     }
@@ -68,6 +80,7 @@ public class SettingsGUI{
         editUserInformationGUI.displayEmail(email);
         editUserInformationGUI.displayName(email);
         editUserInformationGUI.displayPhoneNumber(email);
+        editUserInformationGUI.displayMainUserImage(email);
         editUserInfoButton.getScene().setRoot(root);
     }
 
@@ -80,6 +93,7 @@ public class SettingsGUI{
         editUserCalenderGUI.displayName(email);
         editUserCalenderGUI.displayPhoneNumber(email);
         editUserCalenderGUI.displayRemovableEvents(email);
+        editUserCalenderGUI.displayMainUserImage(email);
 
         editScheduleButton.getScene().setRoot(root);
     }
@@ -99,6 +113,7 @@ public class SettingsGUI{
         roommateAddGUI.displayName(email);
         roommateAddGUI.displayPhoneNumber(email);
         roommateAddGUI.displayRemoveRoommates(email);
+        roommateAddGUI.displayMainUserImage(email);
 
         editScheduleButton.getScene().setRoot(root);
 

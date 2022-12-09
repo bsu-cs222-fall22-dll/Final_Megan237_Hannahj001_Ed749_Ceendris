@@ -6,11 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,6 +27,7 @@ public class RoommateDisplayGUI {
     public Label nameBox;
     public JSONReader jsonReader = new JSONReader();
     public Label nameScheduleLabel;
+    public ImageView mainUserImage;
 
     @FXML
     public void setRoommateDisplay(String email){
@@ -127,6 +132,7 @@ public class RoommateDisplayGUI {
         mainScreenGUI.displayPhoneNumber(email);
         mainScreenGUI.setEmail(email);
         mainScreenGUI.displayRoommates(jsonReader.getRoommates(emailBox.getText()));
+        mainScreenGUI.displayMainUserImage(email);
         goBackToMainButton.getScene().setRoot(root);
     }
 
@@ -134,6 +140,13 @@ public class RoommateDisplayGUI {
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String name = jsonReader.getName(email);
         nameBox.setText(name);
+    }
+
+    @FXML
+    public void displayMainUserImage(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        mainUserImage.setImage(image);
     }
 
     @FXML

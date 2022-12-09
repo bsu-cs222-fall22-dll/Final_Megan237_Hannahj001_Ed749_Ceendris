@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,6 +20,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,6 +44,7 @@ public class EditUserInformationGUI {
     public File filePath;
     public Image photo;
     public JSONWriter writer = new JSONWriter();
+    public ImageView mainUserImage;
 
     public void goBackToSettings() throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
@@ -51,6 +54,7 @@ public class EditUserInformationGUI {
         settingsGUI.displayEmail(email);
         settingsGUI.displayName(email);
         settingsGUI.displayPhoneNumber(email);
+        settingsGUI.displayMainUserImage(email);
         goBackButton.getScene().setRoot(root);
     }
 
@@ -85,11 +89,23 @@ public class EditUserInformationGUI {
             Path path = Paths.get(file);
             Files.writeString(path, json.replace(oldPassword, newPassword).replace(oldPhoneNumber, newPhoneNumber).replace(oldFirstName, newFirstName).replace(oldEmail, newEmail));
         }
-
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Conformation");
+        alert.setHeaderText("Information Update");
+        alert.setContentText("Your information has been updated.");
+        alert.showAndWait();
         goBackToSettings();
 
     }
 
+
+    @FXML
+    public void displayMainUserImage(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        mainUserImage.setImage(image);
+        userImage.setImage(image);
+    }
 
 
     @FXML
@@ -120,18 +136,13 @@ public class EditUserInformationGUI {
         this.filePath = fileChooser.showOpenDialog(stage);
 
         try{
+
             BufferedImage bufferedImage = ImageIO.read(filePath);
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
             userImage.setImage(image);
             this.photo = userImage.getImage();
-
-            System.out.println(filePath.getName());
             writer.writeToFileImage(filePath.getName(),filePath);
             writer.writeImage(emailBox.getText(), filePath.getName());
-
-
-
-
 
         } catch(IOException e){
             System.err.println(e.getMessage());
