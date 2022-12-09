@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class EditUserCalenderGUI {
     public CheckBox sundayCheck;
     public ChoiceBox<String> allEventsTab;
     public ChoiceBox <String> daysOfEventsTab;
+    public ImageView userImage;
 
 
     @FXML

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import net.minidev.json.parser.ParseException;
 
 import java.io.FileNotFoundException;
@@ -23,8 +24,7 @@ public class DisplayFullCalendarGUI {
     public Button goBackButton;
     public JSONReader jsonReader = new JSONReader();
     public ScrollPane scrollView;
-
-
+    public ImageView userImage;
 
 
     @FXML
