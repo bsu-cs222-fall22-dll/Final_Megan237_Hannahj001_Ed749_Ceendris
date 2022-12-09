@@ -9,6 +9,7 @@ import javafx.scene.image.PixelFormat;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 
+//VIEW README.MD FILE TO READ THE COPYRIGHT NOTICE FOR THIS USED CLASS
 
 public class SwingFXUtils {
 
