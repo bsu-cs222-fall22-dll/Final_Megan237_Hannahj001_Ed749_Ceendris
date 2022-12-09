@@ -138,6 +138,7 @@ public class EditUserCalenderGUI {
             editUserCalenderGUI.displayEmail(userEmail);
             editUserCalenderGUI.displayName(userEmail);
             editUserCalenderGUI.displayPhoneNumber(userEmail);
+            editUserCalenderGUI.displayMainUserImage(userEmail);
             addToSchedule.getScene().setRoot(root);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Event Added");
