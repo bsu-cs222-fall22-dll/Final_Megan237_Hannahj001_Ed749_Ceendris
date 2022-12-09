@@ -127,6 +127,7 @@ public class EditUserInformationGUI {
 
             System.out.println(filePath.getName());
             writer.writeToFileImage(filePath.getName(),filePath);
+            writer.writeImage(emailBox.getText(), filePath.getName());
 
 
 
@@ -134,6 +135,8 @@ public class EditUserInformationGUI {
 
         } catch(IOException e){
             System.err.println(e.getMessage());
+        } catch (URISyntaxException | ParseException e) {
+            e.printStackTrace();
         }
     }
 
