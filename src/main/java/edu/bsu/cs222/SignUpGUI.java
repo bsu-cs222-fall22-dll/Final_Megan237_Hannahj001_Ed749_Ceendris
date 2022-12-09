@@ -137,7 +137,7 @@ public class SignUpGUI {
             alert.setContentText("You have not entered all of the sign up information");
             alert.showAndWait();
         }
-// This is the check if the email is already being used
+ //This is the check if the email is already being used
 //        else if (Objects.equals(emailInput.getText(), jsonReader.getEmail(emailInput.getText()))){
 //            Alert alert = new Alert(Alert.AlertType.WARNING);
 //            alert.setTitle("Sign Up Error");

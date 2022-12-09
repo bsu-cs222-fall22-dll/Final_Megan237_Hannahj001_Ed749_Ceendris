@@ -1,9 +1,13 @@
 package edu.bsu.cs222;
 
+import javafx.scene.image.Image;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.ParseException;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -60,6 +64,23 @@ public class JSONWriter {
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
         Files.createFile(path);
         Files.writeString(path, user.toJSONString());
+    }
+
+    public void writeToFileImage(Image image, String name,File filePath) throws IOException {
+        Path path = Paths.get("src/main/resources/" + name);
+//        Files.createFile(path);
+        BufferedImage bImage = null;
+        try{
+            File initialImage = new File(String.valueOf(filePath));
+            bImage = ImageIO.read(initialImage);
+
+            ImageIO.write(bImage, "gif", new File(path.toString()));
+            ImageIO.write(bImage, "jpg", new File(path.toString()));
+            ImageIO.write(bImage, "bmp", new File(path.toString()));
+
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void writeEvent(String email, String name, ArrayList<String> days, String startTime, String endTime) throws IOException, URISyntaxException, ParseException {
