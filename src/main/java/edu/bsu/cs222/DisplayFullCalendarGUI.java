@@ -1,6 +1,5 @@
 package edu.bsu.cs222;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -149,30 +148,19 @@ public class DisplayFullCalendarGUI {
         String saturdaySubstring = schedule.substring(schedule.indexOf("Saturday"), schedule.indexOf("Sunday"));
         String sundaySubstring = schedule.substring(schedule.indexOf("Sunday"), schedule.lastIndexOf("\n"));
 
-        if (dayOfWeek.name().equals("MONDAY")){
-            calendar.setText(mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring);
-        }
-        else if (dayOfWeek.name().equals("TUESDAY")) {
-            calendar.setText(tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring);
-        }
-        else if (dayOfWeek.name().equals("WEDNESDAY")) {
-            calendar.setText(wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring);
-        }
-        else if (dayOfWeek.name().equals("THURSDAY")) {
-            calendar.setText(thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring);
-        }
-        else if (dayOfWeek.name().equals("FRIDAY")) {
-            calendar.setText(fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring);
-        }
-        else if (dayOfWeek.name().equals("SATURDAY")) {
-            calendar.setText(saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring);
-        }
-        else {
-            calendar.setText(sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring);
+        switch (dayOfWeek.name()) {
+            case "MONDAY" -> calendar.setText(mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring);
+            case "TUESDAY" -> calendar.setText(tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring);
+            case "WEDNESDAY" -> calendar.setText(wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring);
+            case "THURSDAY" -> calendar.setText(thursdaySubstring + fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring);
+            case "FRIDAY" -> calendar.setText(fridaySubstring + saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring);
+            case "SATURDAY" -> calendar.setText(saturdaySubstring + sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring);
+            default -> calendar.setText(sundaySubstring + mondaySubstring + tuesdaySubstring + wednesdaySubstring + thursdaySubstring + fridaySubstring + saturdaySubstring);
         }
 
     }
-    public void goBackToSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException, java.text.ParseException {
+
+    public void goBackToMain() throws IOException, URISyntaxException, ParseException, java.text.ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
         Parent root = loader.load();

@@ -1,6 +1,5 @@
 package edu.bsu.cs222;
 
-import javafx.scene.image.Image;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.ParseException;

@@ -2,19 +2,20 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.DisplayFullCalendarGUI">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.DisplayFullCalendarGUI">
     <Separator layoutX="1.0" layoutY="120.0" prefHeight="4.0" prefWidth="450.0" />
-    <Button fx:id="goBackButton" layoutX="375.0" layoutY="665.0" mnemonicParsing="false" onAction="#goBackToSettings" text="Go Back">
-        <font>
-            <Font name="Arial" size="13.0" />
-        </font></Button>
     <ImageView fx:id="userImage" fitHeight="86.0" fitWidth="90.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@REG-378623.png" />
     </ImageView>
+    <Button fx:id="goBackButton" layoutX="375.0" layoutY="665.0" mnemonicParsing="false" onAction="#goBackToMain" text="Go Back">
+        <font>
+            <Font name="Arial" size="13.0" />
+        </font></Button>
     <Label fx:id="nameBox" layoutX="116.0" layoutY="21.0" prefHeight="55.0" prefWidth="327.0" text="Name" textAlignment="CENTER">
         <font>
             <Font name="Arial Black" size="28.0" />
@@ -35,14 +36,14 @@
             <Glow />
         </effect>
     </Separator>
-   <ScrollPane fx:id="scrollView" layoutX="26.0" layoutY="176.0" prefHeight="456.0" prefWidth="411.0">
-      <content>
-         <Label fx:id="calendar" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.0E19" maxWidth="1.0E12" text="Today">
-            <font>
-               <Font name="Arial Italic" size="24.0" />
-            </font>
-         </Label>
-      </content></ScrollPane>
+    <ScrollPane fx:id="scrollView" layoutX="26.0" layoutY="176.0" prefHeight="456.0" prefWidth="411.0">
+        <Label fx:id="calendar" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.0E19" maxWidth="1.0E12"
+               text="Today">
+           <font>
+               <Font name="Arial Italic" size="24.0"/>
+           </font>
+        </Label>
+    </ScrollPane>
    <Label layoutX="26.0" layoutY="122.0" prefHeight="55.0" prefWidth="327.0" text="Calendar" textAlignment="CENTER">
       <font>
          <Font name="Arial Black" size="28.0" />

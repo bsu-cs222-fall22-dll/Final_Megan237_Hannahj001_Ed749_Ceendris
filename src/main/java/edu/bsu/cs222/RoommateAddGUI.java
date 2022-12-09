@@ -2,7 +2,6 @@ package edu.bsu.cs222;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,7 +27,7 @@ public class RoommateAddGUI {
 
 
     @FXML
-    public void addRoommate(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void addRoommate() throws IOException, URISyntaxException, ParseException {
         String roommateEmail = roommatesEmailBox.getText();
         String emailJSON = jsonReader.getEmail(roommateEmail);
         if (roommateEmail.equals(emailJSON) & !roommateEmail.equals(emailBox.getText())) {
@@ -65,7 +64,7 @@ public class RoommateAddGUI {
 
     }
 
-    public void goBackToSettingsPage(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void goBackToSettingsPage() throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SettingsGUI.fxml"));
         Parent root = loader.load();
@@ -103,7 +102,7 @@ public class RoommateAddGUI {
 
     }
     @FXML
-    public void removeRoommateButton(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void removeRoommateButton() throws IOException, URISyntaxException, ParseException {
         String selection = roommateRemoveTabBox.getValue();
         if (selection == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);

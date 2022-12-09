@@ -43,7 +43,7 @@ public class EditUserInformationGUI {
     public Image photo;
     public JSONWriter writer = new JSONWriter();
 
-    public void goBackToSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void goBackToSettings() throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SettingsGUI.fxml"));
         Parent root = loader.load();
@@ -54,7 +54,7 @@ public class EditUserInformationGUI {
         goBackButton.getScene().setRoot(root);
     }
 
-    public void saveChanges(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void saveChanges() throws IOException, URISyntaxException, ParseException {
 
         JSONReader jsonReader = new JSONReader();
         String email = emailBox.getText();
@@ -86,7 +86,7 @@ public class EditUserInformationGUI {
             Files.writeString(path, json.replace(oldPassword, newPassword).replace(oldPhoneNumber, newPhoneNumber).replace(oldFirstName, newFirstName).replace(oldEmail, newEmail));
         }
 
-        goBackToSettings(actionEvent);
+        goBackToSettings();
 
     }
 

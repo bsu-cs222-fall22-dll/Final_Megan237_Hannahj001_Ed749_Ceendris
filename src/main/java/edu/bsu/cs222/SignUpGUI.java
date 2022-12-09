@@ -1,15 +1,11 @@
 package edu.bsu.cs222;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
-import net.minidev.json.parser.ParseException;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class SignUpGUI {
@@ -33,7 +29,7 @@ public class SignUpGUI {
     public JSONReader jsonReader = new JSONReader();
 
     @FXML
-    public void firstNameProgress(KeyEvent keyEvent) {
+    public void firstNameProgress() {
         if(firstNameInput.getText() != null){
             if (firstNameProgress == 0) {
                 firstNameProgress = 1;
@@ -47,7 +43,7 @@ public class SignUpGUI {
         }
     }
     @FXML
-    public void lastNameProgress(KeyEvent keyEvent) {
+    public void lastNameProgress() {
         if(lastNameInput.getText() != null){
             if (lastNameProgress == 0) {
                 lastNameProgress = 1;
@@ -61,7 +57,7 @@ public class SignUpGUI {
         }
     }
     @FXML
-    public void password1Progress(KeyEvent keyEvent) {
+    public void password1Progress() {
         if(password1Input.getText() != null){
             if (password1Progress == 0) {
                 password1Progress = 1;
@@ -75,7 +71,7 @@ public class SignUpGUI {
         }
     }
     @FXML
-    public void password2Progress(KeyEvent keyEvent) {
+    public void password2Progress() {
         if(password2Input.getText() != null){
             if (password2Progress == 0) {
                 password2Progress = 1;
@@ -89,7 +85,7 @@ public class SignUpGUI {
         }
     }
     @FXML
-    public void emailProgress(KeyEvent keyEvent) {
+    public void emailProgress() {
         if(emailInput.getText() != null){
             if (emailProgress == 0) {
                 emailProgress = 1;
@@ -103,7 +99,7 @@ public class SignUpGUI {
         }
     }
     @FXML
-    public void phoneNumberProgress(KeyEvent keyEvent) {
+    public void phoneNumberProgress() {
         if(phoneNumberInput.getText() != null){
             if (phoneNumberProgress == 0) {
                 phoneNumberProgress = 1;
@@ -117,7 +113,7 @@ public class SignUpGUI {
         }
     }
     @FXML
-    public void checkPassword(KeyEvent mouseEvent) {
+    public void checkPassword() {
         String mainPassword = password1Input.getText();
         String checkPassword = password2Input.getText();
         if (mainPassword.equals(checkPassword)){
@@ -129,7 +125,7 @@ public class SignUpGUI {
         }
     }
     @FXML
-    public void completeSignUp(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void completeSignUp() throws IOException{
         if (firstNameInput.getText().equals("")||lastNameInput.getText().equals("")||emailInput.getText().equals("")||phoneNumberInput.getText().equals("")||password1Input.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Sign Up Error");
@@ -137,14 +133,6 @@ public class SignUpGUI {
             alert.setContentText("You have not entered all of the sign up information");
             alert.showAndWait();
         }
- //This is the check if the email is already being used
-//        else if (Objects.equals(emailInput.getText(), jsonReader.getEmail(emailInput.getText()))){
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Sign Up Error");
-//            alert.setHeaderText("A Sign Up Error Occurred");
-//            alert.setContentText("This email is being used for an existing user.");
-//            alert.showAndWait();
-//        }
         else {
             JSONWriter writer = new JSONWriter();
             writer.writeName(getName());

@@ -2,7 +2,6 @@ package edu.bsu.cs222;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +24,7 @@ public class EditUserCalenderGUI {
     public TextField eventName;
     public ArrayList<String> days = new ArrayList<>();
     public CheckBox mondayCheck;
-    public CheckBox tuesdayheckboxmain;
+    public CheckBox tuesdayCheckboxMain;
     public CheckBox wednesdayCheck;
     public CheckBox ThursdayCheck;
     public CheckBox fridayCheck;
@@ -53,7 +52,7 @@ public class EditUserCalenderGUI {
         phoneNumberBox.setText(phoneNumber);
     }
 
-    public void goBackToSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void goBackToSettings() throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SettingsGUI.fxml"));
         Parent root = loader.load();
@@ -65,11 +64,8 @@ public class EditUserCalenderGUI {
     }
 
     public boolean checkNullDays(){
-        boolean value = false;
-        if (mondayCheck.isSelected()) {
-            value = true;
-        }
-        if (tuesdayheckboxmain.isSelected()) {
+        boolean value = mondayCheck.isSelected();
+        if (tuesdayCheckboxMain.isSelected()) {
             value = true;
         }
         if (wednesdayCheck.isSelected()) {
@@ -90,7 +86,7 @@ public class EditUserCalenderGUI {
         return value;
     }
 
-    public void addToSchedule(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void addToSchedule() throws IOException, URISyntaxException, ParseException {
         if (eventName.getText() == null || startTime.getText() == null || endTime.getText() == null || !checkNullDays()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
@@ -102,7 +98,7 @@ public class EditUserCalenderGUI {
             if (mondayCheck.isSelected()) {
                 days.add("monday");
             }
-            if (tuesdayheckboxmain.isSelected()) {
+            if (tuesdayCheckboxMain.isSelected()) {
                 days.add("tuesday");
             }
             if (wednesdayCheck.isSelected()) {
@@ -157,7 +153,7 @@ public class EditUserCalenderGUI {
 
     }
 
-    public void selectEvent(ActionEvent actionEvent) throws FileNotFoundException, URISyntaxException, ParseException {
+    public void selectEvent() throws FileNotFoundException, URISyntaxException, ParseException {
         String selection = allEventsTab.getValue();
         if (selection == null || selection.equals("Select an Event")){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -170,22 +166,19 @@ public class EditUserCalenderGUI {
         }
     }
 
-    public void removeEvent(ActionEvent actionEvent) throws FileNotFoundException, URISyntaxException, ParseException {
-        //Check what days are selected and remove from json
+    public void removeEvent(){
         String selection = allEventsTab.getValue();
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         if (selection == null || selection.equals("Select day/s to remove")){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
             alert.setHeaderText("A Selection Error Occurred");
             alert.setContentText("You need to select the days of the event you wish to remove.");
-            alert.showAndWait();
         }else{
 
-            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Conformation");
             alert.setHeaderText("Event Removed");
             alert.setContentText("You have removed your event successfully");
-            alert.showAndWait();
         }
+        alert.showAndWait();
     }
 }

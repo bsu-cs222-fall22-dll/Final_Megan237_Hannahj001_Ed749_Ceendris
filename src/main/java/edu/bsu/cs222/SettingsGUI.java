@@ -1,6 +1,5 @@
 package edu.bsu.cs222;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import net.minidev.json.parser.ParseException;
 
-import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -48,7 +46,7 @@ public class SettingsGUI{
 
 
     @FXML
-    public void goBackToMainScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException, java.text.ParseException {
+    public void goBackToMainScreen() throws IOException, URISyntaxException, ParseException, java.text.ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreenGUI.fxml"));
         Parent root = loader.load();
@@ -62,7 +60,7 @@ public class SettingsGUI{
 
     }
 
-    public void GoToEditUserScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void GoToEditUserScreen() throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditUserInformationGUI.fxml"));
         Parent root = loader.load();
@@ -73,7 +71,7 @@ public class SettingsGUI{
         editUserInfoButton.getScene().setRoot(root);
     }
 
-    public void GoToEditScheduleScreen(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void GoToEditScheduleScreen() throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditUserCalenderGUI.fxml"));
         Parent root = loader.load();
@@ -86,13 +84,13 @@ public class SettingsGUI{
         editScheduleButton.getScene().setRoot(root);
     }
 
-    public void LogOutAction(ActionEvent actionEvent) throws IOException {
+    public void LogOutAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginGUI.fxml"));
         Parent root = loader.load();
         logOutButton.getScene().setRoot(root);
     }
 
-    public void addRoommate(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void addRoommate() throws IOException, URISyntaxException, ParseException {
         String email = emailBox.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateAddGUI.fxml"));
         Parent root = loader.load();

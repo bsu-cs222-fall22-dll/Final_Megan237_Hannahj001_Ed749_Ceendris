@@ -1,6 +1,5 @@
 package edu.bsu.cs222;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -208,7 +207,7 @@ public class MainScreenGUI {
         phoneNumberBox.setText(phoneNumber);
     }
 
-    public void goToProfile(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void goToProfile() throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayUserInfoGUI.fxml"));
         Parent root = loader.load();
         DisplayUserInfoGUI displayUser = loader.getController();
@@ -221,7 +220,7 @@ public class MainScreenGUI {
         profileButton.getScene().setRoot(root);
     }
 
-    public void openRoommate1(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void openRoommate1() throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateDisplayGUI.fxml"));
         Parent root = loader.load();
         RoommateDisplayGUI roommateDisplayGUI = loader.getController();
@@ -234,7 +233,7 @@ public class MainScreenGUI {
 
     }
 
-    public void openRoommate2(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void openRoommate2() throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateDisplayGUI.fxml"));
         Parent root = loader.load();
         RoommateDisplayGUI roommateDisplayGUI = loader.getController();
@@ -248,7 +247,7 @@ public class MainScreenGUI {
 
     }
 
-    public void openRoommate3(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void openRoommate3() throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/RoommateDisplayGUI.fxml"));
         Parent root = loader.load();
         RoommateDisplayGUI roommateDisplayGUI = loader.getController();
@@ -263,7 +262,7 @@ public class MainScreenGUI {
 
     }
 
-    public void openSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void openSettings() throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SettingsGUI.fxml"));
         Parent root = loader.load();
         SettingsGUI settingsGUI = loader.getController();
@@ -275,7 +274,7 @@ public class MainScreenGUI {
         settingsButton.getScene().setRoot(root);
     }
 
-    public void openCalendar(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
+    public void openCalendar() throws IOException, URISyntaxException, ParseException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayFullCalendarGUI.fxml"));
         Parent root = loader.load();
         DisplayFullCalendarGUI calendarGUI = loader.getController();

@@ -1,5 +1,4 @@
 package edu.bsu.cs222;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,7 +45,7 @@ public class LoginGUI{
             alert.showAndWait();
         }
     }
-    public void openSignUpPage(ActionEvent actionEvent) throws IOException {
+    public void openSignUpPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/SignUpGUI.fxml"));
         Parent root = loader.load();
         enterButton.getScene().setRoot(root);
