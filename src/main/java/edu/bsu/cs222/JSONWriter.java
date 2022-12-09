@@ -7,7 +7,6 @@ import net.minidev.json.parser.ParseException;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -111,20 +110,9 @@ public class JSONWriter {
         JSONArray fullFile = new JSONArray();
         Path path = Paths.get("src/main/resources/" + email.replace(".","") + ".json");
         fullFile.add(originalFile);
-        String originalImagePath = reader.getImagePath(email);
-        fullFile.remove(originalImagePath);
         image.put("ProfileImage", filePath);
         fullFile.add(image);
         Files.writeString(path, fullFile.toJSONString());
 
-    }
-
-    public void replaceImage(String email, String fileName) throws IOException, URISyntaxException, ParseException {
-        String filePath = "src/main/resources/" + fileName;
-        String file = "src/main/resources/" + email.replace(".","") + ".json";
-        String json = new String(Files.readAllBytes(Paths.get(file)));
-        Path path = Paths.get(file);
-        String originalImagePath = reader.getImagePath(email);
-        Files.writeString(path, json.replace(originalImagePath, filePath));
     }
 }
