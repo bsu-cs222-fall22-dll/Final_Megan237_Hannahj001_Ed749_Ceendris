@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
 
 
 public class JSONReaderTest {

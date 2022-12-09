@@ -62,6 +62,26 @@ public class MainScreenGUI {
     }
 
     @FXML
+    public void displayRoommate1(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        roommate1Image.setImage(image);
+    }
+    @FXML
+    public void displayRoommate2(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        roommate2Image.setImage(image);
+    }
+    @FXML
+    public void displayRoommate3(String email) throws FileNotFoundException, URISyntaxException, ParseException{
+        String path = jsonReader.getImagePath(email);
+        Image image = new Image(String.valueOf(Path.of(path).toUri()));
+        roommate3image.setImage(image);
+    }
+
+
+    @FXML
     public void displayName(String email) throws FileNotFoundException, URISyntaxException, ParseException {
         String name = jsonReader.getName(email);
         nameBox.setText(name);
@@ -77,6 +97,10 @@ public class MainScreenGUI {
             status1.setText(displayStatus(roommates.get(0)));
             status2.setText(displayStatus(roommates.get(1)));
             status3.setText(displayStatus(roommates.get(2)));
+            displayRoommate1(roommates.get(0));
+            displayRoommate2(roommates.get(1));
+            displayRoommate3(roommates.get(2));
+
         }
         else if(roommates.size() == 2){
             String roommateEmail1 = roommates.get(0);
@@ -88,6 +112,9 @@ public class MainScreenGUI {
             status1.setText(displayStatus(jsonReader.getEmail(roommateEmail1)));
             status2.setText(displayStatus(jsonReader.getEmail(roommateEmail2)));
 
+            displayRoommate1(roommates.get(0));
+            displayRoommate2(roommates.get(1));
+
             roommate3Button.setVisible(false);
             status3.setVisible(false);
 
@@ -96,6 +123,7 @@ public class MainScreenGUI {
             String roommateEmail = roommates.get(0);
             jsonReader.getName(roommateEmail);
             roommate1Button.setText(roommateEmail);
+            displayRoommate1(roommates.get(0));
             status1.setText(displayStatus(roommates.get(0)));
             roommate2Button.setVisible(false);
             status2.setVisible(false);
