@@ -138,8 +138,8 @@ public class RoommateDisplayGUI {
 
     @FXML
     public void displayEmail(String email) throws FileNotFoundException, URISyntaxException, ParseException {
-        String Displayedemail = jsonReader.getEmail(email);
-        emailBox.setText(Displayedemail);
+        String displayedEmail = jsonReader.getEmail(email);
+        emailBox.setText(displayedEmail);
     }
 
     @FXML
