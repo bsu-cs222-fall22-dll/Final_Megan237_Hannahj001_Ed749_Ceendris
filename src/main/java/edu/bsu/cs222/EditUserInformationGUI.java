@@ -10,24 +10,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelBuffer;
-import javafx.scene.image.PixelWriter;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.minidev.json.parser.ParseException;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.PixelGrabber;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.Objects;
 
 public class EditUserInformationGUI {
     public Button goBackButton;
@@ -45,7 +41,6 @@ public class EditUserInformationGUI {
     public Label phoneNumberBox;
     public File filePath;
     public Image photo;
-    public Image defaultImage = new Image("/REG-378623.png");
     public JSONWriter writer = new JSONWriter();
 
     public void goBackToSettings(ActionEvent actionEvent) throws IOException, URISyntaxException, ParseException {
@@ -74,7 +69,7 @@ public class EditUserInformationGUI {
         String newFirstName = ChangeFirstNameBox.getText();
         String oldEmail = jsonReader.getEmail(email);
         String newEmail = ChangeEmailBox.getText();
-        if (oldPassword != newPassword || oldPhoneNumber != newPhoneNumber || oldFirstName != newFirstName || oldEmail != newEmail) {
+        if (!Objects.equals(oldPassword, newPassword) || !Objects.equals(oldPhoneNumber, newPhoneNumber) || !Objects.equals(oldFirstName, newFirstName) || !Objects.equals(oldEmail, newEmail)) {
             if (newPassword.equals("")) {
                 newPassword = oldPassword;
             }
@@ -131,7 +126,7 @@ public class EditUserInformationGUI {
             this.photo = userImage.getImage();
 
             System.out.println(filePath.getName());
-            writer.writeToFileImage(userImage.getImage(),filePath.getName(),filePath);
+            writer.writeToFileImage(filePath.getName(),filePath);
 
 
 

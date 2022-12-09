@@ -8,7 +8,6 @@ import net.minidev.json.parser.ParseException;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -42,18 +41,6 @@ public class JSONWriter {
         JSONArray fullFile = new JSONArray();
         Path path = Paths.get("src/main/resources/" + userEmail.replace(".","") + ".json");
         fullFile.add(originalFile);
-//        int i = 0;
-//
-//        while (true){
-//            String checkRoommate = "Roommate" + i;
-//            if (originalFile.toString().contains(checkRoommate)){
-//                i+=1;
-//            }
-//            else {
-//                break;
-//            }
-//        }
-//        String key = "Roommate"+i;
         roommate.put("Roommate", roommateEmail);
         fullFile.add(roommate);
         Files.writeString(path, fullFile.toJSONString());
@@ -66,10 +53,9 @@ public class JSONWriter {
         Files.writeString(path, user.toJSONString());
     }
 
-    public void writeToFileImage(Image image, String name,File filePath) throws IOException {
+    public void writeToFileImage(String name,File filePath) throws IOException {
         Path path = Paths.get("src/main/resources/" + name);
-//        Files.createFile(path);
-        BufferedImage bImage = null;
+        BufferedImage bImage;
         try{
             File initialImage = new File(String.valueOf(filePath));
             bImage = ImageIO.read(initialImage);
@@ -111,7 +97,7 @@ public class JSONWriter {
         Files.writeString(path, fullFile.toJSONString());
     }
 
-    public void removeRoommate(String email, String roommateEmail) throws IOException, URISyntaxException, ParseException {
+    public void removeRoommate(String email, String roommateEmail) throws IOException{
         String file = "src/main/resources/" + email.replace(".","") + ".json";
         String json = new String(Files.readAllBytes(Paths.get(file)));
         Path path = Paths.get(file);
